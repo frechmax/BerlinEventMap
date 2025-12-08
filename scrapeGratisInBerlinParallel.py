@@ -1,0 +1,189 @@
+from datetime import datetime
+import requests
+from bs4 import BeautifulSoup
+import pandas as pd
+from geopy.geocoders import Nominatim
+from time import sleep
+import os
+import sys
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+# Get output folder from command line argument
+OUTPUT_FOLDER = sys.argv[1] if len(sys.argv) > 1 else '.'
+
+print("=" * 60)
+print("SCHNELLER GRATIS-IN-BERLIN.DE SCRAPER")
+print("=" * 60)
+
+# Hauptseite scrapen
+url = "https://www.gratis-in-berlin.de/heute"
+headers = {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+}
+
+print(f"\n[1/4] Lade Hauptseite...")
+response = requests.get(url, headers=headers)
+soup = BeautifulSoup(response.content, 'html.parser')
+
+event_items = soup.find_all('h2', class_='overviewcontentheading')
+print(f"✓ {len(event_items)} Events gefunden\n")
+
+# URLs sammeln
+event_urls = []
+for item in event_items:
+    link_tag = item.find('a', class_='singletip')
+    if link_tag:
+        title = link_tag.get_text(strip=True)
+        event_url = 'https://www.gratis-in-berlin.de' + link_tag['href']
+        event_urls.append({
+            'title': title,
+            'url': event_url
+        })
+
+# Funktion zum Scrapen einer einzelnen Event-Seite
+def scrape_event_details(event_data):
+    """Scraped Details für ein einzelnes Event"""
+    try:
+        response = requests.get(event_data['url'], headers=headers, timeout=10)
+        soup = BeautifulSoup(response.content, 'html.parser')
+        
+        # Adresse extrahieren
+        map_div = soup.find('div', class_='mapTipp')
+        if map_div:
+            address_text = map_div.get_text(strip=True).split('-')[0].strip()
+            return {
+                'title': event_data['title'],
+                'url': event_data['url'],
+                'address': address_text,
+                'success': True
+            }
+        return {**event_data, 'success': False}
+    except Exception as e:
+        return {**event_data, 'success': False, 'error': str(e)}
+
+# PARALLEL PROCESSING - deutlich schneller!
+print(f"[2/4] Scrape Event-Details parallel...")
+print("(Dies ist viel schneller als sequentiell!)\n")
+
+events = []
+completed = 0
+
+# ThreadPoolExecutor für paralleles Scraping
+# max_workers=10 bedeutet 10 gleichzeitige Requests
+with ThreadPoolExecutor(max_workers=10) as executor:
+    # Starte alle Scraping-Tasks
+    future_to_event = {
+        executor.submit(scrape_event_details, event): event 
+        for event in event_urls
+    }
+    
+    # Verarbeite abgeschlossene Tasks
+    for future in as_completed(future_to_event):
+        result = future.result()
+        completed += 1
+        
+        if result.get('success'):
+            events.append({
+                'title': result['title'],
+                'url': result['url'],
+                'address': result['address']
+            })
+            print(f"  [{completed}/{len(event_urls)}] ✓ {result['title']}")
+        else:
+            print(f"  [{completed}/{len(event_urls)}] ✗ {result['title']}")
+
+print(f"\n{'='*60}")
+print(f"✓ {len(events)}/{len(event_urls)} Events erfolgreich gescraped")
+print(f"{'='*60}")
+
+# DataFrame erstellen
+df = pd.DataFrame(events)
+
+if len(df) == 0:
+    print("\n✗ Keine Events gefunden!")
+    exit()
+
+# Geocoding
+print(f"\n[3/4] Geocoding der Adressen...")
+print("(Hier können wir NICHT parallel arbeiten wegen Rate Limits)\n")
+
+geolocator = Nominatim(user_agent="berlin-gratis-events-map")
+
+def geocode_address(address):
+    try:
+        location = geolocator.geocode(address)
+        if location:
+            return location.latitude, location.longitude
+        return None, None
+    except:
+        return None, None
+
+for idx, row in df.iterrows():
+    print(f"  [{idx+1}/{len(df)}] {row['address']}", end=" ")
+    lat, lon = geocode_address(row['address'])
+    df.at[idx, 'lat'] = lat
+    df.at[idx, 'lon'] = lon
+    
+    if lat:
+        print(f"✓")
+    else:
+        print(f"✗")
+    
+    sleep(1.5)  # Nominatim Rate Limit
+
+df_mapped = df.dropna(subset=['lat', 'lon'])
+
+print(f"\n{'='*60}")
+print(f"✓ {len(df_mapped)}/{len(df)} Events mit Koordinaten")
+print(f"{'='*60}")
+
+# CSV speichern
+output_file = os.path.join(OUTPUT_FOLDER, 'gratis_berlin_events.csv')
+df_mapped.to_csv(output_file, index=False)
+print(f"\n✓ CSV gespeichert: {output_file}")
+
+# # Karte erstellen
+# print(f"\n[4/4] Erstelle Karte...")
+
+# import folium
+# from folium.plugins import MarkerCluster
+
+# berlin_map = folium.Map(
+#     location=[52.5200, 13.4050],
+#     zoom_start=12,
+#     tiles='OpenStreetMap'
+# )
+
+# marker_cluster = MarkerCluster(
+#     max_cluster_radius=35,
+#     disable_clustering_at_zoom=13,
+#     spiderfyOnMaxZoom=True
+# ).add_to(berlin_map)
+
+# for idx, row in df_mapped.iterrows():
+#     popup_html = f"""
+#     <div style="width: 250px;">
+#         <h4>{row['title']}</h4>
+#         <p><b>Adresse:</b> {row['address']}</p>
+#         <a href="{row['url']}" target="_blank">Mehr Infos</a>
+#     </div>
+#     """
+    
+#     folium.Marker(
+#         location=[row['lat'], row['lon']],
+#         popup=folium.Popup(popup_html, max_width=300),
+#         tooltip=row['title'],
+#         icon=folium.Icon(color='green', icon='info-sign')
+#     ).add_to(marker_cluster)
+
+# os.makedirs('berlin-events', exist_ok=True)
+# berlin_map.save('berlin-events/index.html')
+
+print(f"\n{'='*60}")
+print(f"✓✓✓ FERTIG! ✓✓✓")
+print(f"{'='*60}")
+# print(f"\n📂 Karte: berlin-events/index.html")
+print(f"📊 CSV: berlin_events.csv")
+print(f"\n⚡ Durch Parallel Processing wurde das Scraping")
+print(f"   ~10x schneller als die sequentielle Version!")
+print(f"\n{'='*60}")
