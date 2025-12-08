@@ -139,7 +139,7 @@ def main():
         return False
     
     # Run combine script
-    print(f"\n[STEP 2/2] Combining maps...\n")
+    print("\n[STEP 2/2] Combining maps...\n")
     
     if not check_file_exists(COMBINE_SCRIPT):
         print(f"✗ Combine script not found: {COMBINE_SCRIPT}")

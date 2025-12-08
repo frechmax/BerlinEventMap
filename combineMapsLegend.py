@@ -75,7 +75,7 @@ print(f"✓ Gesamt: {len(combined_df)} Events")
 print(f"{'='*60}")
 
 # Karte erstellen
-print(f"\n[2/3] Erstelle Karte mit Legende...\n")
+print("\n[2/3] Erstelle Karte mit Legende...\n")
 
 berlin_map = folium.Map(
     location=[52.5200, 13.4050],
@@ -136,6 +136,12 @@ for idx, row in combined_df.iterrows():
     if 'date' in row and pd.notna(row['date']):
         popup_fields.append(f"<p><b>Datum:</b> {row['date']}</p>")
     
+    if 'detailed_date' in row and pd.notna(row['detailed_date']):
+        popup_fields.append(f"<p><b>Zeitangabe:</b> {row['detailed_date']}</p>")
+    
+    if 'description' in row and pd.notna(row['description']):
+        popup_fields.append(f"<p><b>Beschreibung:</b> {row['description']}</p>")
+    
     popup_fields.append(f"<p><b>Quelle:</b> {row['source']}</p>")
     
     if 'url' in row and pd.notna(row['url']):
@@ -177,7 +183,7 @@ legend_html = f'''
 <div style="position: fixed; 
             bottom: 10px; 
             right: 10px; 
-            width: 110px; 
+            width: 120px; 
             background-color: rgba(255,255,255,0.95); 
             border: 1px solid #ddd;
             z-index: 9999; 
@@ -209,7 +215,7 @@ for source in csv_sources:
         
         legend_html += f'''
         <div style="display: flex; justify-content: space-between; margin: 2px 0; font-size: 9px;">
-            <span>{emoji} {source['name'][:10]}</span>
+            <span>{emoji} {source['name'][:20]}</span>
             <span style="font-weight: bold; color: #666;">{count}</span>
         </div>
         '''
@@ -219,11 +225,9 @@ legend_html += '</div>'
 berlin_map.get_root().html.add_child(folium.Element(legend_html))
 
 # Save map
-print(f"\n[3/3] Saving map...\n")
+print("\n[3/3] Saving map...\n")
 
 map_file = os.path.join(RUN_FOLDER, 'index.html')
 berlin_map.save(map_file)
 
 print(f"✓ Map saved to: {map_file}")
-print(f"\n{'='*60}")
-print(f"✓✓✓ SUCCESS! ✓✓✓")

@@ -21,7 +21,7 @@ headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
 }
 
-print(f"\n[1/4] Lade Hauptseite...")
+print("\n[1/4] Lade Hauptseite...")
 response = requests.get(url, headers=headers)
 soup = BeautifulSoup(response.content, 'html.parser')
 
@@ -49,12 +49,31 @@ def scrape_event_details(event_data):
         
         # Adresse extrahieren
         map_div = soup.find('div', class_='mapTipp')
+        address_text = None
         if map_div:
             address_text = map_div.get_text(strip=True).split('-')[0].strip()
+        
+        # Beschreibung extrahieren
+        description = None
+        desc_div = soup.find('div', class_='overview-text')
+        if desc_div:
+            description = desc_div.get_text(separator=' ', strip=True)
+            # Begrenzen auf 500 Zeichen
+            description = description[:500] if description else None
+        
+        # Detaillierte Zeitangabe extrahieren
+        detailed_date = None
+        date_div = soup.find('div', class_='dateTipp')
+        if date_div:
+            detailed_date = date_div.get_text(separator=' ', strip=True)
+        
+        if address_text:
             return {
                 'title': event_data['title'],
                 'url': event_data['url'],
                 'address': address_text,
+                'description': description,
+                'detailed_date': detailed_date,
                 'success': True
             }
         return {**event_data, 'success': False}
@@ -62,7 +81,7 @@ def scrape_event_details(event_data):
         return {**event_data, 'success': False, 'error': str(e)}
 
 # PARALLEL PROCESSING - deutlich schneller!
-print(f"[2/4] Scrape Event-Details parallel...")
+print("[2/4] Scrape Event-Details parallel...")
 print("(Dies ist viel schneller als sequentiell!)\n")
 
 events = []
@@ -86,7 +105,9 @@ with ThreadPoolExecutor(max_workers=10) as executor:
             events.append({
                 'title': result['title'],
                 'url': result['url'],
-                'address': result['address']
+                'address': result['address'],
+                'description': result.get('description'),
+                'detailed_date': result.get('detailed_date')
             })
             print(f"  [{completed}/{len(event_urls)}] ✓ {result['title']}")
         else:

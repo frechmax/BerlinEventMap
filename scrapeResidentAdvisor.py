@@ -4,7 +4,6 @@ Scraped NUR Events von HEUTE von Resident Advisor
 """
 
 import requests
-import json
 import pandas as pd
 from geopy.geocoders import Nominatim
 from time import sleep
