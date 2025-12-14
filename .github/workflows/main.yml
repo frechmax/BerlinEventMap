@@ -1,0 +1,70 @@
+name: Berlin Events Map Generator
+
+on:
+  schedule:
+    # Jeden Tag um 06:00 UTC (07:00 Berlin Winterzeit)
+    - cron: "0 6 * * *"
+  workflow_dispatch: # Erlaubt manuellen Start
+
+# Berechtigungen für GitHub Pages Deployment
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Python einrichten
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip' # Cacht Downloads für schnellere Ausführung
+
+      - name: Abhängigkeiten installieren
+        run: |
+          pip install -r requirements.txt
+          # WICHTIG: Falls du Browser-Automation (Selenium/Playwright) nutzt,
+          # musst du hier evtl. noch Browser installieren.
+          # Beispiel für Playwright: playwright install chromium
+
+      - name: Scraping Pipeline ausführen
+        run: python main.py
+
+      - name: Ergebnis bereitstellen (Datei verschieben)
+        run: |
+          # Wir suchen die HTML Datei im neuesten output-Unterordner
+          # Dein Script generiert: output/YYYY-MM-DD.../map.html (oder ähnlich)
+          
+          # Findet die letzte generierte HTML Datei im output Ordner
+          GENERATED_FILE=$(find output -name "*.html" -type f | head -n 1)
+          
+          if [ -z "$GENERATED_FILE" ]; then
+            echo "Fehler: Keine HTML Datei gefunden!"
+            exit 1
+          fi
+          
+          echo "Gefundene Datei: $GENERATED_FILE"
+          
+          # Erstelle einen sauberen Ordner für den Upload
+          mkdir public
+          
+          # Kopiere die gefundene Datei als index.html in den public Ordner
+          cp "$GENERATED_FILE" public/index.html
+          
+          # Kopiere optional auch die CSVs, falls du die Daten brauchst
+          cp output/*/*.csv public/ || true
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './public'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
