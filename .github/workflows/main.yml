@@ -2,11 +2,10 @@ name: Berlin Events Map Generator
 
 on:
   schedule:
-    # Jeden Tag um 06:00 UTC (07:00 Berlin Winterzeit)
+    # Täglich um 06:00 UTC (07:00 Berlin Winterzeit)
     - cron: "0 6 * * *"
   workflow_dispatch: # Erlaubt manuellen Start
 
-# Berechtigungen für GitHub Pages Deployment
 permissions:
   contents: read
   pages: write
@@ -24,24 +23,24 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.10'
-          cache: 'pip' # Cacht Downloads für schnellere Ausführung
+          cache: 'pip'
 
-      - name: Abhängigkeiten installieren
+      - name: Python-Abhängigkeiten installieren
         run: |
           pip install -r requirements.txt
-          # WICHTIG: Falls du Browser-Automation (Selenium/Playwright) nutzt,
-          # musst du hier evtl. noch Browser installieren.
-          # Beispiel für Playwright: playwright install chromium
+
+      # NEU: Playwright Browser installieren
+      # Das installiert die Browser-Engines UND nötige System-Bibliotheken (Linux dependencies)
+      - name: Playwright Browser installieren
+        run: |
+          playwright install --with-deps chromium
 
       - name: Scraping Pipeline ausführen
         run: python main.py
 
-      - name: Ergebnis bereitstellen (Datei verschieben)
+      - name: Ergebnis bereitstellen
         run: |
-          # Wir suchen die HTML Datei im neuesten output-Unterordner
-          # Dein Script generiert: output/YYYY-MM-DD.../map.html (oder ähnlich)
-          
-          # Findet die letzte generierte HTML Datei im output Ordner
+          # Finde die generierte HTML Datei (analog zu vorher)
           GENERATED_FILE=$(find output -name "*.html" -type f | head -n 1)
           
           if [ -z "$GENERATED_FILE" ]; then
@@ -51,13 +50,9 @@ jobs:
           
           echo "Gefundene Datei: $GENERATED_FILE"
           
-          # Erstelle einen sauberen Ordner für den Upload
           mkdir public
-          
-          # Kopiere die gefundene Datei als index.html in den public Ordner
           cp "$GENERATED_FILE" public/index.html
-          
-          # Kopiere optional auch die CSVs, falls du die Daten brauchst
+          # CSVs mitsichern falls gewünscht
           cp output/*/*.csv public/ || true
 
       - name: Upload Pages Artifact
