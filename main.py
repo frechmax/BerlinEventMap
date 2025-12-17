@@ -23,22 +23,24 @@ print(f"\n📁 Output folder: {RUN_FOLDER}\n")
 # Define scraping scripts and their output files
 SCRAPERS = [
     {
-        'name': 'Gratis in Berlin',
-        'script': 'scrapeGratisInBerlinParallel.py',
-        'output_csv': 'gratis_berlin_events.csv',
-        'enabled': True
-    },
-    {
         'name': 'tip Berlin',
         'script': 'scrapeTipBerlinBot.py',
         'output_csv': 'tip_berlin_events.csv',
         'enabled': True
     },
+
+    {
+        'name': 'Gratis in Berlin',
+        'script': 'scrapeGratisInBerlinParallel.py',
+        'output_csv': 'gratis_berlin_events.csv',
+        'enabled': False
+    },
+
     {
         'name': 'Visit Berlin',
         'script': 'scrapeVisitBerlin.py',
         'output_csv': 'visitberlin_events.csv',
-        'enabled': True
+        'enabled': False
     },
     # Add more scrapers here
     # {

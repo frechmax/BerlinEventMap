@@ -23,9 +23,10 @@ jobs:
       - name: Install dependencies
         run: |
           pip install --upgrade pip
-          pip install folium
-      - name: Run HelloCICD script
-        run: python hellocicd.py
+          pip install folium pandas playwright beautifulsoup4 geopy
+          playwright install
+      - name: Run main.py pipeline
+        run: python main.py
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

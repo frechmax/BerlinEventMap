@@ -16,16 +16,16 @@ print(f"Reading CSVs from: {RUN_FOLDER}\n")
 # Define your CSV files and their colors
 csv_sources = [
     {
-        'file': os.path.join(RUN_FOLDER, 'gratis_berlin_events.csv'),
-        'name': 'Gratis in Berlin',
-        'color': 'green',
-        'icon': 'gift'
-    },
-    {
         'file': os.path.join(RUN_FOLDER, 'tip_berlin_events.csv'),
         'name': 'tip Berlin',
         'color': 'blue',
         'icon': 'star'
+    },
+    {
+        'file': os.path.join(RUN_FOLDER, 'gratis_berlin_events.csv'),
+        'name': 'Gratis in Berlin',
+        'color': 'green',
+        'icon': 'gift'
     },
     {
         'file': os.path.join(RUN_FOLDER, 'visitberlin_events.csv'),
@@ -236,4 +236,7 @@ print("\n[3/3] Saving map...\n")
 map_file = os.path.join(RUN_FOLDER, 'index.html')
 berlin_map.save(map_file)
 
+# copy to index.html for GitHub Pages
+index_file = os.path.join('.', 'index.html')
+berlin_map.save(index_file)
 print(f"✓ Map saved to: {map_file}")
