@@ -34,6 +34,12 @@ SCRAPERS = [
         'output_csv': 'tip_berlin_events.csv',
         'enabled': True
     },
+    {
+        'name': 'Visit Berlin',
+        'script': 'scrapeVisitBerlin.py',
+        'output_csv': 'visitberlin_events.csv',
+        'enabled': True
+    },
     # Add more scrapers here
     # {
     #     'name': 'Another Source',

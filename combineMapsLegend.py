@@ -27,6 +27,12 @@ csv_sources = [
         'color': 'blue',
         'icon': 'star'
     },
+    {
+        'file': os.path.join(RUN_FOLDER, 'visitberlin_events.csv'),
+        'name': 'visit Berlin',
+        'color': 'purple',
+        'icon': 'info-sign'
+    },
     # Add more CSV sources here
     # {
     #     'file': 'another_events.csv',
