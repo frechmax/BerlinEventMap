@@ -1,0 +1,65 @@
+name: Berlin Events Map Generator
+
+on:
+  schedule:
+    # Täglich um 06:00 UTC (07:00 Berlin Winterzeit)
+    - cron: "0 6 * * *"
+  workflow_dispatch: # Erlaubt manuellen Start
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v4
+
+      - name: Python einrichten
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+          cache: 'pip'
+
+      - name: Python-Abhängigkeiten installieren
+        run: |
+          pip install -r requirements.txt
+
+      # NEU: Playwright Browser installieren
+      # Das installiert die Browser-Engines UND nötige System-Bibliotheken (Linux dependencies)
+      - name: Playwright Browser installieren
+        run: |
+          playwright install --with-deps chromium
+
+      - name: Scraping Pipeline ausführen
+        run: python main.py
+
+      - name: Ergebnis bereitstellen
+        run: |
+          # Finde die generierte HTML Datei (analog zu vorher)
+          GENERATED_FILE=$(find output -name "*.html" -type f | head -n 1)
+          
+          if [ -z "$GENERATED_FILE" ]; then
+            echo "Fehler: Keine HTML Datei gefunden!"
+            exit 1
+          fi
+          
+          echo "Gefundene Datei: $GENERATED_FILE"
+          
+          mkdir public
+          cp "$GENERATED_FILE" public/index.html
+          # CSVs mitsichern falls gewünscht
+          cp output/*/*.csv public/ || true
+
+      - name: Upload Pages Artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './public'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
