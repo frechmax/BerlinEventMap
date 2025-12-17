@@ -8,39 +8,10 @@ import os
 import sys
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-# Get output folder from command line argument
-OUTPUT_FOLDER = sys.argv[1] if len(sys.argv) > 1 else '.'
-
-print("=" * 60)
-print("SCHNELLER GRATIS-IN-BERLIN.DE SCRAPER")
-print("=" * 60)
-
-# Hauptseite scrapen
-url = "https://www.gratis-in-berlin.de/heute"
 headers = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
 }
 
-print("\n[1/4] Lade Hauptseite...")
-response = requests.get(url, headers=headers)
-soup = BeautifulSoup(response.content, 'html.parser')
-
-event_items = soup.find_all('h2', class_='overviewcontentheading')
-print(f"✓ {len(event_items)} Events gefunden\n")
-
-# URLs sammeln
-event_urls = []
-for item in event_items:
-    link_tag = item.find('a', class_='singletip')
-    if link_tag:
-        title = link_tag.get_text(strip=True)
-        event_url = 'https://www.gratis-in-berlin.de' + link_tag['href']
-        event_urls.append({
-            'title': title,
-            'url': event_url
-        })
-
-# Funktion zum Scrapen einer einzelnen Event-Seite
 def scrape_event_details(event_data):
     """Scraped Details für ein einzelnes Event"""
     try:
@@ -80,58 +51,72 @@ def scrape_event_details(event_data):
     except Exception as e:
         return {**event_data, 'success': False, 'error': str(e)}
 
-# PARALLEL PROCESSING - deutlich schneller!
-print("[2/4] Scrape Event-Details parallel...")
-print("(Dies ist viel schneller als sequentiell!)\n")
-
-events = []
-completed = 0
-
-# ThreadPoolExecutor für paralleles Scraping
-# max_workers=10 bedeutet 10 gleichzeitige Requests
-with ThreadPoolExecutor(max_workers=10) as executor:
-    # Starte alle Scraping-Tasks
-    future_to_event = {
-        executor.submit(scrape_event_details, event): event 
-        for event in event_urls
-    }
+def scrape_gratis_berlin_events():
+    """Scrape events from gratis-in-berlin.de using parallel processing."""
+    url = "https://www.gratis-in-berlin.de/heute"
     
-    # Verarbeite abgeschlossene Tasks
-    for future in as_completed(future_to_event):
-        result = future.result()
-        completed += 1
-        
-        if result.get('success'):
-            events.append({
-                'title': result['title'],
-                'url': result['url'],
-                'address': result['address'],
-                'description': result.get('description'),
-                'detailed_date': result.get('detailed_date')
+    print("\n[1/4] Lade Hauptseite...")
+    response = requests.get(url, headers=headers)
+    soup = BeautifulSoup(response.content, 'html.parser')
+    
+    event_items = soup.find_all('h2', class_='overviewcontentheading')
+    print(f"✓ {len(event_items)} Events gefunden\n")
+    
+    # URLs sammeln
+    event_urls = []
+    for item in event_items:
+        link_tag = item.find('a', class_='singletip')
+        if link_tag:
+            title = link_tag.get_text(strip=True)
+            event_url = 'https://www.gratis-in-berlin.de' + link_tag['href']
+            event_urls.append({
+                'title': title,
+                'url': event_url
             })
-            print(f"  [{completed}/{len(event_urls)}] ✓ {result['title']}")
-        else:
-            print(f"  [{completed}/{len(event_urls)}] ✗ {result['title']}")
-
-print(f"\n{'='*60}")
-print(f"✓ {len(events)}/{len(event_urls)} Events erfolgreich gescraped")
-print(f"{'='*60}")
-
-# DataFrame erstellen
-df = pd.DataFrame(events)
-
-if len(df) == 0:
-    print("\n✗ Keine Events gefunden!")
-    exit()
-
-# Geocoding
-print(f"\n[3/4] Geocoding der Adressen...")
-print("(Hier können wir NICHT parallel arbeiten wegen Rate Limits)\n")
-
-geolocator = Nominatim(user_agent="berlin-gratis-events-map")
+    
+    # PARALLEL PROCESSING - deutlich schneller!
+    print("[2/4] Scrape Event-Details parallel...")
+    print("(Dies ist viel schneller als sequentiell!)\n")
+    
+    events = []
+    completed = 0
+    
+    # ThreadPoolExecutor für paralleles Scraping
+    # max_workers=10 bedeutet 10 gleichzeitige Requests
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        # Starte alle Scraping-Tasks
+        future_to_event = {
+            executor.submit(scrape_event_details, event): event 
+            for event in event_urls
+        }
+        
+        # Verarbeite abgeschlossene Tasks
+        for future in as_completed(future_to_event):
+            result = future.result()
+            completed += 1
+            
+            if result.get('success'):
+                events.append({
+                    'title': result['title'],
+                    'url': result['url'],
+                    'address': result['address'],
+                    'description': result.get('description'),
+                    'detailed_date': result.get('detailed_date')
+                })
+                print(f"  [{completed}/{len(event_urls)}] ✓ {result['title']}")
+            else:
+                print(f"  [{completed}/{len(event_urls)}] ✗ {result['title']}")
+    
+    print(f"\n{'='*60}")
+    print(f"✓ {len(events)}/{len(event_urls)} Events erfolgreich gescraped")
+    print(f"{'='*60}")
+    
+    return events
 
 def geocode_address(address):
+    """Geocode an address to coordinates."""
     try:
+        geolocator = Nominatim(user_agent="berlin-gratis-events-map")
         location = geolocator.geocode(address)
         if location:
             return location.latitude, location.longitude
@@ -139,29 +124,55 @@ def geocode_address(address):
     except:
         return None, None
 
-for idx, row in df.iterrows():
-    print(f"  [{idx+1}/{len(df)}] {row['address']}", end=" ")
-    lat, lon = geocode_address(row['address'])
-    df.at[idx, 'lat'] = lat
-    df.at[idx, 'lon'] = lon
+def run_gratis_berlin_scraper(output_folder='.'):
+    """Main function to scrape gratis-in-berlin.de and save results."""
+    print("=" * 60)
+    print("SCHNELLER GRATIS-IN-BERLIN.DE SCRAPER")
+    print("=" * 60)
     
-    if lat:
-        print(f"✓")
-    else:
-        print(f"✗")
+    events = scrape_gratis_berlin_events()
     
-    sleep(1.5)  # Nominatim Rate Limit
+    # DataFrame erstellen
+    df = pd.DataFrame(events)
+    
+    if len(df) == 0:
+        print("\n✗ Keine Events gefunden!")
+        return pd.DataFrame()
+    
+    # Geocoding
+    print(f"\n[3/4] Geocoding der Adressen...")
+    print("(Hier können wir NICHT parallel arbeiten wegen Rate Limits)\n")
+    
+    for idx, row in df.iterrows():
+        print(f"  [{idx+1}/{len(df)}] {row['address']}", end=" ")
+        lat, lon = geocode_address(row['address'])
+        df.at[idx, 'lat'] = lat
+        df.at[idx, 'lon'] = lon
+        
+        if lat:
+            print(f"✓")
+        else:
+            print(f"✗")
+        
+        sleep(1.5)  # Nominatim Rate Limit
+    
+    df_mapped = df.dropna(subset=['lat', 'lon'])
+    
+    print(f"\n{'='*60}")
+    print(f"✓ {len(df_mapped)}/{len(df)} Events mit Koordinaten")
+    print(f"{'='*60}")
+    
+    # CSV speichern
+    output_file = os.path.join(output_folder, 'gratis_berlin_events.csv')
+    df_mapped.to_csv(output_file, index=False)
+    print(f"\n✓ CSV gespeichert: {output_file}")
+    
+    return df_mapped
 
-df_mapped = df.dropna(subset=['lat', 'lon'])
-
-print(f"\n{'='*60}")
-print(f"✓ {len(df_mapped)}/{len(df)} Events mit Koordinaten")
-print(f"{'='*60}")
-
-# CSV speichern
-output_file = os.path.join(OUTPUT_FOLDER, 'gratis_berlin_events.csv')
-df_mapped.to_csv(output_file, index=False)
-print(f"\n✓ CSV gespeichert: {output_file}")
+if __name__ == "__main__":
+    # Get output folder from command line argument
+    OUTPUT_FOLDER = sys.argv[1] if len(sys.argv) > 1 else '.'
+    run_gratis_berlin_scraper(OUTPUT_FOLDER)
 
 # # Karte erstellen
 # print(f"\n[4/4] Erstelle Karte...")

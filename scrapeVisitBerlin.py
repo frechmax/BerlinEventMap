@@ -6,18 +6,16 @@ import os
 import sys
 from geopy.geocoders import Nominatim
 from time import sleep
-
-# Get output folder from command line argument
-OUTPUT_FOLDER = sys.argv[1] if len(sys.argv) > 1 else '.'
+from datetime import datetime
 
 def scrape_visitberlin_events():
+    """Scrape events from visitberlin.de for today."""
     # Header simulieren, um nicht geblockt zu werden
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
     }
 
     # URL mit heutigem Datum generieren
-    from datetime import datetime
     today = datetime.now().strftime('%Y-%m-%d')
     url = f"https://www.visitberlin.de/de/tagestipps-veranstaltungen-berlin?keys=&date_between[min]={today}&date_between[max]={today}&district=All&items_per_page=max"
 
@@ -90,62 +88,88 @@ def scrape_visitberlin_events():
 
     return events_data
 
-print("=" * 60)
-print("VISITBERLIN.DE EVENT SCRAPER")
-print("=" * 60)
-
-# Scrape Events
-events = scrape_visitberlin_events()
-
-print(f"\n{len(events)} Events gefunden")
-
-if len(events) == 0:
-    print("\n⚠ Keine Events gefunden!")
-    exit()
-
-# DataFrame erstellen
-df = pd.DataFrame(events)
-
-# Geocoding
-print(f"\n[2/3] Geocoding der Adressen...")
-print("(Hier können wir NICHT parallel arbeiten wegen Rate Limits)\n")
-
-geolocator = Nominatim(user_agent="berlin-visit-events-map")
-
 def geocode_address(address):
+    """Geocode an address to coordinates with fallback logic."""
     try:
-        location = geolocator.geocode(address)
+        geolocator = Nominatim(user_agent="berlin-visit-events-map")
+        
+        # Try full address first
+        location = geolocator.geocode(f"{address}, Berlin, Germany")
         if location:
             return location.latitude, location.longitude
+        
+        # If that fails, try extracting the main venue name (before -, –, or :)
+        main_part = address.split('-')[0].split('–')[0].split(':')[0].strip()
+        if main_part != address:
+            location = geolocator.geocode(f"{main_part}, Berlin, Germany")
+            if location:
+                return location.latitude, location.longitude
+        
+        # Final attempt: just the venue name without district info
+        if '/' in address:
+            main_part = address.split('/')[0].strip()
+            location = geolocator.geocode(f"{main_part}, Berlin, Germany")
+            if location:
+                return location.latitude, location.longitude
+        
         return None, None
     except:
         return None, None
 
-for idx, row in df.iterrows():
-    print(f"  [{idx+1}/{len(df)}] {row['address']}", end=" ")
-    lat, lon = geocode_address(row['address'])
-    df.at[idx, 'lat'] = lat
-    df.at[idx, 'lon'] = lon
+def run_visitberlin_scraper(output_folder='.'):
+    """Main function to scrape visitberlin.de and save results."""
+    print("=" * 60)
+    print("VISITBERLIN.DE EVENT SCRAPER")
+    print("=" * 60)
+
+    # Scrape Events
+    events = scrape_visitberlin_events()
+
+    print(f"\n{len(events)} Events gefunden")
+
+    if len(events) == 0:
+        print("\n⚠ Keine Events gefunden!")
+        return pd.DataFrame()
+
+    # DataFrame erstellen
+    df = pd.DataFrame(events)
+
+    # Geocoding
+    print(f"\n[2/3] Geocoding der Adressen...")
+    print("(Hier können wir NICHT parallel arbeiten wegen Rate Limits)\n")
+
+    for idx, row in df.iterrows():
+        print(f"  [{idx+1}/{len(df)}] {row['address']}", end=" ")
+        lat, lon = geocode_address(row['address'])
+        df.at[idx, 'lat'] = lat
+        df.at[idx, 'lon'] = lon
+        
+        if lat:
+            print(f"✓")
+        else:
+            print(f"✗")
+        
+        sleep(1.5)  # Nominatim Rate Limit
+
+    df_mapped = df.dropna(subset=['lat', 'lon'])
+
+    print(f"\n{'='*60}")
+    print(f"✓ {len(df_mapped)}/{len(df)} Events mit Koordinaten")
+    print(f"{'='*60}")
+
+    # CSV speichern
+    output_file = os.path.join(output_folder, 'visitberlin_events.csv')
+    os.makedirs(output_folder, exist_ok=True)  # Stelle sicher, dass der Ordner existiert
+    df_mapped.to_csv(output_file, index=False)
+    print(f"\n✓ CSV gespeichert: {output_file}")
+
+    print(f"\n{'='*60}")
+    print(f"✓✓✓ FERTIG! ✓✓✓")
+    print(f"{'='*60}")
     
-    if lat:
-        print(f"✓")
-    else:
-        print(f"✗")
-    
-    sleep(1.5)  # Nominatim Rate Limit
+    return df_mapped
 
-df_mapped = df.dropna(subset=['lat', 'lon'])
-
-print(f"\n{'='*60}")
-print(f"✓ {len(df_mapped)}/{len(df)} Events mit Koordinaten")
-print(f"{'='*60}")
-
-# CSV speichern
-output_file = os.path.join(OUTPUT_FOLDER, 'visitberlin_events.csv')
-os.makedirs(OUTPUT_FOLDER, exist_ok=True)  # Stelle sicher, dass der Ordner existiert
-df_mapped.to_csv(output_file, index=False)
-print(f"\n✓ CSV gespeichert: {output_file}")
-
-print(f"\n{'='*60}")
-print(f"✓✓✓ FERTIG! ✓✓✓")
-print(f"{'='*60}")
+if __name__ == "__main__":
+    # Get output folder from command line argument
+    OUTPUT_FOLDER = sys.argv[1] if len(sys.argv) > 1 else '.'
+    run_visitberlin_scraper(OUTPUT_FOLDER)

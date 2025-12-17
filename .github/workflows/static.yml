@@ -1,6 +1,9 @@
 name: Static Template
 
 on:
+  schedule:
+  # Täglich um 06:00 UTC (07:00 Berlin Winterzeit)
+  - cron: "0 6 * * *"
   push:
     branches: ["main"]
   workflow_dispatch:

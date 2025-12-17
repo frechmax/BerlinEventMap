@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_6bf95933b24d365e3c55f6ebe6b163fb {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>
+    
+    
+<div style="position: fixed; 
+            bottom: 10px; 
+            right: 10px; 
+            width: 120px; 
+            background-color: rgba(255,255,255,0.95); 
+            border: 1px solid #ddd;
+            z-index: 9999; 
+            font-size: 10px;
+            padding: 5px 6px;
+            border-radius: 3px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.2);
+            ">
+    <div style="font-weight: bold; font-size: 11px; margin-bottom: 3px;">
+        📍 12 Events
+    </div>
+    <div style="font-size: 9px; color: #666; margin-bottom: 4px;">
+        Mi, 17.12.2025
+    </div>
+
+        <div style="display: flex; justify-content: space-between; margin: 2px 0; font-size: 9px;">
+            <span>🟣 visit Berlin</span>
+            <span style="font-weight: bold; color: #666;">12</span>
+        </div>
+        </div>
+    
+            <div class="folium-map" id="map_6bf95933b24d365e3c55f6ebe6b163fb" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_6bf95933b24d365e3c55f6ebe6b163fb = L.map(
+                "map_6bf95933b24d365e3c55f6ebe6b163fb",
+                {
+                    center: [52.52, 13.405],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": true,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_9bcbb013b14621578b73eb59e9855dde = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_9bcbb013b14621578b73eb59e9855dde.addTo(map_6bf95933b24d365e3c55f6ebe6b163fb);
+        
+    
+            var marker_cluster_417e049179a2ac32882fe0dcde790e48 = L.markerClusterGroup(
+                {
+  "maxClusterRadius": 40,
+  "chunkedLoading": true,
+  "spiderfyOnMaxZoom": true,
+  "showCoverageOnHover": false,
+  "animate": false,
+}
+            );
+        
+    
+            var marker_eb3d6608219afd431ac312d6896fa647 = L.marker(
+                [34.5646696, -117.1222857],
+                {
+}
+            ).addTo(marker_cluster_417e049179a2ac32882fe0dcde790e48);
+        
+    
+            var icon_05c15592df4884e4d37b89cbe1387a62 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_176b6f091270f0335471d1ea13110182 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_3c3a3208c0a96491f9877e3ca34751d3 = $(`<div id="html_3c3a3208c0a96491f9877e3ca34751d3" style="width: 100.0%; height: 100.0%;"><div style='width: 280px;'><h4>FOREST WINTERLIGHTS 2025</h4><p><b>Adresse:</b> DARK MATTER</p><p><b>Datum:</b> 07.11.2025</p><p><b>Beschreibung:</b> DARK MATTER eröffnet die Wintersaison und feiert in der monumentalen TRANSFORMATOR-Halle eine funkelnde Premiere: Eine Eisbahn verläuft direkt durch die Kunst und schafft eine ungewöhnliche Möglichkeit des Kunstgenusses.</p><p><b>Quelle:</b> visit Berlin</p><a href='https://www.visitberlin.de/de/event/forest-winterlights-2025' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_176b6f091270f0335471d1ea13110182.setContent(html_3c3a3208c0a96491f9877e3ca34751d3);
+            
+        
+
+        marker_eb3d6608219afd431ac312d6896fa647.bindPopup(popup_176b6f091270f0335471d1ea13110182)
+        ;
+
+        
+    
+    
+            marker_eb3d6608219afd431ac312d6896fa647.bindTooltip(
+                `<div>
+                     FOREST WINTERLIGHTS 2025
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_eb3d6608219afd431ac312d6896fa647.setIcon(icon_05c15592df4884e4d37b89cbe1387a62);
+            
+    
+            var marker_500fd164d5d313c50fb6b44bf0b740fa = L.marker(
+                [52.5239216, 13.3888786],
+                {
+}
+            ).addTo(marker_cluster_417e049179a2ac32882fe0dcde790e48);
+        
+    
+            var icon_fcec2c07d8d4ced0bd217d2fd25380c6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7792c8a93084250397afa9714f080ef5 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_dbf144406ed8cb38d4391a47db77deb9 = $(`<div id="html_dbf144406ed8cb38d4391a47db77deb9" style="width: 100.0%; height: 100.0%;"><div style='width: 280px;'><h4>FRIDA & FRIDA Young Show</h4><p><b>Adresse:</b> Friedrichstadt-Palast</p><p><b>Datum:</b> 16.01.2026</p><p><b>Beschreibung:</b> Seit November 2025 präsentiert der Friedrichstadt-Palast Berlin seine neue Young Show "Frida & Frida" – eine fesselnde Geschichte über Selbstvertrauen, Vorstellungskraft und die Überwindung schwieriger Situationen.</p><p><b>Quelle:</b> visit Berlin</p><a href='https://www.visitberlin.de/de/event/frida-frida-young-show' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_7792c8a93084250397afa9714f080ef5.setContent(html_dbf144406ed8cb38d4391a47db77deb9);
+            
+        
+
+        marker_500fd164d5d313c50fb6b44bf0b740fa.bindPopup(popup_7792c8a93084250397afa9714f080ef5)
+        ;
+
+        
+    
+    
+            marker_500fd164d5d313c50fb6b44bf0b740fa.bindTooltip(
+                `<div>
+                     FRIDA & FRIDA Young Show
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_500fd164d5d313c50fb6b44bf0b740fa.setIcon(icon_fcec2c07d8d4ced0bd217d2fd25380c6);
+            
+    
+            var marker_4b4e15eabc9fe57c829f125efe05854f = L.marker(
+                [52.5072208, 13.3721193],
+                {
+}
+            ).addTo(marker_cluster_417e049179a2ac32882fe0dcde790e48);
+        
+    
+            var icon_5cf998d1ae01d678522ce4a8ff7d5e82 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_30304dbea189d76eb85e4477a372f79f = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_4a6563cae7788fa69f5fc6af6039dbcf = $(`<div id="html_4a6563cae7788fa69f5fc6af6039dbcf" style="width: 100.0%; height: 100.0%;"><div style='width: 280px;'><h4>Cirque Du Soleil ALIZÉ</h4><p><b>Adresse:</b> Theater am Potsdamer Platz</p><p><b>Datum:</b> 16.01.2026</p><p><b>Beschreibung:</b> Die erste europäische Residenz des Cirque du Soleil wurde exklusiv für das Theater am Potsdamer Platz in Berlin geschaffen. Sie lädt zu einer fantastischen Reise ins Unsichtbare ein. Als spektakuläres Showereignis völlig neuer Art ist Cirque du Soleils ALIZÉ…</p><p><b>Quelle:</b> visit Berlin</p><a href='https://www.visitberlin.de/de/event/cirque-du-soleil-alize' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_30304dbea189d76eb85e4477a372f79f.setContent(html_4a6563cae7788fa69f5fc6af6039dbcf);
+            
+        
+
+        marker_4b4e15eabc9fe57c829f125efe05854f.bindPopup(popup_30304dbea189d76eb85e4477a372f79f)
+        ;
+
+        
+    
+    
+            marker_4b4e15eabc9fe57c829f125efe05854f.bindTooltip(
+                `<div>
+                     Cirque Du Soleil ALIZÉ
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4b4e15eabc9fe57c829f125efe05854f.setIcon(icon_5cf998d1ae01d678522ce4a8ff7d5e82);
+            
+    
+            var marker_802a10835eee34030b8d3886403ca610 = L.marker(
+                [52.4548978, 13.3175925],
+                {
+}
+            ).addTo(marker_cluster_417e049179a2ac32882fe0dcde790e48);
+        
+    
+            var icon_4d4b8ed3ae9eb02bb9c2c65f2d2a04f9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a2d274ebd07c312b63381ae326996dc2 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_724364f5adfa3d3da9c29b6530eab53c = $(`<div id="html_724364f5adfa3d3da9c29b6530eab53c" style="width: 100.0%; height: 100.0%;"><div style='width: 280px;'><h4>Der Neurosen-Kavalier</h4><p><b>Adresse:</b> Schlosspark Theater</p><p><b>Datum:</b> 17.12.2025</p><p><b>Beschreibung:</b> Auf der Flucht vor der Polizei ist Kaufhausdieb Felix Bollmann (Daniel Morgenroth) jedes Versteck recht. So landet er in der Praxis eines renommierten Psychiaters und wird prompt für dessen Urlaubsvertretung gehalten.</p><p><b>Quelle:</b> visit Berlin</p><a href='https://www.visitberlin.de/de/event/der-neurosen-kavalier' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_a2d274ebd07c312b63381ae326996dc2.setContent(html_724364f5adfa3d3da9c29b6530eab53c);
+            
+        
+
+        marker_802a10835eee34030b8d3886403ca610.bindPopup(popup_a2d274ebd07c312b63381ae326996dc2)
+        ;
+
+        
+    
+    
+            marker_802a10835eee34030b8d3886403ca610.bindTooltip(
+                `<div>
+                     Der Neurosen-Kavalier
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_802a10835eee34030b8d3886403ca610.setIcon(icon_4d4b8ed3ae9eb02bb9c2c65f2d2a04f9);
+            
+    
+            var marker_00f58adcb5b849444275f3d775955645 = L.marker(
+                [52.516703, 13.3947383],
+                {
+}
+            ).addTo(marker_cluster_417e049179a2ac32882fe0dcde790e48);
+        
+    
+            var icon_7531d4f976c3547474a650da01b1c9ea = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_47bcabe492756c08cb7844c87842965f = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_ead2efb961e1c8326950eb945f2762b4 = $(`<div id="html_ead2efb961e1c8326950eb945f2762b4" style="width: 100.0%; height: 100.0%;"><div style='width: 280px;'><h4>Die Zauberflöte</h4><p><b>Adresse:</b> Staatsoper Unter den Linden</p><p><b>Datum:</b> 17.12.2025</p><p><b>Beschreibung:</b> Sie ist die mit Abstand berühmteste Oper Wolfgang Amadeus Mozarts und einer der Klassiker im Repertoire der Staatsoper: August Everdings Inszenierung der Zauberflöte. Einzigartig macht sie die Rekonstruktion der 1816 für die damalige Hofoper Unter den Linden…</p><p><b>Quelle:</b> visit Berlin</p><a href='https://www.visitberlin.de/de/event/die-zauberfloete-0' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_47bcabe492756c08cb7844c87842965f.setContent(html_ead2efb961e1c8326950eb945f2762b4);
+            
+        
+
+        marker_00f58adcb5b849444275f3d775955645.bindPopup(popup_47bcabe492756c08cb7844c87842965f)
+        ;
+
+        
+    
+    
+            marker_00f58adcb5b849444275f3d775955645.bindTooltip(
+                `<div>
+                     Die Zauberflöte
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_00f58adcb5b849444275f3d775955645.setIcon(icon_7531d4f976c3547474a650da01b1c9ea);
+            
+    
+            var marker_03977c5189f4f2674953041ea7e42e2e = L.marker(
+                [52.5100608, 13.3327722],
+                {
+}
+            ).addTo(marker_cluster_417e049179a2ac32882fe0dcde790e48);
+        
+    
+            var icon_609383db8304f772ec4022e166d617a0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_dd498f51e8ae26f11999311c19750a03 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_50dd8ec8cb7e36b8b0e58000225cf563 = $(`<div id="html_50dd8ec8cb7e36b8b0e58000225cf563" style="width: 100.0%; height: 100.0%;"><div style='width: 280px;'><h4>PALAZZO Berlin - Die Dinner Show im Spiegelpalast | Unikate</h4><p><b>Adresse:</b> Spiegelpalast Berlin</p><p><b>Datum:</b> 08.11.2025</p><p><b>Beschreibung:</b> Erleben Sie PALAZZO Berlin, die einzigartige Dinner-Show von Kolja Kleeberg & Hans-Peter Wodarz im Spiegelpalast am Bahnhof Zoo, die Spitzengastronomie, atemberaubende Akrobatik, Comedy und Live-Musik auf höchstem Niveau vereint.</p><p><b>Quelle:</b> visit Berlin</p><a href='https://www.visitberlin.de/de/event/palazzo-berlin-die-dinner-show-im-spiegelpalast-unikate' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_dd498f51e8ae26f11999311c19750a03.setContent(html_50dd8ec8cb7e36b8b0e58000225cf563);
+            
+        
+
+        marker_03977c5189f4f2674953041ea7e42e2e.bindPopup(popup_dd498f51e8ae26f11999311c19750a03)
+        ;
+
+        
+    
+    
+            marker_03977c5189f4f2674953041ea7e42e2e.bindTooltip(
+                `<div>
+                     PALAZZO Berlin - Die Dinner Show im Spiegelpalast | Unikate
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_03977c5189f4f2674953041ea7e42e2e.setIcon(icon_609383db8304f772ec4022e166d617a0);
+            
+    
+            var marker_001ccda4228f064a88ba0df02a81599d = L.marker(
+                [52.5207714, 13.3889021],
+                {
+}
+            ).addTo(marker_cluster_417e049179a2ac32882fe0dcde790e48);
+        
+    
+            var icon_466d1a1ec27cce07d8e5894552277af4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f101ee972fcfcfef2b08388a18adfe0e = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_57c693a8544fa603c39b11e491592cb4 = $(`<div id="html_57c693a8544fa603c39b11e491592cb4" style="width: 100.0%; height: 100.0%;"><div style='width: 280px;'><h4>Kinky Boots - The Musical</h4><p><b>Adresse:</b> Admiralspalast</p><p><b>Datum:</b> 17.12.2025</p><p><b>Beschreibung:</b> Das preisgekrönte Broadway- und West End-Erfolgsmusical KINKY BOOTS erstrahlt in einer brandneuen Produktion und kommt live nach Deutschland!</p><p><b>Quelle:</b> visit Berlin</p><a href='https://www.visitberlin.de/de/event/kinky-boots-musical' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_f101ee972fcfcfef2b08388a18adfe0e.setContent(html_57c693a8544fa603c39b11e491592cb4);
+            
+        
+
+        marker_001ccda4228f064a88ba0df02a81599d.bindPopup(popup_f101ee972fcfcfef2b08388a18adfe0e)
+        ;
+
+        
+    
+    
+            marker_001ccda4228f064a88ba0df02a81599d.bindTooltip(
+                `<div>
+                     Kinky Boots - The Musical
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_001ccda4228f064a88ba0df02a81599d.setIcon(icon_466d1a1ec27cce07d8e5894552277af4);
+            
+    
+            var marker_0d0571f2e2b12d90be54a83b899c5cbd = L.marker(
+                [52.5059047, 13.3290059],
+                {
+}
+            ).addTo(marker_cluster_417e049179a2ac32882fe0dcde790e48);
+        
+    
+            var icon_44d75523176c6920332b6d4ff5881d33 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_561160c68e568c6e5c460dbf9e098d6a = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_9d4df52b8c09970dfcb4c84a928ce2d1 = $(`<div id="html_9d4df52b8c09970dfcb4c84a928ce2d1" style="width: 100.0%; height: 100.0%;"><div style='width: 280px;'><h4>Romeo & Julia - Liebe Ist Alles</h4><p><b>Adresse:</b> Stage Theater des Westens</p><p><b>Datum:</b> 17.04.2025</p><p><b>Beschreibung:</b> Moderne Pop-Hits treffen auf klassische Arien, ein zauberhaftes Bühnenbild und die ganz großen Gefühle: Romeo & Julia – Liebe ist alles ist zurück.</p><p><b>Quelle:</b> visit Berlin</p><a href='https://www.visitberlin.de/de/event/romeo-julia-liebe-ist-alles' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_561160c68e568c6e5c460dbf9e098d6a.setContent(html_9d4df52b8c09970dfcb4c84a928ce2d1);
+            
+        
+
+        marker_0d0571f2e2b12d90be54a83b899c5cbd.bindPopup(popup_561160c68e568c6e5c460dbf9e098d6a)
+        ;
+
+        
+    
+    
+            marker_0d0571f2e2b12d90be54a83b899c5cbd.bindTooltip(
+                `<div>
+                     Romeo & Julia - Liebe Ist Alles
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0d0571f2e2b12d90be54a83b899c5cbd.setIcon(icon_44d75523176c6920332b6d4ff5881d33);
+            
+    
+            var marker_4c7071a9c6481cbed840dcecff89ca25 = L.marker(
+                [52.5183931, 13.3671639],
+                {
+}
+            ).addTo(marker_cluster_417e049179a2ac32882fe0dcde790e48);
+        
+    
+            var icon_8d5d56e88828625cbede40ce242ce287 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c8d9cf496d5482db4e36468da10e30fb = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_6b44f20a1b03f2e6c117c996fa32cf93 = $(`<div id="html_6b44f20a1b03f2e6c117c996fa32cf93" style="width: 100.0%; height: 100.0%;"><div style='width: 280px;'><h4>Ass-Dur - Süßer die Brüder nie klingen</h4><p><b>Adresse:</b> Tipi am Kanzleramt</p><p><b>Datum:</b> 17.12.2025</p><p><b>Beschreibung:</b> Wenn in Berlin die ersten Lichterketten blinken, die Gänse noch ahnungslos durchs Regierungsviertel watscheln und es überall langsam nach Glühwein und Spekulatius duftet – dann ist es soweit: Ass-Dur feiert Weihnachten. Und zwar so aufregend wie noch nie!</p><p><b>Quelle:</b> visit Berlin</p><a href='https://www.visitberlin.de/de/event/ass-dur-suesser-die-brueder-nie-klingen' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_c8d9cf496d5482db4e36468da10e30fb.setContent(html_6b44f20a1b03f2e6c117c996fa32cf93);
+            
+        
+
+        marker_4c7071a9c6481cbed840dcecff89ca25.bindPopup(popup_c8d9cf496d5482db4e36468da10e30fb)
+        ;
+
+        
+    
+    
+            marker_4c7071a9c6481cbed840dcecff89ca25.bindTooltip(
+                `<div>
+                     Ass-Dur - Süßer die Brüder nie klingen
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4c7071a9c6481cbed840dcecff89ca25.setIcon(icon_8d5d56e88828625cbede40ce242ce287);
+            
+    
+            var marker_fbccd69978df88c39029c2e1d567bc70 = L.marker(
+                [52.4936405, 13.3876998],
+                {
+}
+            ).addTo(marker_cluster_417e049179a2ac32882fe0dcde790e48);
+        
+    
+            var icon_b4efefba037a34292ec95f87e82e497e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_36ed2a488b1448c17432372b04e83fff = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_bd79e80ddb6cb1f5cd3bd805d4bee590 = $(`<div id="html_bd79e80ddb6cb1f5cd3bd805d4bee590" style="width: 100.0%; height: 100.0%;"><div style='width: 280px;'><h4>Die Ades Zabel Company: Wenn Ediths Glocken läuten Vol. 22</h4><p><b>Adresse:</b> BKA Theater</p><p><b>Datum:</b> 17.12.2025</p><p><b>Beschreibung:</b> Edith Schröder, die pralle Prekariats-Prinzessin, die Neuköllner Bezirksbürgermeisterin der Herzen und klebrig-süße Kirsche auf der Chantré-Torte, sorgt mit ihrer üppig ausgestatteten Weihnachtsshow – nunmehr sage und schreibe zum 22. Mal(!) - Jahr für Jahr…</p><p><b>Quelle:</b> visit Berlin</p><a href='https://www.visitberlin.de/de/event/die-ades-zabel-company-wenn-ediths-glocken-laeuten-vol-22' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_36ed2a488b1448c17432372b04e83fff.setContent(html_bd79e80ddb6cb1f5cd3bd805d4bee590);
+            
+        
+
+        marker_fbccd69978df88c39029c2e1d567bc70.bindPopup(popup_36ed2a488b1448c17432372b04e83fff)
+        ;
+
+        
+    
+    
+            marker_fbccd69978df88c39029c2e1d567bc70.bindTooltip(
+                `<div>
+                     Die Ades Zabel Company: Wenn Ediths Glocken läuten Vol. 22
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fbccd69978df88c39029c2e1d567bc70.setIcon(icon_b4efefba037a34292ec95f87e82e497e);
+            
+    
+            var marker_4a03f10f2e9de986b4579c13e7cd28f7 = L.marker(
+                [52.5021802, 13.364582],
+                {
+}
+            ).addTo(marker_cluster_417e049179a2ac32882fe0dcde790e48);
+        
+    
+            var icon_b9a39f416198b3af8d350dd696ce437e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_772ede63f2b0e0a423c5d7fd16e762aa = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_9911fe3ff7482ddf3c8e0495d6ebfddb = $(`<div id="html_9911fe3ff7482ddf3c8e0495d6ebfddb" style="width: 100.0%; height: 100.0%;"><div style='width: 280px;'><h4>FLYING LIGHTS</h4><p><b>Adresse:</b> Wintergarten Varieté</p><p><b>Datum:</b> 17.12.2025</p><p><b>Beschreibung:</b> Die weltweit gefeierten Tänzer der Flying Steps Company bringen ab Ende August ihre neue Show – wieder eine Kooperation mit dem Wintergarten Varieté Berlin – auf die Bühne. Bis Februar 2026 wird sie in Europas renommiertestem Varietétheater an der Potsdamer…</p><p><b>Quelle:</b> visit Berlin</p><a href='https://www.visitberlin.de/de/event/flying-lights' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_772ede63f2b0e0a423c5d7fd16e762aa.setContent(html_9911fe3ff7482ddf3c8e0495d6ebfddb);
+            
+        
+
+        marker_4a03f10f2e9de986b4579c13e7cd28f7.bindPopup(popup_772ede63f2b0e0a423c5d7fd16e762aa)
+        ;
+
+        
+    
+    
+            marker_4a03f10f2e9de986b4579c13e7cd28f7.bindTooltip(
+                `<div>
+                     FLYING LIGHTS
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4a03f10f2e9de986b4579c13e7cd28f7.setIcon(icon_b9a39f416198b3af8d350dd696ce437e);
+            
+    
+            var marker_2ff92ddaeed0998b496f7ff43644e7d2 = L.marker(
+                [51.4956182, 7.0123728],
+                {
+}
+            ).addTo(marker_cluster_417e049179a2ac32882fe0dcde790e48);
+        
+    
+            var icon_bd5c173c86136c8e3abefeacf38a6803 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4020e24a6f08d53a05a6c0c5da4e0837 = L.popup({
+  "maxWidth": 320,
+});
+
+        
+            
+                var html_b2b93cfca61c42973c6caf885fa4c9ff = $(`<div id="html_b2b93cfca61c42973c6caf885fa4c9ff" style="width: 100.0%; height: 100.0%;"><div style='width: 280px;'><h4>Keimzeit</h4><p><b>Adresse:</b> Kesselhaus</p><p><b>Datum:</b> 17.12.2025</p><p><b>Beschreibung:</b> Mitte der 90er waren Bands wie die Talking Heads, Nirvana oder der legendäre Wu-Tang Clan angesagt. Punk und Grunge regierten, die Hiphop- und Technowelle nahm richtig Anlauf und experimentierfreudige Bands wie Portishead, Faithless oder The Prodigy gingen…</p><p><b>Quelle:</b> visit Berlin</p><a href='https://www.visitberlin.de/de/event/keimzeit' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_4020e24a6f08d53a05a6c0c5da4e0837.setContent(html_b2b93cfca61c42973c6caf885fa4c9ff);
+            
+        
+
+        marker_2ff92ddaeed0998b496f7ff43644e7d2.bindPopup(popup_4020e24a6f08d53a05a6c0c5da4e0837)
+        ;
+
+        
+    
+    
+            marker_2ff92ddaeed0998b496f7ff43644e7d2.bindTooltip(
+                `<div>
+                     Keimzeit
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2ff92ddaeed0998b496f7ff43644e7d2.setIcon(icon_bd5c173c86136c8e3abefeacf38a6803);
+            
+    
+            marker_cluster_417e049179a2ac32882fe0dcde790e48.addTo(map_6bf95933b24d365e3c55f6ebe6b163fb);
+        
+    
+            var layer_control_1c3e18368f9e109c0c8fabf24cde8e3c_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_9bcbb013b14621578b73eb59e9855dde,
+                },
+                overlays :  {
+                    "visit Berlin" : marker_cluster_417e049179a2ac32882fe0dcde790e48,
+                },
+            };
+            let layer_control_1c3e18368f9e109c0c8fabf24cde8e3c = L.control.layers(
+                layer_control_1c3e18368f9e109c0c8fabf24cde8e3c_layers.base_layers,
+                layer_control_1c3e18368f9e109c0c8fabf24cde8e3c_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_6bf95933b24d365e3c55f6ebe6b163fb);
+
+        
+</script>
+</html>

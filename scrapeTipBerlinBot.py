@@ -6,10 +6,8 @@ from time import sleep
 import os
 import sys
 
-# Get output folder from command line argument
-OUTPUT_FOLDER = sys.argv[1] if len(sys.argv) > 1 else '.'
-
-def scrape_tip_berlin():
+def scrape_tip_berlin_events():
+    """Scrape events from tip-berlin.de and return raw event data."""
     events = []
     
     with sync_playwright() as p:
@@ -103,9 +101,9 @@ def scrape_tip_berlin():
         # 5. HTML nach dem Klick holen
         html = page.content()
         
-        with open('tip_berlin_scraped.html', 'w', encoding='utf-8') as f:
-            f.write(html)
-        print("✓ HTML gespeichert")
+        # with open('tip_berlin_scraped.html', 'w', encoding='utf-8') as f:
+        #     f.write(html)
+        # print("✓ HTML gespeichert")
         
         browser.close()
     
@@ -153,28 +151,10 @@ def scrape_tip_berlin():
     
     return events
 
-print("=" * 60)
-print("TIP-BERLIN.DE EVENT SCRAPER")
-print("=" * 60)
-
-events = scrape_tip_berlin()
-print(f"\n{len(events)} Events gefunden")
-
-if len(events) == 0:
-    print("\n⚠ Keine Events gefunden!")
-    exit()
-
-df = pd.DataFrame(events)
-
-# Geocoding
-print("\n" + "=" * 60)
-print("GEOCODING")
-print("=" * 60)
-
-geolocator = Nominatim(user_agent="tip-berlin-events-map")
-
 def geocode_address_or_venue(text, city="Berlin"):
+    """Geocode an address or venue name to coordinates."""
     try:
+        geolocator = Nominatim(user_agent="tip-berlin-events-map")
         if any(char.isdigit() for char in text):
             search_query = text
         else:
@@ -187,28 +167,55 @@ def geocode_address_or_venue(text, city="Berlin"):
     except:
         return None, None
 
-for idx, row in df.iterrows():
-    location_text = row.get('address') or row.get('venue')
-    
-    if location_text:
-        print(f"[{idx+1}/{len(df)}] {location_text[:40]}...", end=" ")
-        lat, lon = geocode_address_or_venue(location_text)
-        df.at[idx, 'lat'] = lat
-        df.at[idx, 'lon'] = lon
-        
-        if lat:
-            print(f"✓")
-        else:
-            print(f"✗")
-        
-        sleep(1.5)
+def run_tip_berlin_scraper(output_folder='.'):
+    """Main function to scrape tip-berlin.de and save results."""
+    print("=" * 60)
+    print("TIP-BERLIN.DE EVENT SCRAPER")
+    print("=" * 60)
 
-df_mapped = df.dropna(subset=['lat', 'lon'])
-print(f"\n✓ {len(df_mapped)}/{len(df)} Events mit Koordinaten")
-from datetime import datetime
-output_file = os.path.join(OUTPUT_FOLDER, 'tip_berlin_events.csv')
-df_mapped.to_csv(output_file, index=False, encoding='utf-8')
-print(f"✓ CSV gespeichert: {output_file}")
+    events = scrape_tip_berlin_events()
+    print(f"\n{len(events)} Events gefunden")
+
+    if len(events) == 0:
+        print("\n⚠ Keine Events gefunden!")
+        return pd.DataFrame()
+
+    df = pd.DataFrame(events)
+
+    # Geocoding
+    print("\n" + "=" * 60)
+    print("GEOCODING")
+    print("=" * 60)
+
+    for idx, row in df.iterrows():
+        location_text = row.get('address') or row.get('venue')
+        
+        if location_text:
+            print(f"[{idx+1}/{len(df)}] {location_text[:40]}", end=" ")
+            lat, lon = geocode_address_or_venue(location_text)
+            df.at[idx, 'lat'] = lat
+            df.at[idx, 'lon'] = lon
+            
+            if lat:
+                print(f"✓")
+            else:
+                print(f"✗")
+            
+            sleep(1.5)
+
+    df_mapped = df.dropna(subset=['lat', 'lon'])
+    print(f"\n✓ {len(df_mapped)}/{len(df)} Events mit Koordinaten")
+    
+    output_file = os.path.join(output_folder, 'tip_berlin_events.csv')
+    df_mapped.to_csv(output_file, index=False, encoding='utf-8')
+    print(f"✓ CSV gespeichert: {output_file}")
+    
+    return df_mapped
+
+if __name__ == "__main__":
+    # Get output folder from command line argument
+    OUTPUT_FOLDER = sys.argv[1] if len(sys.argv) > 1 else '.'
+    run_tip_berlin_scraper(OUTPUT_FOLDER)
 
 # # Karte
 # import folium

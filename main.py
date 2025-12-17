@@ -28,27 +28,19 @@ SCRAPERS = [
         'output_csv': 'tip_berlin_events.csv',
         'enabled': True
     },
-
-    {
-        'name': 'Gratis in Berlin',
-        'script': 'scrapeGratisInBerlinParallel.py',
-        'output_csv': 'gratis_berlin_events.csv',
-        'enabled': False
-    },
-
     {
         'name': 'Visit Berlin',
         'script': 'scrapeVisitBerlin.py',
         'output_csv': 'visitberlin_events.csv',
-        'enabled': False
+        'enabled': True
     },
-    # Add more scrapers here
-    # {
-    #     'name': 'Another Source',
-    #     'script': 'scrape_another.py',
-    #     'output_csv': 'another_events.csv',
-    #     'enabled': True
-    # }
+    {
+        'name': 'Gratis in Berlin',
+        'script': 'scrapeGratisInBerlinParallel.py',
+        'output_csv': 'gratis_berlin_events.csv',
+        'enabled': True
+    },
+
 ]
 
 COMBINE_SCRIPT = 'combineMapsLegend.py'
