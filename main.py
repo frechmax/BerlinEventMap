@@ -23,22 +23,29 @@ print(f"\n📁 Output folder: {RUN_FOLDER}\n")
 # Define scraping scripts and their output files
 SCRAPERS = [
     {
+        'name': 'Resident Advisor',
+        'script': 'RA_event_fetcher.py',
+        'output_csv': None,  # RA has dynamic naming (RA_YYYY-MM-DD_events.csv)
+        'enabled': True,
+        'is_ra': True
+    },
+    {
         'name': 'tip Berlin',
         'script': 'scrapeTipBerlinBot.py',
         'output_csv': 'tip_berlin_events.csv',
-        'enabled': True
+        'enabled': False
     },
     {
         'name': 'Visit Berlin',
         'script': 'scrapeVisitBerlin.py',
         'output_csv': 'visitberlin_events.csv',
-        'enabled': True
+        'enabled': False
     },
     {
         'name': 'Gratis in Berlin',
         'script': 'scrapeGratisInBerlinParallel.py',
         'output_csv': 'gratis_berlin_events.csv',
-        'enabled': True
+        'enabled': False
     },
 
 ]
@@ -49,7 +56,7 @@ def check_file_exists(filepath):
     """Check if a file exists"""
     return Path(filepath).exists()
 
-def run_script(script_name, description, output_folder=None):
+def run_script(script_name, description, output_folder=None, is_ra=False):
     """Run a Python script and handle errors"""
     print(f"\n{'='*70}")
     print(f"🔄 Running: {description}")
@@ -59,10 +66,14 @@ def run_script(script_name, description, output_folder=None):
     start_time = time.time()
     
     try:
-        # Run the script with output folder argument
-        cmd = [sys.executable, script_name]
-        if output_folder:
-            cmd.append(output_folder)
+        if is_ra:
+            # For RA script, use RA_run_today.py wrapper
+            cmd = [sys.executable, 'RA_run_today.py']
+        else:
+            # For other scrapers
+            cmd = [sys.executable, script_name]
+            if output_folder:
+                cmd.append(output_folder)
         
         result = subprocess.run(
             cmd,
@@ -105,17 +116,29 @@ def main():
             failed_scrapers.append(scraper['name'])
             continue
         
-        success = run_script(scraper['script'], scraper['name'], RUN_FOLDER)
+        success = run_script(scraper['script'], scraper['name'], RUN_FOLDER, scraper.get('is_ra', False))
         
         if success:
             # Verify output file was created
-            output_path = os.path.join(RUN_FOLDER, scraper['output_csv'])
-            if check_file_exists(output_path):
-                print(f"   ✓ Output file created: {output_path}")
-                successful_scrapers.append(scraper['name'])
+            if scraper.get('is_ra'):
+                # For RA, find the matching CSV file
+                import glob
+                ra_files = glob.glob(f"RA_*_events.csv")
+                if ra_files:
+                    output_path = ra_files[-1]  # Use latest RA file
+                    print(f"   ✓ Output file created: {output_path}")
+                    successful_scrapers.append(scraper['name'])
+                else:
+                    print(f"   ⚠️  Warning: RA output file not found")
+                    failed_scrapers.append(scraper['name'])
             else:
-                print(f"   ⚠️  Warning: Expected output file not found: {output_path}")
-                failed_scrapers.append(scraper['name'])
+                output_path = os.path.join(RUN_FOLDER, scraper['output_csv'])
+                if check_file_exists(output_path):
+                    print(f"   ✓ Output file created: {output_path}")
+                    successful_scrapers.append(scraper['name'])
+                else:
+                    print(f"   ⚠️  Warning: Expected output file not found: {output_path}")
+                    failed_scrapers.append(scraper['name'])
         else:
             failed_scrapers.append(scraper['name'])
     

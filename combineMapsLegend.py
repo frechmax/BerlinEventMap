@@ -2,6 +2,7 @@ import pandas as pd
 import folium
 import os
 import sys
+import glob
 from datetime import datetime
 from folium.plugins import MarkerCluster
 
@@ -32,13 +33,12 @@ def combine_maps_with_legend(run_folder='.'):
             'color': 'purple',
             'icon': 'info-sign'
         },
-        # Add more CSV sources here
-        # {
-        #     'file': 'another_events.csv',
-        #     'name': 'Another Source',
-        #     'color': 'red',
-        #     'icon': 'info-sign'
-        # }
+        {
+            'file': os.path.join(run_folder, 'RA_*_events.csv'),
+            'name': 'Resident Advisor',
+            'color': 'red',
+            'icon': 'music'
+        }
     ]
 
     # Available colors: red, blue, green, purple, orange, darkred, 
@@ -53,10 +53,25 @@ def combine_maps_with_legend(run_folder='.'):
 
     for source in csv_sources:
         try:
-            df = pd.read_csv(source['file'])
+            # Handle wildcard patterns for RA events
+            file_path = source['file']
+            if '*' in file_path:
+                # Find matching file
+                matches = glob.glob(file_path)
+                if matches:
+                    file_path = matches[0]  # Use first match
+                else:
+                    raise FileNotFoundError(f"No files matching pattern: {file_path}")
+            
+            df = pd.read_csv(file_path)
             df['source'] = source['name']
             df['color'] = source['color']
             df['icon'] = source['icon']
+            
+            # Normalize column names for latitude/longitude
+            if 'Venue Latitude' in df.columns and 'Venue Longitude' in df.columns:
+                df['lat'] = df['Venue Latitude']
+                df['lon'] = df['Venue Longitude']
             
             df_valid = df.dropna(subset=['lat', 'lon'])
             all_events.append(df_valid)
@@ -107,38 +122,85 @@ def combine_maps_with_legend(run_folder='.'):
     for idx, row in combined_df.iterrows():
         popup_fields = []
         
+        # Event Title
         if 'title' in row and pd.notna(row['title']):
             popup_fields.append(f"<h4>{row['title']}</h4>")
+        elif 'Event name' in row and pd.notna(row['Event name']):
+            popup_fields.append(f"<h4>{row['Event name']}</h4>")
         
+        # Category
         if 'category' in row and pd.notna(row['category']):
             popup_fields.append(f"<p><b>Kategorie:</b> {row['category']}</p>")
         
-        if 'venue' in row and pd.notna(row['venue']):
+        # Venue
+        if 'Venue' in row and pd.notna(row['Venue']):
+            popup_fields.append(f"<p><b>Venue:</b> {row['Venue']}</p>")
+        elif 'venue' in row and pd.notna(row['venue']):
             popup_fields.append(f"<p><b>Venue:</b> {row['venue']}</p>")
         
-        if 'address' in row and pd.notna(row['address']):
+        # Address
+        if 'Venue Address' in row and pd.notna(row['Venue Address']):
+            popup_fields.append(f"<p><b>Adresse:</b> {row['Venue Address']}</p>")
+        elif 'address' in row and pd.notna(row['address']):
             popup_fields.append(f"<p><b>Adresse:</b> {row['address']}</p>")
         
-        if 'date' in row and pd.notna(row['date']):
+        # Date
+        if 'Date' in row and pd.notna(row['Date']):
+            popup_fields.append(f"<p><b>Datum:</b> {row['Date']}</p>")
+        elif 'date' in row and pd.notna(row['date']):
             popup_fields.append(f"<p><b>Datum:</b> {row['date']}</p>")
         
+        # Start Time (RA specific)
+        if 'Start Time' in row and pd.notna(row['Start Time']):
+            popup_fields.append(f"<p><b>Start:</b> {row['Start Time']}</p>")
+        
+        # End Time (RA specific)
+        if 'End Time' in row and pd.notna(row['End Time']):
+            popup_fields.append(f"<p><b>Ende:</b> {row['End Time']}</p>")
+        
+        # Artists (RA specific)
+        if 'Artists' in row and pd.notna(row['Artists']):
+            popup_fields.append(f"<p><b>Artists:</b> {row['Artists']}</p>")
+        
+        # Guests attending (RA specific)
+        if 'Number of guests attending' in row and pd.notna(row['Number of guests attending']):
+            popup_fields.append(f"<p><b>Interested:</b> {int(row['Number of guests attending'])}</p>")
+        
+        # Detailed date (other sources)
         if 'detailed_date' in row and pd.notna(row['detailed_date']):
             popup_fields.append(f"<p><b>Zeitangabe:</b> {row['detailed_date']}</p>")
         
+        # Description
         if 'description' in row and pd.notna(row['description']):
             popup_fields.append(f"<p><b>Beschreibung:</b> {row['description']}</p>")
         
+        # Source
         popup_fields.append(f"<p><b>Quelle:</b> {row['source']}</p>")
         
-        if 'url' in row and pd.notna(row['url']):
+        # URL/Link
+        if 'Event URL' in row and pd.notna(row['Event URL']):
+            url = row['Event URL']
+            if not url.startswith('http'):
+                url = f"https://ra.co{url}"
+            popup_fields.append(f"<a href='{url}' target='_blank'>Mehr Infos</a>")
+        elif 'url' in row and pd.notna(row['url']):
             popup_fields.append(f"<a href='{row['url']}' target='_blank'>Mehr Infos</a>")
         
-        popup_html = f"<div style='width: 280px;'>{''.join(popup_fields)}</div>"
+        popup_html = f"<div style='width: 320px;'>{''.join(popup_fields)}</div>"
+        
+        # Get tooltip text - find first non-NaN title/name field
+        tooltip_text = 'Event'
+        if 'title' in row and pd.notna(row['title']):
+            tooltip_text = str(row['title'])
+        elif 'Event name' in row and pd.notna(row['Event name']):
+            tooltip_text = str(row['Event name'])
+        elif 'name' in row and pd.notna(row['name']):
+            tooltip_text = str(row['name'])
         
         marker = folium.Marker(
             location=[row['lat'], row['lon']],
-            popup=folium.Popup(popup_html, max_width=320),
-            tooltip=row.get('title', 'Event'),
+            popup=folium.Popup(popup_html, max_width=350),
+            tooltip=tooltip_text,
             icon=folium.Icon(color=row['color'], icon=row['icon'])
         )
         

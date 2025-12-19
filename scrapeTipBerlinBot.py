@@ -5,6 +5,8 @@ from geopy.geocoders import Nominatim
 from time import sleep
 import os
 import sys
+import pytz
+from datetime import datetime
 
 def scrape_tip_berlin_events():
     """Scrape events from tip-berlin.de and return raw event data."""
@@ -21,8 +23,20 @@ def scrape_tip_berlin_events():
         page = context.new_page()
         
         # 1. Tageshighlights-Seite öffnen
-        print("Öffne Tageshighlights-Seite...")
-        page.goto("https://www.tip-berlin.de/event-tageshighlights/", wait_until="networkidle")
+        # Cache deaktivieren
+        page.route("**/*", lambda route: route.continue_())
+        
+        # 1. Tageshighlights-Seite öffnen mit Cache-Busting
+        print("Öffne Tageshighlights-Seite mit Cache-Busting...")
+        
+        # Berlin Timezone für korrektes Datum
+        berlin_tz = pytz.timezone('Europe/Berlin')
+        today = datetime.now(berlin_tz).strftime('%Y-%m-%d')
+        print(f"  Heute (Berlin Zeit): {today}")
+        
+        # URL mit Cache-Buster Parameter
+        url = f"https://www.tip-berlin.de/event-tageshighlights/?t={int(datetime.now().timestamp())}"
+        page.goto(url, wait_until="networkidle")
         page.wait_for_timeout(3000)
         
         # 2. Cookie-Banner schließen
