@@ -18,21 +18,36 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
+      
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.x'
+      
       - name: Install dependencies
         run: |
           pip install --upgrade pip
-          pip install folium pandas playwright beautifulsoup4 geopy
-          playwright install
+          pip install folium pandas playwright beautifulsoup4 geopy requests
+          playwright install --with-deps chromium
+      
+      - name: Clean old CSVs
+        run: rm -f *.csv
+      
       - name: Run main.py pipeline
-        run: python main.py
+        run: python main.py 2>&1 | tee pipeline.log
+      
+      - name: Check generated files
+        run: |
+          echo "Generated CSVs:"
+          ls -lh *.csv || echo "No CSV files found"
+          echo "Generated index.html:"
+          ls -lh index.html || echo "No index.html found"
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: .
+      
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
