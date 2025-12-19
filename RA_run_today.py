@@ -52,16 +52,26 @@ def main() -> int:
         Exit code (0 for success, non-zero for failure).
     """
     # Get date from command line argument or use today's date
+    # Optionally accept output folder as second argument
+    target_date = None
+    output_folder = None
     if len(sys.argv) > 1:
         target_date = sys.argv[1]
         if not validate_date(target_date):
             print(f"Error: Invalid date format '{target_date}'")
             print("Please use YYYY-MM-DD format (e.g., 2025-12-19)")
             return 1
+        if len(sys.argv) > 2:
+            output_folder = sys.argv[2]
     else:
         target_date = datetime.now().strftime("%Y-%m-%d")
 
-    output_file = f"RA_{target_date}_events.csv"
+    if output_folder:
+        Path(output_folder).mkdir(parents=True, exist_ok=True)
+        output_file = str(Path(output_folder) / f"RA_{target_date}_events.csv")
+    else:
+        output_file = f"RA_{target_date}_events.csv"
+
     python_exe = get_python_executable()
 
     command = [

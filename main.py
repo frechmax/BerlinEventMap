@@ -93,18 +93,26 @@ def run_script(
     
     try:
         if is_ra:
-            cmd = [sys.executable, "RA_run_today.py"]
+            if output_folder:
+                cmd = [sys.executable, "RA_run_today.py"]
+                # Übergib das Datum (heute) und den Output-Ordner
+                from datetime import datetime
+                today = datetime.now().strftime("%Y-%m-%d")
+                cmd.append(today)
+                cmd.append(output_folder)
+            else:
+                cmd = [sys.executable, "RA_run_today.py"]
         else:
             cmd = [sys.executable, script_name]
             if output_folder:
                 cmd.append(output_folder)
-        
+
         subprocess.run(cmd, check=True)
-        
+
         elapsed = time.time() - start_time
         print(f"\n✓ {description} completed in {elapsed:.1f} seconds")
         return True
-        
+
     except subprocess.CalledProcessError as e:
         print(f"\n✗ {description} failed with error code {e.returncode}")
         return False
@@ -128,14 +136,15 @@ def verify_output(scraper: ScraperConfig, run_folder: str) -> bool:
         True if output file exists, False otherwise.
     """
     if scraper.is_ra:
-        ra_files = glob.glob("RA_*_events.csv")
+        # Suche RA-CSV im run_folder
+        ra_files = list(Path(run_folder).glob("RA_*_events.csv"))
         if ra_files:
             output_path = ra_files[-1]
             print(f"   ✓ Output file created: {output_path}")
             return True
-        print("   ⚠️  Warning: RA output file not found")
+        print("   ⚠️  Warning: RA output file not found in output folder")
         return False
-    
+
     if scraper.output_csv:
         output_path = Path(run_folder) / scraper.output_csv
         if output_path.exists():
