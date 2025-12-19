@@ -1,0 +1,2463 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_68c04fda08373d573b3e4317d10ba7ed {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>
+    
+    <div style="position: fixed; 
+                bottom: 10px; 
+                right: 10px; 
+                width: 120px; 
+                background-color: rgba(255,255,255,0.95); 
+                border: 1px solid #ddd;
+                z-index: 9999; 
+                font-size: 10px;
+                padding: 5px 6px;
+                border-radius: 3px;
+                box-shadow: 0 1px 4px rgba(0,0,0,0.2);">
+        <div style="font-weight: bold; font-size: 11px; margin-bottom: 3px;">
+            📍 48 Events
+        </div>
+        <div style="font-size: 9px; color: #666; margin-bottom: 4px;">
+            Fr, 19.12.2025
+        </div>
+        <div style="display: flex; justify-content: space-between; margin: 2px 0; font-size: 9px;">
+            <span>🔴 Resident Advisor</span>
+            <span style="font-weight: bold; color: #666;">48</span>
+        </div></div>
+    
+            <div class="folium-map" id="map_68c04fda08373d573b3e4317d10ba7ed" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_68c04fda08373d573b3e4317d10ba7ed = L.map(
+                "map_68c04fda08373d573b3e4317d10ba7ed",
+                {
+                    center: [52.52, 13.405],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": true,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_dd772a53215d41cecef01f4d91993f1c = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_dd772a53215d41cecef01f4d91993f1c.addTo(map_68c04fda08373d573b3e4317d10ba7ed);
+        
+    
+            var marker_cluster_51f03250fa31712428a47abb7910ea6d = L.markerClusterGroup(
+                {
+  "maxClusterRadius": 40,
+  "chunkedLoading": true,
+  "spiderfyOnMaxZoom": true,
+  "showCoverageOnHover": false,
+  "animate": false,
+}
+            );
+        
+    
+            var marker_675e543686326d0a0542a02fd9856a9b = L.marker(
+                [52.459911, 13.5053346],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_e2f86de3d90c603ebf734e90d049f22c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3fe14c946182cf3c76e192d7a9e20a65 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_566179ff5eb4d16ccd319781e9291773 = $(`<div id="html_566179ff5eb4d16ccd319781e9291773" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>SESH</h4><p><b>Venue:</b> RSO.BERLIN</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T23:00:00.000</p><p><b>Ende:</b> 2025-12-20T09:00:00.000</p><p><b>Artists:</b> NOVAH, MCR-T, Serafina, DJ Cringey, Gusted, PANA (Ger)</p><p><b>Interested:</b> 2341</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2203367' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_3fe14c946182cf3c76e192d7a9e20a65.setContent(html_566179ff5eb4d16ccd319781e9291773);
+            
+        
+
+        marker_675e543686326d0a0542a02fd9856a9b.bindPopup(popup_3fe14c946182cf3c76e192d7a9e20a65)
+        ;
+
+        
+    
+    
+            marker_675e543686326d0a0542a02fd9856a9b.bindTooltip(
+                `<div>
+                     SESH
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_675e543686326d0a0542a02fd9856a9b.setIcon(icon_e2f86de3d90c603ebf734e90d049f22c);
+            
+    
+            var marker_52b9c34f012f4a1fa223e157e55302bc = L.marker(
+                [52.4970681, 13.4650321],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_ff17b4e4b17878ebc64feed5c5f66278 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7ac7227b77320938137094399e70ad07 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_cfb4cffeb509d35fc11de34f9c76d7ef = $(`<div id="html_cfb4cffeb509d35fc11de34f9c76d7ef" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>ONYX w / davyboi, DJ Achim Feuervogel [ALL NIGHT LONG], HiTMiLOW, Hurts b2b CARGO</h4><p><b>Venue:</b> OST</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T23:00:00.000</p><p><b>Ende:</b> 2025-12-20T09:00:00.000</p><p><b>Artists:</b> DJ Achim Feuervogel, davyboi, HiTMiLØW, Hurts, CARGO (DE), Paul Meier, 3LEEZA, KARISH, two girls one mom</p><p><b>Interested:</b> 789</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2175939' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_7ac7227b77320938137094399e70ad07.setContent(html_cfb4cffeb509d35fc11de34f9c76d7ef);
+            
+        
+
+        marker_52b9c34f012f4a1fa223e157e55302bc.bindPopup(popup_7ac7227b77320938137094399e70ad07)
+        ;
+
+        
+    
+    
+            marker_52b9c34f012f4a1fa223e157e55302bc.bindTooltip(
+                `<div>
+                     ONYX w / davyboi, DJ Achim Feuervogel [ALL NIGHT LONG], HiTMiLOW, Hurts b2b CARGO
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_52b9c34f012f4a1fa223e157e55302bc.setIcon(icon_ff17b4e4b17878ebc64feed5c5f66278);
+            
+    
+            var marker_68357f72f21fce1aee8f8d8d337db5e2 = L.marker(
+                [52.5071699, 13.4510769],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_891ea85ae89454527aea2e6e1e1a35c4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f96598de996b68b597063a747c15e495 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_c74ebcd00b1afc323b8c4cb455c630a3 = $(`<div id="html_c74ebcd00b1afc323b8c4cb455c630a3" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Hakke Berlin presents: No Pizza Rave - 20 years anniversary (Mokum edition)</h4><p><b>Venue:</b> Lokschuppen Berlin</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T23:00:00.000</p><p><b>Ende:</b> 2025-12-20T09:00:00.000</p><p><b>Artists:</b> The Twins Artcore, Viscerale, Der Schaffner, LØUS, FLUCC, Ema Leo, Alliezz, IceLipzz, Gysèle, Lena De Roose</p><p><b>Interested:</b> 703</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2120538' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_f96598de996b68b597063a747c15e495.setContent(html_c74ebcd00b1afc323b8c4cb455c630a3);
+            
+        
+
+        marker_68357f72f21fce1aee8f8d8d337db5e2.bindPopup(popup_f96598de996b68b597063a747c15e495)
+        ;
+
+        
+    
+    
+            marker_68357f72f21fce1aee8f8d8d337db5e2.bindTooltip(
+                `<div>
+                     Hakke Berlin presents: No Pizza Rave - 20 years anniversary (Mokum edition)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_68357f72f21fce1aee8f8d8d337db5e2.setIcon(icon_891ea85ae89454527aea2e6e1e1a35c4);
+            
+    
+            var marker_39b28ffb6908d1535b9364485b99a4a5 = L.marker(
+                [52.497313, 13.4495159],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_6205146008174f293bd3d5f174e71e9b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8315f7a640e1c33e8ba3e0f87cf0661f = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_b619f2df37c151868e555c4ac299303f = $(`<div id="html_b619f2df37c151868e555c4ac299303f" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>// ETD SYNERGY SESSIONS VI - WINTER GAMES [10€ TIX]</h4><p><b>Venue:</b> ÆDEN</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T23:59:00.000</p><p><b>Ende:</b> 2025-12-20T10:00:00.000</p><p><b>Artists:</b> EMIRA, The Camel, HNX (030), KEROSENE (ZA), Nexus J, Ayham4real, LNZ., XHOUSTED, TAUREAN (2), JenTen, VNVK, sad.danic</p><p><b>Interested:</b> 810</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2326253' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_8315f7a640e1c33e8ba3e0f87cf0661f.setContent(html_b619f2df37c151868e555c4ac299303f);
+            
+        
+
+        marker_39b28ffb6908d1535b9364485b99a4a5.bindPopup(popup_8315f7a640e1c33e8ba3e0f87cf0661f)
+        ;
+
+        
+    
+    
+            marker_39b28ffb6908d1535b9364485b99a4a5.bindTooltip(
+                `<div>
+                     // ETD SYNERGY SESSIONS VI - WINTER GAMES [10€ TIX]
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_39b28ffb6908d1535b9364485b99a4a5.setIcon(icon_6205146008174f293bd3d5f174e71e9b);
+            
+    
+            var marker_72801f07fc456a401b09a55ccfee54d9 = L.marker(
+                [52.4973901, 13.4653065],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_70109af04664343bb4a696bc37632af6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_54f2060ce2756a8f4869f1efd6f4310f = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_cc7196fbb5dd1a988c604eb0cc6dad54 = $(`<div id="html_cc7196fbb5dd1a988c604eb0cc6dad54" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>FINAL ROUND w Claudio PRC, Ø [Phase], Alienata, Michal Zietara, Catz 'N Dogz, Lush Lab, Annina</h4><p><b>Venue:</b> Renate</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T23:00:00.000</p><p><b>Ende:</b> 2025-12-20T10:00:00.000</p><p><b>Artists:</b> Claudio PRC, Ø [Phase], Alienata, Michal Zietara, Catz 'N Dogz, AZB (allzeitbereit), Annina, Revivis, Lush Lab, The Rhythm Vision</p><p><b>Interested:</b> 303</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2266980' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_54f2060ce2756a8f4869f1efd6f4310f.setContent(html_cc7196fbb5dd1a988c604eb0cc6dad54);
+            
+        
+
+        marker_72801f07fc456a401b09a55ccfee54d9.bindPopup(popup_54f2060ce2756a8f4869f1efd6f4310f)
+        ;
+
+        
+    
+    
+            marker_72801f07fc456a401b09a55ccfee54d9.bindTooltip(
+                `<div>
+                     FINAL ROUND w Claudio PRC, Ø [Phase], Alienata, Michal Zietara, Catz 'N Dogz, Lush Lab, Annina
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_72801f07fc456a401b09a55ccfee54d9.setIcon(icon_70109af04664343bb4a696bc37632af6);
+            
+    
+            var marker_55436cc01541a323b5531c11d279a883 = L.marker(
+                [52.5226319, 13.4092273],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_aae5ec98644457145d6e85af593d4785 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7b14cff49ae640e4251c44705be49abb = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_98cbd551fa77235fbab16caa4b61c5cb = $(`<div id="html_98cbd551fa77235fbab16caa4b61c5cb" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Sanctus pres. Opgekonkerd (NL)</h4><p><b>Venue:</b> M-BIA</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T23:00:00.000</p><p><b>Ende:</b> 2025-12-20T09:00:00.000</p><p><b>Artists:</b> INTOX, Refl3ction, Kopflos, CRAIZ, RaVix</p><p><b>Interested:</b> 267</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2317350' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_7b14cff49ae640e4251c44705be49abb.setContent(html_98cbd551fa77235fbab16caa4b61c5cb);
+            
+        
+
+        marker_55436cc01541a323b5531c11d279a883.bindPopup(popup_7b14cff49ae640e4251c44705be49abb)
+        ;
+
+        
+    
+    
+            marker_55436cc01541a323b5531c11d279a883.bindTooltip(
+                `<div>
+                     Sanctus pres. Opgekonkerd (NL)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_55436cc01541a323b5531c11d279a883.setIcon(icon_aae5ec98644457145d6e85af593d4785);
+            
+    
+            var marker_14b598e4ec0e9dc822a0214abd36cfe9 = L.marker(
+                [52.5076121, 13.4749435],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_3213910b4b53a79c0104fa6f75ad0187 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7360f3a7a58a9f17f61b10c9a0d4a9cc = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_b5f0dd0e7927c1bde1eefe4f3fa77f9b = $(`<div id="html_b5f0dd0e7927c1bde1eefe4f3fa77f9b" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Toy Tonics presents ITALOMANIA</h4><p><b>Venue:</b> OXI</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T23:00:00.000</p><p><b>Ende:</b> 2025-12-20T08:00:00.000</p><p><b>Artists:</b> Tommy Soul, Max NRG Supply, Luca Carluccio, Roberta Deflorio, Franz Scala, Sharlese</p><p><b>Interested:</b> 132</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2304955' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_7360f3a7a58a9f17f61b10c9a0d4a9cc.setContent(html_b5f0dd0e7927c1bde1eefe4f3fa77f9b);
+            
+        
+
+        marker_14b598e4ec0e9dc822a0214abd36cfe9.bindPopup(popup_7360f3a7a58a9f17f61b10c9a0d4a9cc)
+        ;
+
+        
+    
+    
+            marker_14b598e4ec0e9dc822a0214abd36cfe9.bindTooltip(
+                `<div>
+                     Toy Tonics presents ITALOMANIA
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_14b598e4ec0e9dc822a0214abd36cfe9.setIcon(icon_3213910b4b53a79c0104fa6f75ad0187);
+            
+    
+            var marker_36ff45f29c72d91ad877b253062d8975 = L.marker(
+                [52.4655581, 13.3860876],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_cccfa864297116f6eb89a7b3e7e6f614 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2b4c19bb0137cc5dbec67f77895081f7 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_c6d8bf6e59ae87762d08aa3ef6e42eaf = $(`<div id="html_c6d8bf6e59ae87762d08aa3ef6e42eaf" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Seven Sins: The Last Sin of The Year</h4><p><b>Venue:</b> Insomnia</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T22:00:00.000</p><p><b>Ende:</b> 2025-12-20T06:00:00.000</p><p><b>Artists:</b> Oblique</p><p><b>Interested:</b> 103</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2307204' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_2b4c19bb0137cc5dbec67f77895081f7.setContent(html_c6d8bf6e59ae87762d08aa3ef6e42eaf);
+            
+        
+
+        marker_36ff45f29c72d91ad877b253062d8975.bindPopup(popup_2b4c19bb0137cc5dbec67f77895081f7)
+        ;
+
+        
+    
+    
+            marker_36ff45f29c72d91ad877b253062d8975.bindTooltip(
+                `<div>
+                     Seven Sins: The Last Sin of The Year
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_36ff45f29c72d91ad877b253062d8975.setIcon(icon_cccfa864297116f6eb89a7b3e7e6f614);
+            
+    
+            var marker_f86184357f97319ca6bc74f709242651 = L.marker(
+                [52.5024767, 13.466302],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_fdb1eb2b8b306dee74742d45b43962af = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a2d60e525c2c6df7ba92baefe231d50c = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_0bac6f5264bed0891e728e3a864f3e60 = $(`<div id="html_0bac6f5264bed0891e728e3a864f3e60" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>PUDDING ∞ LETZTE WIESE</h4><p><b>Venue:</b> ://about blank</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T23:59:00.000</p><p><b>Ende:</b> 2025-12-20T08:00:00.000</p><p><b>Artists:</b> Anne-Lu, Bekka, Droughtwerk, Esvogt, Flotte Motte, Reka Zalan</p><p><b>Interested:</b> 78</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2297402' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_a2d60e525c2c6df7ba92baefe231d50c.setContent(html_0bac6f5264bed0891e728e3a864f3e60);
+            
+        
+
+        marker_f86184357f97319ca6bc74f709242651.bindPopup(popup_a2d60e525c2c6df7ba92baefe231d50c)
+        ;
+
+        
+    
+    
+            marker_f86184357f97319ca6bc74f709242651.bindTooltip(
+                `<div>
+                     PUDDING ∞ LETZTE WIESE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f86184357f97319ca6bc74f709242651.setIcon(icon_fdb1eb2b8b306dee74742d45b43962af);
+            
+    
+            var marker_002f123f9c11b115d0d7de0257e37bb5 = L.marker(
+                [52.5130237, 13.4227766],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_d72b81938e01fb1148347daad9f1eced = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bcc93d595d250014440f5481cb50a168 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_2c1ac57083cae8a25e30315413a0708d = $(`<div id="html_2c1ac57083cae8a25e30315413a0708d" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Foggy with Xterea [5 gate temple] Live, PÖ [Nyege Nyege] Live , Catfish, Lily Haz, WD40</h4><p><b>Venue:</b> Lark</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T21:00:00.000</p><p><b>Ende:</b> 2025-12-20T05:00:00.000</p><p><b>Artists:</b> Xterea, WD40, Lily Haz</p><p><b>Interested:</b> 83</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2311899' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_bcc93d595d250014440f5481cb50a168.setContent(html_2c1ac57083cae8a25e30315413a0708d);
+            
+        
+
+        marker_002f123f9c11b115d0d7de0257e37bb5.bindPopup(popup_bcc93d595d250014440f5481cb50a168)
+        ;
+
+        
+    
+    
+            marker_002f123f9c11b115d0d7de0257e37bb5.bindTooltip(
+                `<div>
+                     Foggy with Xterea [5 gate temple] Live, PÖ [Nyege Nyege] Live , Catfish, Lily Haz, WD40
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_002f123f9c11b115d0d7de0257e37bb5.setIcon(icon_d72b81938e01fb1148347daad9f1eced);
+            
+    
+            var marker_f3aee686ca319560c4c51d0cb97a1f76 = L.marker(
+                [52.5112074, 13.4169157],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_c7382ff39d7e7ae37c18b07e3478c044 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2101c9d7fd2fe3712372375ee72fdd58 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_62087d70a2c5af768134527b2d579a74 = $(`<div id="html_62087d70a2c5af768134527b2d579a74" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>PSYCHO College</h4><p><b>Venue:</b> KitKatClub</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T20:00:00.000</p><p><b>Ende:</b> 2025-12-20T07:00:00.000</p><p><b>Interested:</b> 68</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2312571' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_2101c9d7fd2fe3712372375ee72fdd58.setContent(html_62087d70a2c5af768134527b2d579a74);
+            
+        
+
+        marker_f3aee686ca319560c4c51d0cb97a1f76.bindPopup(popup_2101c9d7fd2fe3712372375ee72fdd58)
+        ;
+
+        
+    
+    
+            marker_f3aee686ca319560c4c51d0cb97a1f76.bindTooltip(
+                `<div>
+                     PSYCHO College
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f3aee686ca319560c4c51d0cb97a1f76.setIcon(icon_c7382ff39d7e7ae37c18b07e3478c044);
+            
+    
+            var marker_7273a13254cef3688c90d2ce53cbc840 = L.marker(
+                [52.5130757, 13.4228651],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_1b65ca2235de632aa6ab4cef23910879 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b8330200c23167a13309e4bf7ece15e9 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_ede71cbeaa18da0375bece22a322901e = $(`<div id="html_ede71cbeaa18da0375bece22a322901e" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>All My Friends Vol.3</h4><p><b>Venue:</b> Fitzroy</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T22:00:00.000</p><p><b>Ende:</b> 2025-12-20T06:00:00.000</p><p><b>Artists:</b> Levi Nix, rauch, Beth Alana, DJ Betska</p><p><b>Interested:</b> 67</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2291887' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_b8330200c23167a13309e4bf7ece15e9.setContent(html_ede71cbeaa18da0375bece22a322901e);
+            
+        
+
+        marker_7273a13254cef3688c90d2ce53cbc840.bindPopup(popup_b8330200c23167a13309e4bf7ece15e9)
+        ;
+
+        
+    
+    
+            marker_7273a13254cef3688c90d2ce53cbc840.bindTooltip(
+                `<div>
+                     All My Friends Vol.3
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7273a13254cef3688c90d2ce53cbc840.setIcon(icon_1b65ca2235de632aa6ab4cef23910879);
+            
+    
+            var marker_2c789d90c33ed4ab395c8f5e444a6239 = L.marker(
+                [52.5119029, 13.4253649],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_de8890635c4bcf5285aba79e2b2e5d27 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1761f739cdfe1280d772d726299a6d15 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_f7b8a8b57e712e1b9b7c4fa22c8b3023 = $(`<div id="html_f7b8a8b57e712e1b9b7c4fa22c8b3023" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Kater x Gutzeit</h4><p><b>Venue:</b> Kater</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T22:00:00.000</p><p><b>Ende:</b> 2025-12-20T10:00:00.000</p><p><b>Artists:</b> Lily Ackerman, Mankind, Yochanan, Ellosophy, Sarah Wild, Tayir</p><p><b>Interested:</b> 72</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2305690' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_1761f739cdfe1280d772d726299a6d15.setContent(html_f7b8a8b57e712e1b9b7c4fa22c8b3023);
+            
+        
+
+        marker_2c789d90c33ed4ab395c8f5e444a6239.bindPopup(popup_1761f739cdfe1280d772d726299a6d15)
+        ;
+
+        
+    
+    
+            marker_2c789d90c33ed4ab395c8f5e444a6239.bindTooltip(
+                `<div>
+                     Kater x Gutzeit
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2c789d90c33ed4ab395c8f5e444a6239.setIcon(icon_de8890635c4bcf5285aba79e2b2e5d27);
+            
+    
+            var marker_208c8e0214773cab7609513b995de233 = L.marker(
+                [52.5030121, 13.4081361],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_ef11ac4787fd858c5f16f13a81e7564e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1145039fc5336be0da3878413b75560f = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_3e62154043f4ec2d3f8f81399fd0822d = $(`<div id="html_3e62154043f4ec2d3f8f81399fd0822d" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>KLOUD</h4><p><b>Venue:</b> Ritter Butzke</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T22:00:00.000</p><p><b>Ende:</b> 2025-12-20T09:00:00.000</p><p><b>Artists:</b> KLOUD, DJ Jordan, Grace Thompson, Toni Strauss, Maze Kashi</p><p><b>Interested:</b> 57</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2276887' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_1145039fc5336be0da3878413b75560f.setContent(html_3e62154043f4ec2d3f8f81399fd0822d);
+            
+        
+
+        marker_208c8e0214773cab7609513b995de233.bindPopup(popup_1145039fc5336be0da3878413b75560f)
+        ;
+
+        
+    
+    
+            marker_208c8e0214773cab7609513b995de233.bindTooltip(
+                `<div>
+                     KLOUD
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_208c8e0214773cab7609513b995de233.setIcon(icon_ef11ac4787fd858c5f16f13a81e7564e);
+            
+    
+            var marker_01f95bff7a61bbfe4dd36d254cb1be16 = L.marker(
+                [52.4993312, 13.4242521],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_3c3453693ba651e74a0b3b41369960ba = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3eb585c1211b8c0cf2220dad81ba0635 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_c741200a06662acf347e4869b35532a2 = $(`<div id="html_c741200a06662acf347e4869b35532a2" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Nice Tries invites: Concentio, DJ Sanni, Ena, Eileeni</h4><p><b>Venue:</b> Bulbul Berlin</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T23:00:00.000</p><p><b>Ende:</b> 2025-12-20T06:00:00.000</p><p><b>Artists:</b> Concentio, DJ Sanni, Ena (DE)</p><p><b>Interested:</b> 53</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2307390' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_3eb585c1211b8c0cf2220dad81ba0635.setContent(html_c741200a06662acf347e4869b35532a2);
+            
+        
+
+        marker_01f95bff7a61bbfe4dd36d254cb1be16.bindPopup(popup_3eb585c1211b8c0cf2220dad81ba0635)
+        ;
+
+        
+    
+    
+            marker_01f95bff7a61bbfe4dd36d254cb1be16.bindTooltip(
+                `<div>
+                     Nice Tries invites: Concentio, DJ Sanni, Ena, Eileeni
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_01f95bff7a61bbfe4dd36d254cb1be16.setIcon(icon_3c3453693ba651e74a0b3b41369960ba);
+            
+    
+            var marker_ced18863af61a4ae4ff1661eb8f4c323 = L.marker(
+                [52.5029373, 13.4473091],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_6df0c4d0e36fd14520c5b3fcd2cde812 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_550bd66e423919b1aeaddc499b172fd8 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_6d22bd3f44a24e3ddab163b4d26bb388 = $(`<div id="html_6d22bd3f44a24e3ddab163b4d26bb388" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>ITALO DISCO</h4><p><b>Venue:</b> AVA Club</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T23:00:00.000</p><p><b>Ende:</b> 2025-12-20T07:00:00.000</p><p><b>Artists:</b> Linda shiro, Sam Swanx, Planetary Echoes, Roberta Deflorio</p><p><b>Interested:</b> 54</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2304709' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_550bd66e423919b1aeaddc499b172fd8.setContent(html_6d22bd3f44a24e3ddab163b4d26bb388);
+            
+        
+
+        marker_ced18863af61a4ae4ff1661eb8f4c323.bindPopup(popup_550bd66e423919b1aeaddc499b172fd8)
+        ;
+
+        
+    
+    
+            marker_ced18863af61a4ae4ff1661eb8f4c323.bindTooltip(
+                `<div>
+                     ITALO DISCO
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ced18863af61a4ae4ff1661eb8f4c323.setIcon(icon_6df0c4d0e36fd14520c5b3fcd2cde812);
+            
+    
+            var marker_84187d0e72736ed7d1dfcd846085c314 = L.marker(
+                [52.5105954, 13.4197888],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_6b7d3f8a8f41aff91061792ca42ca6d5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a9e1b1ddd73327813e45ef7fa858bab1 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_0e165b348911ec30cbc4c31b23003ce9 = $(`<div id="html_0e165b348911ec30cbc4c31b23003ce9" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>irsh Clubnight 009 feat. Artur M Puga [Live], Ziúr, Rama, ZULI</h4><p><b>Venue:</b> OHM</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T23:59:00.000</p><p><b>Ende:</b> 2025-12-20T06:00:00.000</p><p><b>Artists:</b> Artur M Puga, Ziúr, Rama (2), ZULI</p><p><b>Interested:</b> 40</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2308278' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_a9e1b1ddd73327813e45ef7fa858bab1.setContent(html_0e165b348911ec30cbc4c31b23003ce9);
+            
+        
+
+        marker_84187d0e72736ed7d1dfcd846085c314.bindPopup(popup_a9e1b1ddd73327813e45ef7fa858bab1)
+        ;
+
+        
+    
+    
+            marker_84187d0e72736ed7d1dfcd846085c314.bindTooltip(
+                `<div>
+                     irsh Clubnight 009 feat. Artur M Puga [Live], Ziúr, Rama, ZULI
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_84187d0e72736ed7d1dfcd846085c314.setIcon(icon_6b7d3f8a8f41aff91061792ca42ca6d5);
+            
+    
+            var marker_6a8bd50d495bd460d17241eb845d7a93 = L.marker(
+                [52.5141696, 13.4646822],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_0a8e7fce499cb343d8482df2461540bb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_da6f103e483232801bc11959db8424ce = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_d8dec99dd472a60bcda508807e8a830c = $(`<div id="html_d8dec99dd472a60bcda508807e8a830c" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>STALACTITES with Esposito & Marie Moon</h4><p><b>Venue:</b> Paloma</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T23:30:00.000</p><p><b>Ende:</b> 2025-12-20T08:00:00.000</p><p><b>Artists:</b> Esposito, MARIE.MOON, Silent G</p><p><b>Interested:</b> 35</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2279462' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_da6f103e483232801bc11959db8424ce.setContent(html_d8dec99dd472a60bcda508807e8a830c);
+            
+        
+
+        marker_6a8bd50d495bd460d17241eb845d7a93.bindPopup(popup_da6f103e483232801bc11959db8424ce)
+        ;
+
+        
+    
+    
+            marker_6a8bd50d495bd460d17241eb845d7a93.bindTooltip(
+                `<div>
+                     STALACTITES with Esposito & Marie Moon
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6a8bd50d495bd460d17241eb845d7a93.setIcon(icon_0a8e7fce499cb343d8482df2461540bb);
+            
+    
+            var marker_233920a153cf9957855da7bb03cc3050 = L.marker(
+                [52.5441625, 13.3787124],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_7711c5c436eca3d35b6b4185e7601e7d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_25f0274c150cd4553175dfa835e58355 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_85d990ba9f45dcacaf0b5b19b568932e = $(`<div id="html_85d990ba9f45dcacaf0b5b19b568932e" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Durchnachten</h4><p><b>Venue:</b> Humboldthain Club</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T22:00:00.000</p><p><b>Ende:</b> 2025-12-20T07:00:00.000</p><p><b>Artists:</b> ELA E., Bonzo (2), HØLLE (2), Krash Cora, HOCK (DE), Susi & Proll</p><p><b>Interested:</b> 29</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2287233' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_25f0274c150cd4553175dfa835e58355.setContent(html_85d990ba9f45dcacaf0b5b19b568932e);
+            
+        
+
+        marker_233920a153cf9957855da7bb03cc3050.bindPopup(popup_25f0274c150cd4553175dfa835e58355)
+        ;
+
+        
+    
+    
+            marker_233920a153cf9957855da7bb03cc3050.bindTooltip(
+                `<div>
+                     Durchnachten
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_233920a153cf9957855da7bb03cc3050.setIcon(icon_7711c5c436eca3d35b6b4185e7601e7d);
+            
+    
+            var marker_460e39380055be52990558123ca07461 = L.marker(
+                [52.4778422, 13.4394686],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_2e8d8bef233d8241404328a5b5fe7882 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_290fa28470775c96c45d6b12b1b521a3 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_e71a95d15b4583cecdcbd3ae3b92188c = $(`<div id="html_e71a95d15b4583cecdcbd3ae3b92188c" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Maximum Joy</h4><p><b>Venue:</b> Sameheads</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T22:30:00.000</p><p><b>Ende:</b> 2025-12-20T08:00:00.000</p><p><b>Artists:</b> ābnamā, Maneta, Luigi Di Venere</p><p><b>Interested:</b> 31</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2301655' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_290fa28470775c96c45d6b12b1b521a3.setContent(html_e71a95d15b4583cecdcbd3ae3b92188c);
+            
+        
+
+        marker_460e39380055be52990558123ca07461.bindPopup(popup_290fa28470775c96c45d6b12b1b521a3)
+        ;
+
+        
+    
+    
+            marker_460e39380055be52990558123ca07461.bindTooltip(
+                `<div>
+                     Maximum Joy
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_460e39380055be52990558123ca07461.setIcon(icon_2e8d8bef233d8241404328a5b5fe7882);
+            
+    
+            var marker_ea2f2a2e511624a99ab5e45d397277f6 = L.marker(
+                [52.5178179, 13.2025647],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_8d0df463ef8b1dddfbb57b7140776c94 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8c20b4ae83486de97cf8435810c4381b = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_43caa059ac725d14e59f5d2eb97b4a68 = $(`<div id="html_43caa059ac725d14e59f5d2eb97b4a68" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Partisan presents: Da Christmas Cracker & Instore</h4><p><b>Venue:</b> Hoppetosse</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T16:00:00.000</p><p><b>Ende:</b> 2025-12-20T10:00:00.000</p><p><b>Artists:</b> Astral Travel, Carl H, DRAMA SOURCE ARTIFACTS, Jos, session 4000, Dj Dune</p><p><b>Interested:</b> 23</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2304645' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_8c20b4ae83486de97cf8435810c4381b.setContent(html_43caa059ac725d14e59f5d2eb97b4a68);
+            
+        
+
+        marker_ea2f2a2e511624a99ab5e45d397277f6.bindPopup(popup_8c20b4ae83486de97cf8435810c4381b)
+        ;
+
+        
+    
+    
+            marker_ea2f2a2e511624a99ab5e45d397277f6.bindTooltip(
+                `<div>
+                     Partisan presents: Da Christmas Cracker & Instore
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ea2f2a2e511624a99ab5e45d397277f6.setIcon(icon_8d0df463ef8b1dddfbb57b7140776c94);
+            
+    
+            var marker_03d27254227f6d7af5e4c46c585a9686 = L.marker(
+                [52.5141696, 13.4646822],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_f5e086ca090d1e8580124e774a44c4aa = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_da42364565a1a2ca3018f165a847ed97 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_408492d4978d3725500cc0130f327138 = $(`<div id="html_408492d4978d3725500cc0130f327138" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Paloma Invites</h4><p><b>Venue:</b> Paloma</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T22:00:00.000</p><p><b>Ende:</b> 2025-12-20T06:00:00.000</p><p><b>Artists:</b> Victor Simonelli, Gabs Leyton</p><p><b>Interested:</b> 19</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2297322' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_da42364565a1a2ca3018f165a847ed97.setContent(html_408492d4978d3725500cc0130f327138);
+            
+        
+
+        marker_03d27254227f6d7af5e4c46c585a9686.bindPopup(popup_da42364565a1a2ca3018f165a847ed97)
+        ;
+
+        
+    
+    
+            marker_03d27254227f6d7af5e4c46c585a9686.bindTooltip(
+                `<div>
+                     Paloma Invites
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_03d27254227f6d7af5e4c46c585a9686.setIcon(icon_f5e086ca090d1e8580124e774a44c4aa);
+            
+    
+            var marker_7c5a0113c5b34127bbbb832870aaaa21 = L.marker(
+                [52.4738852, 13.4425685],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_890804df5ba200eab70003f447246b44 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e8d199d5dbd785163710dfb3752623e3 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_e26d76f4709dc557214e0aa914fa5670 = $(`<div id="html_e26d76f4709dc557214e0aa914fa5670" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>at your SERVICE X-mas reunion</h4><p><b>Venue:</b> arkaoda Berlin</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T20:00:00.000</p><p><b>Ende:</b> 2025-12-20T06:00:00.000</p><p><b>Artists:</b> Ahni, Bent, Feasting, gammmarayy, GIO (goltara), Pleasure</p><p><b>Interested:</b> 18</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2321089' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_e8d199d5dbd785163710dfb3752623e3.setContent(html_e26d76f4709dc557214e0aa914fa5670);
+            
+        
+
+        marker_7c5a0113c5b34127bbbb832870aaaa21.bindPopup(popup_e8d199d5dbd785163710dfb3752623e3)
+        ;
+
+        
+    
+    
+            marker_7c5a0113c5b34127bbbb832870aaaa21.bindTooltip(
+                `<div>
+                     at your SERVICE X-mas reunion
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7c5a0113c5b34127bbbb832870aaaa21.setIcon(icon_890804df5ba200eab70003f447246b44);
+            
+    
+            var marker_1b7425e01bd5ab80c2f5d22693cc4d97 = L.marker(
+                [52.5174812, 13.419024],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_6e71033f6a66219ae83a4e70279f9de3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1019d0b4b7178691a565852afc033f89 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_378bd7687e9dc923088d6a03b3f5d84f = $(`<div id="html_378bd7687e9dc923088d6a03b3f5d84f" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>what the fluff?! /// Susi&Paula, Stephan.., Steffi Obscura, anahï</h4><p><b>Venue:</b> Beate Uwe</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T23:00:00.000</p><p><b>Ende:</b> 2025-12-20T08:00:00.000</p><p><b>Artists:</b> Susi&Paula, anahï</p><p><b>Interested:</b> 18</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2315788' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_1019d0b4b7178691a565852afc033f89.setContent(html_378bd7687e9dc923088d6a03b3f5d84f);
+            
+        
+
+        marker_1b7425e01bd5ab80c2f5d22693cc4d97.bindPopup(popup_1019d0b4b7178691a565852afc033f89)
+        ;
+
+        
+    
+    
+            marker_1b7425e01bd5ab80c2f5d22693cc4d97.bindTooltip(
+                `<div>
+                     what the fluff?! /// Susi&Paula, Stephan.., Steffi Obscura, anahï
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1b7425e01bd5ab80c2f5d22693cc4d97.setIcon(icon_6e71033f6a66219ae83a4e70279f9de3);
+            
+    
+            var marker_f752df83b6bde7c436c110c69589729d = L.marker(
+                [52.5075831, 13.4545322],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_4e90d08bbdd926ff64aeb63e0743c284 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3425574796cac6f448fa16117a14e98d = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_13e350533fd12afcb1c8cd468254ced8 = $(`<div id="html_13e350533fd12afcb1c8cd468254ced8" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Fem-All</h4><p><b>Venue:</b> Der Weiße Hase</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T23:00:00.000</p><p><b>Ende:</b> 2025-12-20T11:00:00.000</p><p><b>Artists:</b> Stuckeyrella, maniaclina, Charlotte Lion, Sika Akis, Henny Freiheit</p><p><b>Interested:</b> 20</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2303288' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_3425574796cac6f448fa16117a14e98d.setContent(html_13e350533fd12afcb1c8cd468254ced8);
+            
+        
+
+        marker_f752df83b6bde7c436c110c69589729d.bindPopup(popup_3425574796cac6f448fa16117a14e98d)
+        ;
+
+        
+    
+    
+            marker_f752df83b6bde7c436c110c69589729d.bindTooltip(
+                `<div>
+                     Fem-All
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f752df83b6bde7c436c110c69589729d.setIcon(icon_4e90d08bbdd926ff64aeb63e0743c284);
+            
+    
+            var marker_0be5b843c7f9d5329cff0faa4bd47d41 = L.marker(
+                [52.5076116, 13.451645],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_ef3466c71fd5133aa0fba59ed46190aa = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_01222b204f9f86955650a5ab1b7d95fd = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_110e06b9f07958e20eabb62818d3bde3 = $(`<div id="html_110e06b9f07958e20eabb62818d3bde3" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Years of Denial x KOROWABAR Cub Night</h4><p><b>Venue:</b> Urban Spree</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T22:00:00.000</p><p><b>Ende:</b> 2025-12-20T06:00:00.000</p><p><b>Artists:</b> Years of Denial, Tomo in der Muhlen, Unhuman</p><p><b>Interested:</b> 19</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2326000' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_01222b204f9f86955650a5ab1b7d95fd.setContent(html_110e06b9f07958e20eabb62818d3bde3);
+            
+        
+
+        marker_0be5b843c7f9d5329cff0faa4bd47d41.bindPopup(popup_01222b204f9f86955650a5ab1b7d95fd)
+        ;
+
+        
+    
+    
+            marker_0be5b843c7f9d5329cff0faa4bd47d41.bindTooltip(
+                `<div>
+                     Years of Denial x KOROWABAR Cub Night
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0be5b843c7f9d5329cff0faa4bd47d41.setIcon(icon_ef3466c71fd5133aa0fba59ed46190aa);
+            
+    
+            var marker_4d3014b53a025871bd4772b8ae4a8e1a = L.marker(
+                [52.4975324, 13.4241772],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_ea07c8bff4e0a9b44d623d80895e87d6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4e08c58f3a9a59e0d7672b3cac00f4fc = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_90ad8ff65c3dc18795d39e30f39f14d3 = $(`<div id="html_90ad8ff65c3dc18795d39e30f39f14d3" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Houseland</h4><p><b>Venue:</b> Bohnengold</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T22:30:00.000</p><p><b>Ende:</b> 2025-12-20T06:00:00.000</p><p><b>Artists:</b> Bombata, Dennis Beutler, Peet Flower</p><p><b>Interested:</b> 16</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2215730' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_4e08c58f3a9a59e0d7672b3cac00f4fc.setContent(html_90ad8ff65c3dc18795d39e30f39f14d3);
+            
+        
+
+        marker_4d3014b53a025871bd4772b8ae4a8e1a.bindPopup(popup_4e08c58f3a9a59e0d7672b3cac00f4fc)
+        ;
+
+        
+    
+    
+            marker_4d3014b53a025871bd4772b8ae4a8e1a.bindTooltip(
+                `<div>
+                     Houseland
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4d3014b53a025871bd4772b8ae4a8e1a.setIcon(icon_ea07c8bff4e0a9b44d623d80895e87d6);
+            
+    
+            var marker_16a038bea93ba895d9a05ab8bc8bc493 = L.marker(
+                [52.5112074, 13.4169157],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_e8c395e78720216a40af2c50fab77005 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a92897b905f216402826027beadc7af8 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_ee149847ea818f32efb1718d3ec87a3d = $(`<div id="html_ee149847ea818f32efb1718d3ec87a3d" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>XXXMAS Miracle on Kopenicker Strasse</h4><p><b>Venue:</b> KitKatClub</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T22:00:00.000</p><p><b>Ende:</b> 2025-12-20T07:00:00.000</p><p><b>Artists:</b> Moussa Barcelona, Tony Bruno, Yannick Weineck, Feel .MA, Jaycap</p><p><b>Interested:</b> 20</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2317759' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_a92897b905f216402826027beadc7af8.setContent(html_ee149847ea818f32efb1718d3ec87a3d);
+            
+        
+
+        marker_16a038bea93ba895d9a05ab8bc8bc493.bindPopup(popup_a92897b905f216402826027beadc7af8)
+        ;
+
+        
+    
+    
+            marker_16a038bea93ba895d9a05ab8bc8bc493.bindTooltip(
+                `<div>
+                     XXXMAS Miracle on Kopenicker Strasse
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_16a038bea93ba895d9a05ab8bc8bc493.setIcon(icon_e8c395e78720216a40af2c50fab77005);
+            
+    
+            var marker_1d8061bc649c7860dd4f5cf4486ee376 = L.marker(
+                [52.4708958, 13.4368213],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_293649bb18c9312a3500f391b35ea5d1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a67293b509127847c76d3d5872b9ec92 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_12f64e6183f077da1d6a5b6fd7d6f257 = $(`<div id="html_12f64e6183f077da1d6a5b6fd7d6f257" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Friday • Running Hot + Secret Guest</h4><p><b>Venue:</b> Orangerie Neukölln</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T21:00:00.000</p><p><b>Ende:</b> 2025-12-20T04:00:00.000</p><p><b>Artists:</b> Running Hot</p><p><b>Interested:</b> 12</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2317955' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_a67293b509127847c76d3d5872b9ec92.setContent(html_12f64e6183f077da1d6a5b6fd7d6f257);
+            
+        
+
+        marker_1d8061bc649c7860dd4f5cf4486ee376.bindPopup(popup_a67293b509127847c76d3d5872b9ec92)
+        ;
+
+        
+    
+    
+            marker_1d8061bc649c7860dd4f5cf4486ee376.bindTooltip(
+                `<div>
+                     Friday • Running Hot + Secret Guest
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1d8061bc649c7860dd4f5cf4486ee376.setIcon(icon_293649bb18c9312a3500f391b35ea5d1);
+            
+    
+            var marker_d580199d1bc8776f2ade1c08aeee405a = L.marker(
+                [52.5075865, 13.4547707],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_5cd36dd7544974fd53acec2f40b52201 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ab9ef0d98f61a613c33a0dd67e705621 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_be6fa733f7b2ff10448556c2f0da3377 = $(`<div id="html_be6fa733f7b2ff10448556c2f0da3377" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Wundertüte Xmas</h4><p><b>Venue:</b> Crack Bellmer</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T20:00:00.000</p><p><b>Ende:</b> 2025-12-20T06:00:00.000</p><p><b>Artists:</b> Boom Sister, brocki balboa, ennna.i, Hannes.., Léontine</p><p><b>Interested:</b> 12</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2320152' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_ab9ef0d98f61a613c33a0dd67e705621.setContent(html_be6fa733f7b2ff10448556c2f0da3377);
+            
+        
+
+        marker_d580199d1bc8776f2ade1c08aeee405a.bindPopup(popup_ab9ef0d98f61a613c33a0dd67e705621)
+        ;
+
+        
+    
+    
+            marker_d580199d1bc8776f2ade1c08aeee405a.bindTooltip(
+                `<div>
+                     Wundertüte Xmas
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d580199d1bc8776f2ade1c08aeee405a.setIcon(icon_5cd36dd7544974fd53acec2f40b52201);
+            
+    
+            var marker_06a11ea2e924baa4823e4fb7377b2929 = L.marker(
+                [52.5159611, 13.4169199],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_e268caa5e4eacb73b6543fc83f78045a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_afb5bce6957b9d6ec044ffac7bdfacdd = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_104b3708426bd2b1a6a5dc3b66902eae = $(`<div id="html_104b3708426bd2b1a6a5dc3b66902eae" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Klubnacht + Afterhour</h4><p><b>Venue:</b> Golden Gate</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T23:59:00.000</p><p><b>Ende:</b> 2025-12-20T23:59:00.000</p><p><b>Artists:</b> Vans Hellwirth, Bee Lincoln, RYBA, Ancut, Samuel Fach, bela, Lasha Guruli</p><p><b>Interested:</b> 9</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2312093' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_afb5bce6957b9d6ec044ffac7bdfacdd.setContent(html_104b3708426bd2b1a6a5dc3b66902eae);
+            
+        
+
+        marker_06a11ea2e924baa4823e4fb7377b2929.bindPopup(popup_afb5bce6957b9d6ec044ffac7bdfacdd)
+        ;
+
+        
+    
+    
+            marker_06a11ea2e924baa4823e4fb7377b2929.bindTooltip(
+                `<div>
+                     Klubnacht + Afterhour
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_06a11ea2e924baa4823e4fb7377b2929.setIcon(icon_e268caa5e4eacb73b6543fc83f78045a);
+            
+    
+            var marker_6bfbdf39c48064713c3196152c6cf494 = L.marker(
+                [52.4930462, 13.3871533],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_359f910cdaeeb342f618cca5b0b7b98d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7dc676d80ade9f8def60bf523d2fc866 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_93f756c5b5d57151f4f98abdd31ffd6d = $(`<div id="html_93f756c5b5d57151f4f98abdd31ffd6d" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Bad Dad with Sylvio B & Richii</h4><p><b>Venue:</b> Zur Klappe</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T23:00:00.000</p><p><b>Ende:</b> 2025-12-20T06:00:00.000</p><p><b>Artists:</b> Sylvio B, Richii, La Schmock, DJ City</p><p><b>Interested:</b> 9</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2327025' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_7dc676d80ade9f8def60bf523d2fc866.setContent(html_93f756c5b5d57151f4f98abdd31ffd6d);
+            
+        
+
+        marker_6bfbdf39c48064713c3196152c6cf494.bindPopup(popup_7dc676d80ade9f8def60bf523d2fc866)
+        ;
+
+        
+    
+    
+            marker_6bfbdf39c48064713c3196152c6cf494.bindTooltip(
+                `<div>
+                     Bad Dad with Sylvio B & Richii
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6bfbdf39c48064713c3196152c6cf494.setIcon(icon_359f910cdaeeb342f618cca5b0b7b98d);
+            
+    
+            var marker_cf511c9b080534598872331ebfd923b8 = L.marker(
+                [52.5086027, 13.4610994],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_6205ea8b9c08f3f1b0414e944910f550 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_db2fe535a17e29ddd6fea523184ac026 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_20d49fea8e9c49e08626fbd44f1d8036 = $(`<div id="html_20d49fea8e9c49e08626fbd44f1d8036" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Nucular Kollektiv Showcase: Süss War Gestern</h4><p><b>Venue:</b> Süss War Gestern</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T22:00:00.000</p><p><b>Ende:</b> 2025-12-20T07:00:00.000</p><p><b>Artists:</b> Makita6000, Phoebe (1), Moon In My Pocket, Bertha</p><p><b>Interested:</b> 10</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2324418' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_db2fe535a17e29ddd6fea523184ac026.setContent(html_20d49fea8e9c49e08626fbd44f1d8036);
+            
+        
+
+        marker_cf511c9b080534598872331ebfd923b8.bindPopup(popup_db2fe535a17e29ddd6fea523184ac026)
+        ;
+
+        
+    
+    
+            marker_cf511c9b080534598872331ebfd923b8.bindTooltip(
+                `<div>
+                     Nucular Kollektiv Showcase: Süss War Gestern
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cf511c9b080534598872331ebfd923b8.setIcon(icon_6205ea8b9c08f3f1b0414e944910f550);
+            
+    
+            var marker_52805ceb059e5150e2901ab799009e10 = L.marker(
+                [52.5244696, 13.4017208],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_cf5f55cb92a0ca462f7c00f2229acbe0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_55433bddbb0f24627d442d7a428bcfc3 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_b914c1bf93f15f2fcfc783b32a91167b = $(`<div id="html_b914c1bf93f15f2fcfc783b32a91167b" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Avant Post [19.12]</h4><p><b>Venue:</b> Eschschloraque</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T21:00:00.000</p><p><b>Ende:</b> 2025-12-20T04:00:00.000</p><p><b>Artists:</b> Pris V, Tau Ceti</p><p><b>Interested:</b> 5</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2306855' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_55433bddbb0f24627d442d7a428bcfc3.setContent(html_b914c1bf93f15f2fcfc783b32a91167b);
+            
+        
+
+        marker_52805ceb059e5150e2901ab799009e10.bindPopup(popup_55433bddbb0f24627d442d7a428bcfc3)
+        ;
+
+        
+    
+    
+            marker_52805ceb059e5150e2901ab799009e10.bindTooltip(
+                `<div>
+                     Avant Post [19.12]
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_52805ceb059e5150e2901ab799009e10.setIcon(icon_cf5f55cb92a0ca462f7c00f2229acbe0);
+            
+    
+            var marker_40921281f9c3b992d2f347ce86e54d6e = L.marker(
+                [52.4996096, 13.4374056],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_a40cba535ba16365712653971b1cbbdb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2d76af363b555cda411de51978bfe7be = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_4993f8ac34b714aa92b05df33f40550a = $(`<div id="html_4993f8ac34b714aa92b05df33f40550a" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>RAWLAND: Fluffy Maybes + Cindy Gravity + NAMBY PAMBY (DJ-Set)</h4><p><b>Venue:</b> Madame Claude</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T20:00:00.000</p><p><b>Ende:</b> 2025-12-20T03:00:00.000</p><p><b>Interested:</b> 6</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2315858' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_2d76af363b555cda411de51978bfe7be.setContent(html_4993f8ac34b714aa92b05df33f40550a);
+            
+        
+
+        marker_40921281f9c3b992d2f347ce86e54d6e.bindPopup(popup_2d76af363b555cda411de51978bfe7be)
+        ;
+
+        
+    
+    
+            marker_40921281f9c3b992d2f347ce86e54d6e.bindTooltip(
+                `<div>
+                     RAWLAND: Fluffy Maybes + Cindy Gravity + NAMBY PAMBY (DJ-Set)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_40921281f9c3b992d2f347ce86e54d6e.setIcon(icon_a40cba535ba16365712653971b1cbbdb);
+            
+    
+            var marker_f02d848e83d606d7601bfbe82cb3515e = L.marker(
+                [52.5164827, 13.4639097],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_e5fe26f3011ad53591caff680ce7b0ef = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3eefbb7aa880f429d222d7228ec4044f = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_548e8fe04b6871304089f76e19ba1701 = $(`<div id="html_548e8fe04b6871304089f76e19ba1701" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>luca.and.friends. mit Luca ( Minimal Bar) & Freunde</h4><p><b>Venue:</b> Minimal Bar</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T18:00:00.000</p><p><b>Ende:</b> 2025-12-20T06:00:00.000</p><p><b>Interested:</b> 4</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2293522' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_3eefbb7aa880f429d222d7228ec4044f.setContent(html_548e8fe04b6871304089f76e19ba1701);
+            
+        
+
+        marker_f02d848e83d606d7601bfbe82cb3515e.bindPopup(popup_3eefbb7aa880f429d222d7228ec4044f)
+        ;
+
+        
+    
+    
+            marker_f02d848e83d606d7601bfbe82cb3515e.bindTooltip(
+                `<div>
+                     luca.and.friends. mit Luca ( Minimal Bar) & Freunde
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f02d848e83d606d7601bfbe82cb3515e.setIcon(icon_e5fe26f3011ad53591caff680ce7b0ef);
+            
+    
+            var marker_520bb5ab3a924a69c386223d2d5f7d00 = L.marker(
+                [52.5438832, 13.3606142],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_c058b326d3b885c91cafda23d706534b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9b76b1805ff93a392eb057e58d33dafc = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_763c03b675e9144c1afc6e29110316e3 = $(`<div id="html_763c03b675e9144c1afc6e29110316e3" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>BESTE REWIND Basement</h4><p><b>Venue:</b> Beste Bar</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T19:00:00.000</p><p><b>Ende:</b> 2025-12-20T04:00:00.000</p><p><b>Artists:</b> XIME</p><p><b>Interested:</b> 4</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2330346' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_9b76b1805ff93a392eb057e58d33dafc.setContent(html_763c03b675e9144c1afc6e29110316e3);
+            
+        
+
+        marker_520bb5ab3a924a69c386223d2d5f7d00.bindPopup(popup_9b76b1805ff93a392eb057e58d33dafc)
+        ;
+
+        
+    
+    
+            marker_520bb5ab3a924a69c386223d2d5f7d00.bindTooltip(
+                `<div>
+                     BESTE REWIND Basement
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_520bb5ab3a924a69c386223d2d5f7d00.setIcon(icon_c058b326d3b885c91cafda23d706534b);
+            
+    
+            var marker_c1ff06f5c23df6b05865944f899e1f59 = L.marker(
+                [52.5558768, 13.5584086],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_35520e2cef1bc978c394fc9ab357fead = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4cdf7fb20a182752b4a14364a70b14b0 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_18daeba492ee6b9521fc15db8cd34c8a = $(`<div id="html_18daeba492ee6b9521fc15db8cd34c8a" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Feel Nature Get Together: Psytech Edition</h4><p><b>Venue:</b> Prisma</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T22:00:00.000</p><p><b>Ende:</b> 2025-12-20T06:00:00.000</p><p><b>Interested:</b> 3</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2325103' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_4cdf7fb20a182752b4a14364a70b14b0.setContent(html_18daeba492ee6b9521fc15db8cd34c8a);
+            
+        
+
+        marker_c1ff06f5c23df6b05865944f899e1f59.bindPopup(popup_4cdf7fb20a182752b4a14364a70b14b0)
+        ;
+
+        
+    
+    
+            marker_c1ff06f5c23df6b05865944f899e1f59.bindTooltip(
+                `<div>
+                     Feel Nature Get Together: Psytech Edition
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c1ff06f5c23df6b05865944f899e1f59.setIcon(icon_35520e2cef1bc978c394fc9ab357fead);
+            
+    
+            var marker_65ece9537236b24f9c37bca4670a829a = L.marker(
+                [52.5199841, 13.3892969],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_a7bb0873a8d8e0099a1f9fb35c4b4d37 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_91957c12b178353b01cd769f935281ab = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_9128449b759ef478da89bc7c8b8ec88a = $(`<div id="html_9128449b759ef478da89bc7c8b8ec88a" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Betriebsfahrt</h4><p><b>Venue:</b> Bredouille</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T18:00:00.000</p><p><b>Ende:</b> 2025-12-20T04:00:00.000</p><p><b>Artists:</b> Hagel, Enzo V8</p><p><b>Interested:</b> 3</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2327370' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_91957c12b178353b01cd769f935281ab.setContent(html_9128449b759ef478da89bc7c8b8ec88a);
+            
+        
+
+        marker_65ece9537236b24f9c37bca4670a829a.bindPopup(popup_91957c12b178353b01cd769f935281ab)
+        ;
+
+        
+    
+    
+            marker_65ece9537236b24f9c37bca4670a829a.bindTooltip(
+                `<div>
+                     Betriebsfahrt
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_65ece9537236b24f9c37bca4670a829a.setIcon(icon_a7bb0873a8d8e0099a1f9fb35c4b4d37);
+            
+    
+            var marker_6457ae5f5528948884ee3daa18ab81a7 = L.marker(
+                [52.5229029, 13.4164231],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_b42a49e5965512f64a7e2c7582477317 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_acbec1d9b7217d7091481a1cac66368f = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_b6adca5001517b9766b0d1daf7fbae9d = $(`<div id="html_b6adca5001517b9766b0d1daf7fbae9d" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>WKND HOSTED Nika Herero</h4><p><b>Venue:</b> Weekend</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T22:00:00.000</p><p><b>Ende:</b> 2025-12-20T06:00:00.000</p><p><b>Artists:</b> Nika Herero, Gojas</p><p><b>Interested:</b> 2</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2280129' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_acbec1d9b7217d7091481a1cac66368f.setContent(html_b6adca5001517b9766b0d1daf7fbae9d);
+            
+        
+
+        marker_6457ae5f5528948884ee3daa18ab81a7.bindPopup(popup_acbec1d9b7217d7091481a1cac66368f)
+        ;
+
+        
+    
+    
+            marker_6457ae5f5528948884ee3daa18ab81a7.bindTooltip(
+                `<div>
+                     WKND HOSTED Nika Herero
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6457ae5f5528948884ee3daa18ab81a7.setIcon(icon_b42a49e5965512f64a7e2c7582477317);
+            
+    
+            var marker_a59db9e8cfcd27d6c7b66f913b4b3aee = L.marker(
+                [52.4996096, 13.4374056],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_90d37bf7c9106deb1d4d2600fc7574af = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f2a70cba52cf72086ea3569f9f23dd93 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_79a5bba6b4882ca3d7cafcb1a0e9b86d = $(`<div id="html_79a5bba6b4882ca3d7cafcb1a0e9b86d" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Fluffy Maybes (Album Launch) + Cindy Gravity + Namby Pamby (DJ set)</h4><p><b>Venue:</b> Madame Claude</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T19:30:00.000</p><p><b>Ende:</b> 2025-12-19T23:59:00.000</p><p><b>Interested:</b> 2</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2320150' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_f2a70cba52cf72086ea3569f9f23dd93.setContent(html_79a5bba6b4882ca3d7cafcb1a0e9b86d);
+            
+        
+
+        marker_a59db9e8cfcd27d6c7b66f913b4b3aee.bindPopup(popup_f2a70cba52cf72086ea3569f9f23dd93)
+        ;
+
+        
+    
+    
+            marker_a59db9e8cfcd27d6c7b66f913b4b3aee.bindTooltip(
+                `<div>
+                     Fluffy Maybes (Album Launch) + Cindy Gravity + Namby Pamby (DJ set)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a59db9e8cfcd27d6c7b66f913b4b3aee.setIcon(icon_90d37bf7c9106deb1d4d2600fc7574af);
+            
+    
+            var marker_fae90ddf17b3e45dabd837873a2cded6 = L.marker(
+                [52.5395232, 13.4142448],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_cf6384e660e1cb20a97447ef194eb2c8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4481dcc65d34a142f9759b222cc6b8f6 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_28afd4a27baac626831373133722ba92 = $(`<div id="html_28afd4a27baac626831373133722ba92" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Moon Night - Friday</h4><p><b>Venue:</b> Soda Club</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T22:00:00.000</p><p><b>Ende:</b> 2025-12-20T06:00:00.000</p><p><b>Interested:</b> 1</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2300761' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_4481dcc65d34a142f9759b222cc6b8f6.setContent(html_28afd4a27baac626831373133722ba92);
+            
+        
+
+        marker_fae90ddf17b3e45dabd837873a2cded6.bindPopup(popup_4481dcc65d34a142f9759b222cc6b8f6)
+        ;
+
+        
+    
+    
+            marker_fae90ddf17b3e45dabd837873a2cded6.bindTooltip(
+                `<div>
+                     Moon Night - Friday
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fae90ddf17b3e45dabd837873a2cded6.setIcon(icon_cf6384e660e1cb20a97447ef194eb2c8);
+            
+    
+            var marker_a6eca8d1cffb17f8e5a209042c175e8a = L.marker(
+                [52.4974597, 13.4658621],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_4945990938ef2e4cf1fd79ae2d3f5d89 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b362b44bdd0483a1171be2c4f6a019ef = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_8c803dbc0bbd1a07428ff880711c3701 = $(`<div id="html_8c803dbc0bbd1a07428ff880711c3701" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Sid Vision + Riot Spears + A Lazy Cat // Neue Zukunft</h4><p><b>Venue:</b> Neue Zukunft</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T20:00:00.000</p><p><b>Ende:</b> 2025-12-19T23:30:00.000</p><p><b>Interested:</b> 1</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2323242' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_b362b44bdd0483a1171be2c4f6a019ef.setContent(html_8c803dbc0bbd1a07428ff880711c3701);
+            
+        
+
+        marker_a6eca8d1cffb17f8e5a209042c175e8a.bindPopup(popup_b362b44bdd0483a1171be2c4f6a019ef)
+        ;
+
+        
+    
+    
+            marker_a6eca8d1cffb17f8e5a209042c175e8a.bindTooltip(
+                `<div>
+                     Sid Vision + Riot Spears + A Lazy Cat // Neue Zukunft
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a6eca8d1cffb17f8e5a209042c175e8a.setIcon(icon_4945990938ef2e4cf1fd79ae2d3f5d89);
+            
+    
+            var marker_d9c4e52d9967eb96185109d6afd047e2 = L.marker(
+                [52.5158118, 13.4591706],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_7a7e16c1c87954da769a5a0751d5deb4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d86103d2c77a25f09eea9ff8182d8676 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_7c68a5f0d2875d77a60e52bf774ae9d5 = $(`<div id="html_7c68a5f0d2875d77a60e52bf774ae9d5" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>CALABADDIES</h4><p><b>Venue:</b> YSY</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T21:00:00.000</p><p><b>Ende:</b> 2025-12-20T03:30:00.000</p><p><b>Artists:</b> hi.fí, François Dulac, Miss T Delight</p><p><b>Interested:</b> 2</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2327448' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_d86103d2c77a25f09eea9ff8182d8676.setContent(html_7c68a5f0d2875d77a60e52bf774ae9d5);
+            
+        
+
+        marker_d9c4e52d9967eb96185109d6afd047e2.bindPopup(popup_d86103d2c77a25f09eea9ff8182d8676)
+        ;
+
+        
+    
+    
+            marker_d9c4e52d9967eb96185109d6afd047e2.bindTooltip(
+                `<div>
+                     CALABADDIES
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d9c4e52d9967eb96185109d6afd047e2.setIcon(icon_7a7e16c1c87954da769a5a0751d5deb4);
+            
+    
+            var marker_a5eeb36d19468977f1eb03e02dd4e562 = L.marker(
+                [52.4441694, 13.6272436],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_602a868eebf20ce887fc1f50b6823111 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a0f8b424284b298f4b2ee7e7f1ed75ad = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_0748ab4d348b5525e1148435606243e8 = $(`<div id="html_0748ab4d348b5525e1148435606243e8" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Stimmen in Aspik - Die Schlager-Party</h4><p><b>Venue:</b> Hafenbar Berlin</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T21:00:00.000</p><p><b>Ende:</b> 2025-12-20T06:00:00.000</p><p><b>Interested:</b> 0</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2298705' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_a0f8b424284b298f4b2ee7e7f1ed75ad.setContent(html_0748ab4d348b5525e1148435606243e8);
+            
+        
+
+        marker_a5eeb36d19468977f1eb03e02dd4e562.bindPopup(popup_a0f8b424284b298f4b2ee7e7f1ed75ad)
+        ;
+
+        
+    
+    
+            marker_a5eeb36d19468977f1eb03e02dd4e562.bindTooltip(
+                `<div>
+                     Stimmen in Aspik - Die Schlager-Party
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a5eeb36d19468977f1eb03e02dd4e562.setIcon(icon_602a868eebf20ce887fc1f50b6823111);
+            
+    
+            var marker_bd5914147df10baebff632739e7e3cc8 = L.marker(
+                [52.5043141, 13.3836872],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_4ab359988996dc879ab240c2de044635 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_960ed5562e71e9a82b27e8594b913c29 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_f8ea2fda187e2f0cd5b706b9b5062676 = $(`<div id="html_f8ea2fda187e2f0cd5b706b9b5062676" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Sky-Bar Warmup - AfroHouse & DeepHouse</h4><p><b>Venue:</b> Solar</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T19:00:00.000</p><p><b>Ende:</b> 2025-12-20T02:00:00.000</p><p><b>Interested:</b> 0</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2309020' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_960ed5562e71e9a82b27e8594b913c29.setContent(html_f8ea2fda187e2f0cd5b706b9b5062676);
+            
+        
+
+        marker_bd5914147df10baebff632739e7e3cc8.bindPopup(popup_960ed5562e71e9a82b27e8594b913c29)
+        ;
+
+        
+    
+    
+            marker_bd5914147df10baebff632739e7e3cc8.bindTooltip(
+                `<div>
+                     Sky-Bar Warmup - AfroHouse & DeepHouse
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_bd5914147df10baebff632739e7e3cc8.setIcon(icon_4ab359988996dc879ab240c2de044635);
+            
+    
+            var marker_22c28b3be08cd70b6226da15b10b31c3 = L.marker(
+                [52.546204, 13.4237144],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_08954c8c45b6d4bf3f22818252bf9f85 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3928a6a5a87d4381e2d14575c7dd3f90 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_d2a19a5d764cd3e39d879ec746dd3257 = $(`<div id="html_d2a19a5d764cd3e39d879ec746dd3257" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>In the Äir Tonight</h4><p><b>Venue:</b> Dunckerclub</p><p><b>Datum:</b> 2025-12-19T00:00:00.000</p><p><b>Start:</b> 2025-12-19T22:00:00.000</p><p><b>Ende:</b> 2025-12-20T04:30:00.000</p><p><b>Interested:</b> 0</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2310284' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_3928a6a5a87d4381e2d14575c7dd3f90.setContent(html_d2a19a5d764cd3e39d879ec746dd3257);
+            
+        
+
+        marker_22c28b3be08cd70b6226da15b10b31c3.bindPopup(popup_3928a6a5a87d4381e2d14575c7dd3f90)
+        ;
+
+        
+    
+    
+            marker_22c28b3be08cd70b6226da15b10b31c3.bindTooltip(
+                `<div>
+                     In the Äir Tonight
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_22c28b3be08cd70b6226da15b10b31c3.setIcon(icon_08954c8c45b6d4bf3f22818252bf9f85);
+            
+    
+            var marker_5c6867dfa9dbcbc91d70e74fc12372d7 = L.marker(
+                [52.5173885, 13.3951309],
+                {
+}
+            ).addTo(marker_cluster_51f03250fa31712428a47abb7910ea6d);
+        
+    
+            var icon_8b23f1e412ece2dd5430d5b3436e8e37 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3c3eb1cf91f06d42b5e5f5e2ce469132 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_0de88f6432960c791be1b95c89dc2780 = $(`<div id="html_0de88f6432960c791be1b95c89dc2780" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Transmission Fields</h4><p><b>Venue:</b> PR55</p><p><b>Datum:</b> 2025-12-18T00:00:00.000</p><p><b>Start:</b> 2025-12-18T00:00:00.000</p><p><b>Ende:</b> 2025-12-27T15:30:00.000</p><p><b>Interested:</b> 0</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2329901' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_3c3eb1cf91f06d42b5e5f5e2ce469132.setContent(html_0de88f6432960c791be1b95c89dc2780);
+            
+        
+
+        marker_5c6867dfa9dbcbc91d70e74fc12372d7.bindPopup(popup_3c3eb1cf91f06d42b5e5f5e2ce469132)
+        ;
+
+        
+    
+    
+            marker_5c6867dfa9dbcbc91d70e74fc12372d7.bindTooltip(
+                `<div>
+                     Transmission Fields
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5c6867dfa9dbcbc91d70e74fc12372d7.setIcon(icon_8b23f1e412ece2dd5430d5b3436e8e37);
+            
+    
+            marker_cluster_51f03250fa31712428a47abb7910ea6d.addTo(map_68c04fda08373d573b3e4317d10ba7ed);
+        
+    
+            var layer_control_d57bbcd80741b8cf327f8c1b1a220ba4_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_dd772a53215d41cecef01f4d91993f1c,
+                },
+                overlays :  {
+                    "Resident Advisor" : marker_cluster_51f03250fa31712428a47abb7910ea6d,
+                },
+            };
+            let layer_control_d57bbcd80741b8cf327f8c1b1a220ba4 = L.control.layers(
+                layer_control_d57bbcd80741b8cf327f8c1b1a220ba4_layers.base_layers,
+                layer_control_d57bbcd80741b8cf327f8c1b1a220ba4_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_68c04fda08373d573b3e4317d10ba7ed);
+
+        
+</script>
+</html>

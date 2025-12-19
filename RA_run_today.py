@@ -1,58 +1,85 @@
 #!/usr/bin/env python3
 """
-Script to automatically fetch events for a specific date or today
+RA_run_today.py - Run RA Event Fetcher for today's date.
+
+Wrapper script to automatically fetch Resident Advisor events for a specific
+date or today by default.
 """
+
 import subprocess
 import sys
-import os
 from datetime import datetime
+from pathlib import Path
 
-def validate_date(date_string):
-    """Validate date format YYYY-MM-DD"""
+
+def validate_date(date_string: str) -> bool:
+    """
+    Validate date format YYYY-MM-DD.
+    
+    Args:
+        date_string: The date string to validate.
+        
+    Returns:
+        True if valid, False otherwise.
+    """
     try:
         datetime.strptime(date_string, "%Y-%m-%d")
         return True
     except ValueError:
         return False
 
-def main():
+
+def get_python_executable() -> str:
+    """
+    Get the appropriate Python executable path.
+    
+    Checks for a virtual environment first, falls back to system Python.
+    
+    Returns:
+        Path to the Python executable.
+    """
+    venv_python = Path(__file__).parent / ".venv" / "Scripts" / "python.exe"
+    if venv_python.exists():
+        return str(venv_python)
+    return sys.executable
+
+
+def main() -> int:
+    """
+    Main entry point.
+    
+    Returns:
+        Exit code (0 for success, non-zero for failure).
+    """
     # Get date from command line argument or use today's date
     if len(sys.argv) > 1:
-        date = sys.argv[1]
-        if not validate_date(date):
-            print(f"Error: Invalid date format '{date}'")
-            print("Please use YYYY-MM-DD format")
+        target_date = sys.argv[1]
+        if not validate_date(target_date):
+            print(f"Error: Invalid date format '{target_date}'")
+            print("Please use YYYY-MM-DD format (e.g., 2025-12-19)")
             return 1
     else:
-        date = datetime.now().strftime("%Y-%m-%d")
-    
-    # Build the command with the specified date
-    output_file = f"RA_{date}_events.csv"
-    
-    # Use the virtual environment's Python executable
-    venv_python = os.path.join(os.path.dirname(__file__), '.venv', 'Scripts', 'python.exe')
-    if os.path.exists(venv_python):
-        python_exe = venv_python
-    else:
-        python_exe = "python"
-    
+        target_date = datetime.now().strftime("%Y-%m-%d")
+
+    output_file = f"RA_{target_date}_events.csv"
+    python_exe = get_python_executable()
+
     command = [
         python_exe,
         "RA_event_fetcher.py",
-        "34",
-        date,
-        date,
+        "34",  # Berlin area code
+        target_date,
+        target_date,
         "-o",
-        output_file
+        output_file,
     ]
-    
-    print(f"Running command for {date}...")
-    print(f"Command: {' '.join(command)}")
-    print()
-    
-    # Execute the command
-    result = subprocess.run(command)
+
+    print(f"Fetching RA events for {target_date}...")
+    print(f"Command: {' '.join(command)}\n")
+
+    result = subprocess.run(command, check=False)
     return result.returncode
 
+
 if __name__ == "__main__":
-    exit(main())
+    sys.exit(main())
