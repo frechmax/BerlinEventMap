@@ -348,7 +348,7 @@ def combine_maps_with_legend(run_folder: str = ".") -> Optional[folium.Map]:
         if (childCount > 50) size = 50;
         
         return L.divIcon({
-            html: '<div style="background-color: rgba(110, 110, 110, 0.8); color: white; border-radius: 50%; width: ' + size + 'px; height: ' + size + 'px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; border: 2px solid rgba(80, 80, 80, 0.9);">' + childCount + '</div>',
+            html: '<div style="background-color: rgba(110, 110, 110, 0.8); color: white; border-radius: 50%; width: ' + size + 'px; height: ' + size + 'px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; border: 2px solid rgba(160, 160, 160, 0.5);">' + childCount + '</div>',
             className: 'marker-cluster-grey',
             iconSize: L.point(size, size)
         });
