@@ -1,0 +1,4972 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_1857efb2ad2ba4bb06577674787c962d {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/leaflet.markercluster.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.1.0/MarkerCluster.Default.css"/>
+</head>
+<body>
+    
+    <div style="position: fixed; 
+                bottom: 10px; 
+                right: 10px; 
+                width: 120px; 
+                background-color: rgba(255,255,255,0.95); 
+                border: 1px solid #ddd;
+                z-index: 9999; 
+                font-size: 10px;
+                padding: 5px 6px;
+                border-radius: 3px;
+                box-shadow: 0 1px 4px rgba(0,0,0,0.2);">
+        <div style="font-weight: bold; font-size: 11px; margin-bottom: 3px;">
+            📍 98 Events
+        </div>
+        <div style="font-size: 9px; color: #666; margin-bottom: 4px;">
+            Di, 23.12.2025
+        </div>
+        <div style="display: flex; justify-content: space-between; margin: 2px 0; font-size: 9px;">
+            <span>🔵 tip Berlin</span>
+            <span style="font-weight: bold; color: #666;">50</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin: 2px 0; font-size: 9px;">
+            <span>🟢 Gratis in Berlin</span>
+            <span style="font-weight: bold; color: #666;">29</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin: 2px 0; font-size: 9px;">
+            <span>🟣 visit Berlin</span>
+            <span style="font-weight: bold; color: #666;">12</span>
+        </div>
+        <div style="display: flex; justify-content: space-between; margin: 2px 0; font-size: 9px;">
+            <span>🔴 Resident Advisor</span>
+            <span style="font-weight: bold; color: #666;">7</span>
+        </div></div>
+    
+            <div class="folium-map" id="map_1857efb2ad2ba4bb06577674787c962d" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_1857efb2ad2ba4bb06577674787c962d = L.map(
+                "map_1857efb2ad2ba4bb06577674787c962d",
+                {
+                    center: [52.52, 13.405],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 12,
+  "zoomControl": true,
+  "preferCanvas": true,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_5d64b887315f2b14658c82570fe40d21 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_5d64b887315f2b14658c82570fe40d21.addTo(map_1857efb2ad2ba4bb06577674787c962d);
+        
+    
+            var marker_cluster_e5b18119477fb3913bcd250c975469d5 = L.markerClusterGroup(
+                {
+  "maxClusterRadius": 40,
+  "chunkedLoading": true,
+  "spiderfyOnMaxZoom": true,
+  "showCoverageOnHover": false,
+  "animate": false,
+}
+            );
+            marker_cluster_e5b18119477fb3913bcd250c975469d5.options.iconCreateFunction =
+                function(cluster) {
+        var childCount = cluster.getChildCount();
+        var size = 30;
+        if (childCount > 10) size = 40;
+        if (childCount > 50) size = 50;
+        
+        return L.divIcon({
+            html: '<div style="background-color: rgba(110, 110, 110, 0.8); color: white; border-radius: 50%; width: ' + size + 'px; height: ' + size + 'px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; border: 2px solid rgba(160, 160, 160, 0.5);">' + childCount + '</div>',
+            className: 'marker-cluster-grey',
+            iconSize: L.point(size, size)
+        });
+    };
+        
+    
+            var marker_98a9263aeadcda2706a0efcf864a5931 = L.marker(
+                [52.4936405, 13.3876998],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_104a57fc8f2760ead6e8fd14511d70e8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_14934d7f6033854babe2369a9e62955f = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_22f251aa51133b6b99fe1c647b843862 = $(`<div id="html_22f251aa51133b6b99fe1c647b843862" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Wenn Ediths Glocken läuten Vol. 22</h4><p><b>Kategorie:</b> Bühne/Kabarett</p><p><b>Venue:</b> BKA</p><p><b>Adresse:</b> Mehringdamm 34, 10961 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/buehne+kabarett/1465.10096225/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_14934d7f6033854babe2369a9e62955f.setContent(html_22f251aa51133b6b99fe1c647b843862);
+            
+        
+
+        marker_98a9263aeadcda2706a0efcf864a5931.bindPopup(popup_14934d7f6033854babe2369a9e62955f)
+        ;
+
+        
+    
+    
+            marker_98a9263aeadcda2706a0efcf864a5931.bindTooltip(
+                `<div>
+                     Wenn Ediths Glocken läuten Vol. 22
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_98a9263aeadcda2706a0efcf864a5931.setIcon(icon_104a57fc8f2760ead6e8fd14511d70e8);
+            
+    
+            var marker_6941622072bee02c375630dded7017b2 = L.marker(
+                [52.5120313, 13.3185208],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_57d3df5e1c653342b219ff08585245ca = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9317f5d5f9dc460911b0ce57e80fc00b = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_38ffa53b5a610817624d1c8391ab7696 = $(`<div id="html_38ffa53b5a610817624d1c8391ab7696" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>In Frisco ist der Teufel los</h4><p><b>Kategorie:</b> Bühne/Oper</p><p><b>Venue:</b> Komische Oper im Schillertheater</p><p><b>Adresse:</b> Bismarckstr. 110, 10623 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/buehne+oper/1465.10093838/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_9317f5d5f9dc460911b0ce57e80fc00b.setContent(html_38ffa53b5a610817624d1c8391ab7696);
+            
+        
+
+        marker_6941622072bee02c375630dded7017b2.bindPopup(popup_9317f5d5f9dc460911b0ce57e80fc00b)
+        ;
+
+        
+    
+    
+            marker_6941622072bee02c375630dded7017b2.bindTooltip(
+                `<div>
+                     In Frisco ist der Teufel los
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6941622072bee02c375630dded7017b2.setIcon(icon_57d3df5e1c653342b219ff08585245ca);
+            
+    
+            var marker_fc9241c6f122073d41b9a5ab3a61ac54 = L.marker(
+                [52.5430569, 13.4281438],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_fc932679655530a1c7e4c23e93ce0677 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7100d0cf1a514fb54dce891af4bd05ae = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_7448d670bf791fa7e991fbb6fdb18d67 = $(`<div id="html_7448d670bf791fa7e991fbb6fdb18d67" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Der Traumzauberbaum</h4><p><b>Kategorie:</b> Sonstiges</p><p><b>Venue:</b> Zeiss-Großplanetarium</p><p><b>Adresse:</b> Prenzlauer Allee 80, 10405 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/sonstiges/1465.10030324/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_7100d0cf1a514fb54dce891af4bd05ae.setContent(html_7448d670bf791fa7e991fbb6fdb18d67);
+            
+        
+
+        marker_fc9241c6f122073d41b9a5ab3a61ac54.bindPopup(popup_7100d0cf1a514fb54dce891af4bd05ae)
+        ;
+
+        
+    
+    
+            marker_fc9241c6f122073d41b9a5ab3a61ac54.bindTooltip(
+                `<div>
+                     Der Traumzauberbaum
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fc9241c6f122073d41b9a5ab3a61ac54.setIcon(icon_fc932679655530a1c7e4c23e93ce0677);
+            
+    
+            var marker_4e3f266064277208a9a819d7fa9c286b = L.marker(
+                [52.5121441, 13.3083771],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_bdc244a28e418070d2f49c4b612956fc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fa5c0dca1c44121f9d29e56024bdc079 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_1eef785f337bcd0be37e2c8e3b70a8b5 = $(`<div id="html_1eef785f337bcd0be37e2c8e3b70a8b5" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Hänsel und Gretel letzte Vorstellung in dieser Spielzeit</h4><p><b>Kategorie:</b> Bühne/Oper</p><p><b>Venue:</b> Deutsche Oper</p><p><b>Adresse:</b> Bismarckstr. 35, 10627 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/buehne+oper/1465.10095256/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_fa5c0dca1c44121f9d29e56024bdc079.setContent(html_1eef785f337bcd0be37e2c8e3b70a8b5);
+            
+        
+
+        marker_4e3f266064277208a9a819d7fa9c286b.bindPopup(popup_fa5c0dca1c44121f9d29e56024bdc079)
+        ;
+
+        
+    
+    
+            marker_4e3f266064277208a9a819d7fa9c286b.bindTooltip(
+                `<div>
+                     Hänsel und Gretel letzte Vorstellung in dieser Spielzeit
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4e3f266064277208a9a819d7fa9c286b.setIcon(icon_bdc244a28e418070d2f49c4b612956fc);
+            
+    
+            var marker_d0bddb0b40e4417a8737ce6b97e356af = L.marker(
+                [52.4582459, 13.3048516],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_b7294c0cdd4c8fe683674c5ddf08d303 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_43a5a48bf3ea0bf872575e1bc2fe0b01 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_6c16d61639fdae03c3bbcb11dafac83d = $(`<div id="html_6c16d61639fdae03c3bbcb11dafac83d" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Christmas Garden</h4><p><b>Kategorie:</b> Handel/Markt</p><p><b>Venue:</b> Botanischer Garten Berlin</p><p><b>Adresse:</b> Königin-Luise-Str. 6-8, 14195 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/handel+markt/1465.2852511439/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_43a5a48bf3ea0bf872575e1bc2fe0b01.setContent(html_6c16d61639fdae03c3bbcb11dafac83d);
+            
+        
+
+        marker_d0bddb0b40e4417a8737ce6b97e356af.bindPopup(popup_43a5a48bf3ea0bf872575e1bc2fe0b01)
+        ;
+
+        
+    
+    
+            marker_d0bddb0b40e4417a8737ce6b97e356af.bindTooltip(
+                `<div>
+                     Christmas Garden
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d0bddb0b40e4417a8737ce6b97e356af.setIcon(icon_b7294c0cdd4c8fe683674c5ddf08d303);
+            
+    
+            var marker_2bf3cd226f7bb54999430fb5e368b303 = L.marker(
+                [52.5221371, 13.3856798],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_824d6cbd1b1b111cf3210c8d768cfec7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_45055d4b07fbe052611f1cbd90ea3c1b = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_9fd0434a2ac39d4df78f08c776f1e437 = $(`<div id="html_9fd0434a2ac39d4df78f08c776f1e437" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Das Archiv der Träume</h4><p><b>Kategorie:</b> Bühne/Schauspiel</p><p><b>Venue:</b> Berliner Ensemble</p><p><b>Adresse:</b> Bertolt-Brecht-Platz 1, 10117 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/buehne+schauspiel/1465.10098657/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_45055d4b07fbe052611f1cbd90ea3c1b.setContent(html_9fd0434a2ac39d4df78f08c776f1e437);
+            
+        
+
+        marker_2bf3cd226f7bb54999430fb5e368b303.bindPopup(popup_45055d4b07fbe052611f1cbd90ea3c1b)
+        ;
+
+        
+    
+    
+            marker_2bf3cd226f7bb54999430fb5e368b303.bindTooltip(
+                `<div>
+                     Das Archiv der Träume
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2bf3cd226f7bb54999430fb5e368b303.setIcon(icon_824d6cbd1b1b111cf3210c8d768cfec7);
+            
+    
+            var marker_96e3786addc83d562fa32e50692a5af0 = L.marker(
+                [52.5207714, 13.3889021],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_91d566231edf4d7d323d6815ba787f23 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_eda9bd840a1aa670d1d45e5484d218c5 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_45056d106ccf5e696d49d81c695db2d8 = $(`<div id="html_45056d106ccf5e696d49d81c695db2d8" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Kinky Boots – The Musical</h4><p><b>Kategorie:</b> Bühne/Kabarett</p><p><b>Venue:</b> Admiralspalast</p><p><b>Adresse:</b> Friedrichstr. 101, 10117 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/buehne+kabarett/1465.10096695/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_eda9bd840a1aa670d1d45e5484d218c5.setContent(html_45056d106ccf5e696d49d81c695db2d8);
+            
+        
+
+        marker_96e3786addc83d562fa32e50692a5af0.bindPopup(popup_eda9bd840a1aa670d1d45e5484d218c5)
+        ;
+
+        
+    
+    
+            marker_96e3786addc83d562fa32e50692a5af0.bindTooltip(
+                `<div>
+                     Kinky Boots – The Musical
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_96e3786addc83d562fa32e50692a5af0.setIcon(icon_91d566231edf4d7d323d6815ba787f23);
+            
+    
+            var marker_22a5201c72e2808ad051d7da474753af = L.marker(
+                [52.5177477, 13.3970225],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_9dbe5fdbcba047dddfdb7d414fe09145 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8c0c8fd20f8049ed07f7bc5f9b427b8e = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_a3fbf16579eba6a25aa54bf98230cd5d = $(`<div id="html_a3fbf16579eba6a25aa54bf98230cd5d" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Von Wasser, Wald und Wiese</h4><p><b>Kategorie:</b> Führung</p><p><b>Venue:</b> Deutsches Historisches Museum</p><p><b>Adresse:</b> Unter den Linden 2, 10117 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/fuehrung/1465.2864240277/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_8c0c8fd20f8049ed07f7bc5f9b427b8e.setContent(html_a3fbf16579eba6a25aa54bf98230cd5d);
+            
+        
+
+        marker_22a5201c72e2808ad051d7da474753af.bindPopup(popup_8c0c8fd20f8049ed07f7bc5f9b427b8e)
+        ;
+
+        
+    
+    
+            marker_22a5201c72e2808ad051d7da474753af.bindTooltip(
+                `<div>
+                     Von Wasser, Wald und Wiese
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_22a5201c72e2808ad051d7da474753af.setIcon(icon_9dbe5fdbcba047dddfdb7d414fe09145);
+            
+    
+            var marker_3c76d9f76335dfadd834a03804cdda40 = L.marker(
+                [52.5016366, 13.5244707],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_576688b0aa8100f76de4371c8aea513b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5cf761134b8cd4d981e320d0249f64e1 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_3579b2bfceed7226bf1be43502514db8 = $(`<div id="html_3579b2bfceed7226bf1be43502514db8" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Weihnachten im Tierpark</h4><p><b>Kategorie:</b> Sonstiges</p><p><b>Venue:</b> Tierpark Berlin</p><p><b>Adresse:</b> Am Tierpark 125, 10319 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/sonstiges/1465.2852859498/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_5cf761134b8cd4d981e320d0249f64e1.setContent(html_3579b2bfceed7226bf1be43502514db8);
+            
+        
+
+        marker_3c76d9f76335dfadd834a03804cdda40.bindPopup(popup_5cf761134b8cd4d981e320d0249f64e1)
+        ;
+
+        
+    
+    
+            marker_3c76d9f76335dfadd834a03804cdda40.bindTooltip(
+                `<div>
+                     Weihnachten im Tierpark
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3c76d9f76335dfadd834a03804cdda40.setIcon(icon_576688b0aa8100f76de4371c8aea513b);
+            
+    
+            var marker_637862f34bdf41e84a5e5d7ff70c49f8 = L.marker(
+                [52.506926, 13.3733397],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_f39d7e9b294d76ab07a08abb4fd1b9d6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d2cd9309ee4797df44d7e81e8c1636d4 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_3e3b05c2c1287acf5f0be4b82a80c215 = $(`<div id="html_3e3b05c2c1287acf5f0be4b82a80c215" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Eine Weihnachtsgeschichte</h4><p><b>Kategorie:</b> Bühne/Kabarett</p><p><b>Venue:</b> Bluemax Theater</p><p><b>Adresse:</b> Marlene-Dietrich-Pl. 4, 10785 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/buehne+kabarett/1465.2850914051/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_d2cd9309ee4797df44d7e81e8c1636d4.setContent(html_3e3b05c2c1287acf5f0be4b82a80c215);
+            
+        
+
+        marker_637862f34bdf41e84a5e5d7ff70c49f8.bindPopup(popup_d2cd9309ee4797df44d7e81e8c1636d4)
+        ;
+
+        
+    
+    
+            marker_637862f34bdf41e84a5e5d7ff70c49f8.bindTooltip(
+                `<div>
+                     Eine Weihnachtsgeschichte
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_637862f34bdf41e84a5e5d7ff70c49f8.setIcon(icon_f39d7e9b294d76ab07a08abb4fd1b9d6);
+            
+    
+            var marker_02566c3318a412556e5fbe238cb8dc6e = L.marker(
+                [52.5243546, 13.3819066],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_2978e7cdb775585ad75936a42fe43835 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_53458f8da2ada01a107342ae100b5453 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_aeb993dd219b06a72648699ef8ee513a = $(`<div id="html_aeb993dd219b06a72648699ef8ee513a" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Einfach das Ende der Welt letzte Vorstellung in dieser Spielzeit</h4><p><b>Kategorie:</b> Bühne/Schauspiel</p><p><b>Venue:</b> Deutsches Theater</p><p><b>Adresse:</b> Schumannstr. 13a, 10117 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/buehne+schauspiel/1465.10082451/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_53458f8da2ada01a107342ae100b5453.setContent(html_aeb993dd219b06a72648699ef8ee513a);
+            
+        
+
+        marker_02566c3318a412556e5fbe238cb8dc6e.bindPopup(popup_53458f8da2ada01a107342ae100b5453)
+        ;
+
+        
+    
+    
+            marker_02566c3318a412556e5fbe238cb8dc6e.bindTooltip(
+                `<div>
+                     Einfach das Ende der Welt letzte Vorstellung in dieser Spielzeit
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_02566c3318a412556e5fbe238cb8dc6e.setIcon(icon_2978e7cdb775585ad75936a42fe43835);
+            
+    
+            var marker_5538b92245bca97ae730ebd18619293f = L.marker(
+                [52.52844, 13.3720386],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_556013678864ad72b715288fa8a65bde = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a3ce332cdbba6276f50f0a3085872e7c = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_4b3caeaf910df908d53b57328840150f = $(`<div id="html_4b3caeaf910df908d53b57328840150f" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Off score</h4><p><b>Kategorie:</b> Ausstellung/Museen</p><p><b>Venue:</b> Hamburger Bahnhof - Nationalgalerie der Gegenwart</p><p><b>Adresse:</b> Invalidenstr. 50-51, 10557 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/ausstellung+museen/1465.30004900/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_a3ce332cdbba6276f50f0a3085872e7c.setContent(html_4b3caeaf910df908d53b57328840150f);
+            
+        
+
+        marker_5538b92245bca97ae730ebd18619293f.bindPopup(popup_a3ce332cdbba6276f50f0a3085872e7c)
+        ;
+
+        
+    
+    
+            marker_5538b92245bca97ae730ebd18619293f.bindTooltip(
+                `<div>
+                     Off score
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5538b92245bca97ae730ebd18619293f.setIcon(icon_556013678864ad72b715288fa8a65bde);
+            
+    
+            var marker_682c9a4500aa5478a5f8b96464cd7aeb = L.marker(
+                [52.52844, 13.3720386],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_e4cdb933fccb091685745048b89f42cd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_395185ad9cd61079e0e0b84e117eb288 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_1ef036c43918075d6c3d62a2255f202c = $(`<div id="html_1ef036c43918075d6c3d62a2255f202c" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Saâdane Afif</h4><p><b>Kategorie:</b> Ausstellung/Museen</p><p><b>Venue:</b> Hamburger Bahnhof - Nationalgalerie der Gegenwart</p><p><b>Adresse:</b> Invalidenstr. 50-51, 10557 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/ausstellung+museen/1465.30004901/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_395185ad9cd61079e0e0b84e117eb288.setContent(html_1ef036c43918075d6c3d62a2255f202c);
+            
+        
+
+        marker_682c9a4500aa5478a5f8b96464cd7aeb.bindPopup(popup_395185ad9cd61079e0e0b84e117eb288)
+        ;
+
+        
+    
+    
+            marker_682c9a4500aa5478a5f8b96464cd7aeb.bindTooltip(
+                `<div>
+                     Saâdane Afif
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_682c9a4500aa5478a5f8b96464cd7aeb.setIcon(icon_e4cdb933fccb091685745048b89f42cd);
+            
+    
+            var marker_70febff4d52cdae4b3eae63f85d3c8a6 = L.marker(
+                [52.52844, 13.3720386],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_b5d015468a3efeec22b96ee558dd6ca4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e848b1d525808246c7cc54b93f49928b = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_28769db702e64072d5c5ea2aab7d6b1a = $(`<div id="html_28769db702e64072d5c5ea2aab7d6b1a" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Syrigana</h4><p><b>Kategorie:</b> Ausstellung/Museen</p><p><b>Venue:</b> Hamburger Bahnhof - Nationalgalerie der Gegenwart</p><p><b>Adresse:</b> Invalidenstr. 50-51, 10557 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/ausstellung+museen/1465.30004899/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_e848b1d525808246c7cc54b93f49928b.setContent(html_28769db702e64072d5c5ea2aab7d6b1a);
+            
+        
+
+        marker_70febff4d52cdae4b3eae63f85d3c8a6.bindPopup(popup_e848b1d525808246c7cc54b93f49928b)
+        ;
+
+        
+    
+    
+            marker_70febff4d52cdae4b3eae63f85d3c8a6.bindTooltip(
+                `<div>
+                     Syrigana
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_70febff4d52cdae4b3eae63f85d3c8a6.setIcon(icon_b5d015468a3efeec22b96ee558dd6ca4);
+            
+    
+            var marker_3a628f34eec903d21ce32a54b4cea46d = L.marker(
+                [52.5167106, 13.4024811],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_ade2b887fa20aa68eea29d5b2cdb703b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fd46cfb4ba4dfa3543de6fb08bff0928 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_a6fb31a88ae9e6d1fb6c9818202189ed = $(`<div id="html_a6fb31a88ae9e6d1fb6c9818202189ed" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Wintermarkt Schloßplatz</h4><p><b>Kategorie:</b> Handel/Markt</p><p><b>Venue:</b> Humboldt Forum</p><p><b>Adresse:</b> Schloßplatz, 10178 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/handel+markt/1465.2855470143/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_fd46cfb4ba4dfa3543de6fb08bff0928.setContent(html_a6fb31a88ae9e6d1fb6c9818202189ed);
+            
+        
+
+        marker_3a628f34eec903d21ce32a54b4cea46d.bindPopup(popup_fd46cfb4ba4dfa3543de6fb08bff0928)
+        ;
+
+        
+    
+    
+            marker_3a628f34eec903d21ce32a54b4cea46d.bindTooltip(
+                `<div>
+                     Wintermarkt Schloßplatz
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3a628f34eec903d21ce32a54b4cea46d.setIcon(icon_ade2b887fa20aa68eea29d5b2cdb703b);
+            
+    
+            var marker_8385abb02d49e2b4792a368f266c0c9c = L.marker(
+                [52.5207714, 13.3889021],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_49e1e7544969e5d7ebed855d3258d8d5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_298628fc778a720fb8df174cc47197d8 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_a45d8cf17e938b7871873990095045db = $(`<div id="html_a45d8cf17e938b7871873990095045db" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Bettina Wegner & Karsten Troyke</h4><p><b>Kategorie:</b> Musik/Konzert</p><p><b>Venue:</b> Distel</p><p><b>Adresse:</b> Friedrichstr. 101, 10117 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/musik+konzert/1465.10097457/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_298628fc778a720fb8df174cc47197d8.setContent(html_a45d8cf17e938b7871873990095045db);
+            
+        
+
+        marker_8385abb02d49e2b4792a368f266c0c9c.bindPopup(popup_298628fc778a720fb8df174cc47197d8)
+        ;
+
+        
+    
+    
+            marker_8385abb02d49e2b4792a368f266c0c9c.bindTooltip(
+                `<div>
+                     Bettina Wegner & Karsten Troyke
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8385abb02d49e2b4792a368f266c0c9c.setIcon(icon_49e1e7544969e5d7ebed855d3258d8d5);
+            
+    
+            var marker_d0b5112d4ada660dece431e6fb43d4d7 = L.marker(
+                [52.5099308, 13.3872552],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_f1c9e7606377309961d01fc6ce54d02c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3b44d7ea9c5d8029d636448bdcf4acf1 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_84ea56ff41b0e47969260c897315d332 = $(`<div id="html_84ea56ff41b0e47969260c897315d332" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Comic-Stipendium 2025</h4><p><b>Kategorie:</b> Ausstellung/Museen</p><p><b>Venue:</b> Museum für Kommunikation</p><p><b>Adresse:</b> Leipziger Str. 16, 10117 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/ausstellung+museen/1465.30005154/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_3b44d7ea9c5d8029d636448bdcf4acf1.setContent(html_84ea56ff41b0e47969260c897315d332);
+            
+        
+
+        marker_d0b5112d4ada660dece431e6fb43d4d7.bindPopup(popup_3b44d7ea9c5d8029d636448bdcf4acf1)
+        ;
+
+        
+    
+    
+            marker_d0b5112d4ada660dece431e6fb43d4d7.bindTooltip(
+                `<div>
+                     Comic-Stipendium 2025
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d0b5112d4ada660dece431e6fb43d4d7.setIcon(icon_f1c9e7606377309961d01fc6ce54d02c);
+            
+    
+            var marker_8edb0dafe32624cbf53fa2fb0d7faa4d = L.marker(
+                [52.520862, 13.3982661],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_f4db809906cfcc1ba3266e279a70509a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9bc8cdb6422b71448b3596ec1f93c386 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_be35d68399eb4b9dcf82cae3d3e2f3d9 = $(`<div id="html_be35d68399eb4b9dcf82cae3d3e2f3d9" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Dioskuren - Der geschenkte Tag</h4><p><b>Kategorie:</b> Ausstellung/Museen</p><p><b>Venue:</b> Neues Museum</p><p><b>Adresse:</b> Bodestr. 1-3, 10178 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/ausstellung+museen/1465.30005054/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_9bc8cdb6422b71448b3596ec1f93c386.setContent(html_be35d68399eb4b9dcf82cae3d3e2f3d9);
+            
+        
+
+        marker_8edb0dafe32624cbf53fa2fb0d7faa4d.bindPopup(popup_9bc8cdb6422b71448b3596ec1f93c386)
+        ;
+
+        
+    
+    
+            marker_8edb0dafe32624cbf53fa2fb0d7faa4d.bindTooltip(
+                `<div>
+                     Dioskuren - Der geschenkte Tag
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8edb0dafe32624cbf53fa2fb0d7faa4d.setIcon(icon_f4db809906cfcc1ba3266e279a70509a);
+            
+    
+            var marker_a03491607953977ae58762c33defec44 = L.marker(
+                [52.5183272, 13.3468408],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_0361603c2df5d8b42706928c16d41dfe = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2465d4ff95a796287e9ac5b7a44092a5 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_f61cfadfbdc818996114a95a26aba513 = $(`<div id="html_f61cfadfbdc818996114a95a26aba513" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Every Artist Must Take Sides - Resonanzen von Eslanda und Paul Robeson</h4><p><b>Kategorie:</b> Ausstellung/Andere Orte</p><p><b>Venue:</b> Akademie der Künste Hanseatenweg</p><p><b>Adresse:</b> Hanseatenweg 10, 10557 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/ausstellung+andere_orte/1465.2853630883/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_2465d4ff95a796287e9ac5b7a44092a5.setContent(html_f61cfadfbdc818996114a95a26aba513);
+            
+        
+
+        marker_a03491607953977ae58762c33defec44.bindPopup(popup_2465d4ff95a796287e9ac5b7a44092a5)
+        ;
+
+        
+    
+    
+            marker_a03491607953977ae58762c33defec44.bindTooltip(
+                `<div>
+                     Every Artist Must Take Sides - Resonanzen von Eslanda und Paul Robeson
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a03491607953977ae58762c33defec44.setIcon(icon_0361603c2df5d8b42706928c16d41dfe);
+            
+    
+            var marker_f239c4e3ce3e30bdd037da35cc1f3cad = L.marker(
+                [52.5168734, 13.4075394],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_3841f11e5902547338c3358229c801ea = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9e00d888167c012f848aa524e258bfc1 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_6cd6425a8ff27cca8b7e86b933c10ddc = $(`<div id="html_6cd6425a8ff27cca8b7e86b933c10ddc" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Heute noch, morgen schon</h4><p><b>Kategorie:</b> Ausstellung/Museen</p><p><b>Venue:</b> Nikolaikirche</p><p><b>Adresse:</b> Nikolaikirchpl., 10178 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/ausstellung+museen/1465.30005244/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_9e00d888167c012f848aa524e258bfc1.setContent(html_6cd6425a8ff27cca8b7e86b933c10ddc);
+            
+        
+
+        marker_f239c4e3ce3e30bdd037da35cc1f3cad.bindPopup(popup_9e00d888167c012f848aa524e258bfc1)
+        ;
+
+        
+    
+    
+            marker_f239c4e3ce3e30bdd037da35cc1f3cad.bindTooltip(
+                `<div>
+                     Heute noch, morgen schon
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f239c4e3ce3e30bdd037da35cc1f3cad.setIcon(icon_3841f11e5902547338c3358229c801ea);
+            
+    
+            var marker_64a55641626910bde710356d194a9c41 = L.marker(
+                [52.520862, 13.3982661],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_aeb0242e084a6ad6c39bda3361616a49 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5645ff44e61262f7008d23d46224bafd = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_fe961939be68e257245ce2127dbab33d = $(`<div id="html_fe961939be68e257245ce2127dbab33d" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Im Visier! Lovis Corinth, die Nationalgalerie und die Aktion "Entartete Kunst"</h4><p><b>Kategorie:</b> Ausstellung/Museen</p><p><b>Venue:</b> Alte Nationalgalerie</p><p><b>Adresse:</b> Bodestraße 1-3, 10178 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/ausstellung+museen/1465.30004998/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_5645ff44e61262f7008d23d46224bafd.setContent(html_fe961939be68e257245ce2127dbab33d);
+            
+        
+
+        marker_64a55641626910bde710356d194a9c41.bindPopup(popup_5645ff44e61262f7008d23d46224bafd)
+        ;
+
+        
+    
+    
+            marker_64a55641626910bde710356d194a9c41.bindTooltip(
+                `<div>
+                     Im Visier! Lovis Corinth, die Nationalgalerie und die Aktion "Entartete Kunst"
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_64a55641626910bde710356d194a9c41.setIcon(icon_aeb0242e084a6ad6c39bda3361616a49);
+            
+    
+            var marker_8669ff1f1ffe05ad00da1eaa03bf707b = L.marker(
+                [52.5205554, 13.2963595],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_adafa9ac22cd1339a1a1c16b1e765b7f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7b0ed72908e260df17ed7bea6198cf34 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_1a7ae1df6c1ef609c9372406f959ab37 = $(`<div id="html_1a7ae1df6c1ef609c9372406f959ab37" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Käthe Kollwitz - Stille Kraft</h4><p><b>Kategorie:</b> Ausstellung/Museen</p><p><b>Venue:</b> Käthe-Kollwitz-Museum</p><p><b>Adresse:</b> Spandauer Damm 10, 14059 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/ausstellung+museen/1465.2853615592/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_7b0ed72908e260df17ed7bea6198cf34.setContent(html_1a7ae1df6c1ef609c9372406f959ab37);
+            
+        
+
+        marker_8669ff1f1ffe05ad00da1eaa03bf707b.bindPopup(popup_7b0ed72908e260df17ed7bea6198cf34)
+        ;
+
+        
+    
+    
+            marker_8669ff1f1ffe05ad00da1eaa03bf707b.bindTooltip(
+                `<div>
+                     Käthe Kollwitz - Stille Kraft
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8669ff1f1ffe05ad00da1eaa03bf707b.setIcon(icon_adafa9ac22cd1339a1a1c16b1e765b7f);
+            
+    
+            var marker_a439f6ea2098fd002dd8b700208350be = L.marker(
+                [52.5070409, 13.3676212],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_be41baecb58842937ccd46c1818203b5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_31c9d82a3ac998b4a62342dc391403dc = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_7fe3ae645fc87a9107f7844640aef63b = $(`<div id="html_7fe3ae645fc87a9107f7844640aef63b" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Max Ernst bis Dorothea Tanning. Netzwerke des Surrealismus</h4><p><b>Kategorie:</b> Ausstellung/Museen</p><p><b>Venue:</b> Neue Nationalgalerie</p><p><b>Adresse:</b> Potsdamer Str. 50, 10785 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/ausstellung+museen/1465.30004952/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_31c9d82a3ac998b4a62342dc391403dc.setContent(html_7fe3ae645fc87a9107f7844640aef63b);
+            
+        
+
+        marker_a439f6ea2098fd002dd8b700208350be.bindPopup(popup_31c9d82a3ac998b4a62342dc391403dc)
+        ;
+
+        
+    
+    
+            marker_a439f6ea2098fd002dd8b700208350be.bindTooltip(
+                `<div>
+                     Max Ernst bis Dorothea Tanning. Netzwerke des Surrealismus
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_a439f6ea2098fd002dd8b700208350be.setIcon(icon_be41baecb58842937ccd46c1818203b5);
+            
+    
+            var marker_dcf5c054945aeafe6215341e4b4231fb = L.marker(
+                [52.5177477, 13.3970225],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_ab1bf75f8776ac35305c18eec84ea57f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ca0cce3dc52630b5b51edda184e6f3f7 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_4c215dea1f75e7f7cf0510812a871fd3 = $(`<div id="html_4c215dea1f75e7f7cf0510812a871fd3" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Natur und deutsche Geschichte. Glaube - Biologie - Macht</h4><p><b>Kategorie:</b> Ausstellung/Museen</p><p><b>Venue:</b> Deutsches Historisches Museum</p><p><b>Adresse:</b> Unter den Linden 2, 10117 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/ausstellung+museen/1465.30004821/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_ca0cce3dc52630b5b51edda184e6f3f7.setContent(html_4c215dea1f75e7f7cf0510812a871fd3);
+            
+        
+
+        marker_dcf5c054945aeafe6215341e4b4231fb.bindPopup(popup_ca0cce3dc52630b5b51edda184e6f3f7)
+        ;
+
+        
+    
+    
+            marker_dcf5c054945aeafe6215341e4b4231fb.bindTooltip(
+                `<div>
+                     Natur und deutsche Geschichte. Glaube - Biologie - Macht
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_dcf5c054945aeafe6215341e4b4231fb.setIcon(icon_ab1bf75f8776ac35305c18eec84ea57f);
+            
+    
+            var marker_70ee98993724a58300bdef8b8f15353f = L.marker(
+                [52.5070409, 13.3676212],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_f4f974438fe0b48820f82b9f42988fdd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b78eee145bcf9189f5988c15b32e24e6 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_396d71fffa119452d32e18fb968dbbbb = $(`<div id="html_396d71fffa119452d32e18fb968dbbbb" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>The Clock</h4><p><b>Kategorie:</b> Ausstellung/Museen</p><p><b>Venue:</b> Neue Nationalgalerie</p><p><b>Adresse:</b> Potsdamer Str. 50, 10785 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/ausstellung+museen/1465.30005170/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_b78eee145bcf9189f5988c15b32e24e6.setContent(html_396d71fffa119452d32e18fb968dbbbb);
+            
+        
+
+        marker_70ee98993724a58300bdef8b8f15353f.bindPopup(popup_b78eee145bcf9189f5988c15b32e24e6)
+        ;
+
+        
+    
+    
+            marker_70ee98993724a58300bdef8b8f15353f.bindTooltip(
+                `<div>
+                     The Clock
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_70ee98993724a58300bdef8b8f15353f.setIcon(icon_f4f974438fe0b48820f82b9f42988fdd);
+            
+    
+            var marker_1abe524bd474902b471815bb8aff79b0 = L.marker(
+                [52.4986265, 13.3287067],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_bc9e64f7f91a51d6f6f3f0db5b5a012c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0eb6f029161f870af3444da2e551a01e = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_14c01baca9b96df5f04dc95fd184711e = $(`<div id="html_14c01baca9b96df5f04dc95fd184711e" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Tim Fischer singt Hildegard Knef – Na und</h4><p><b>Kategorie:</b> Bühne/Kabarett</p><p><b>Venue:</b> Bar jeder Vernunft</p><p><b>Adresse:</b> Schaperstr. 24, 10719 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/buehne+kabarett/1465.10091370/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_0eb6f029161f870af3444da2e551a01e.setContent(html_14c01baca9b96df5f04dc95fd184711e);
+            
+        
+
+        marker_1abe524bd474902b471815bb8aff79b0.bindPopup(popup_0eb6f029161f870af3444da2e551a01e)
+        ;
+
+        
+    
+    
+            marker_1abe524bd474902b471815bb8aff79b0.bindTooltip(
+                `<div>
+                     Tim Fischer singt Hildegard Knef – Na und
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_1abe524bd474902b471815bb8aff79b0.setIcon(icon_bc9e64f7f91a51d6f6f3f0db5b5a012c);
+            
+    
+            var marker_625be6a44164604829ebb4f2eed6ccdf = L.marker(
+                [52.5020464, 13.3644619],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_3b44121f765514fe66b800b34c2d8f74 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bf39dc0a6bd32527be9e86da37830a9d = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_fba1cf5fe6a83154db1e381b9630c8d1 = $(`<div id="html_fba1cf5fe6a83154db1e381b9630c8d1" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Schneewittchen und der Zauberspiegel</h4><p><b>Kategorie:</b> Bühne/Kabarett</p><p><b>Venue:</b> Wintergarten</p><p><b>Adresse:</b> Potsdamer Str. 96, 10785 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/buehne+kabarett/1465.10095515/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_bf39dc0a6bd32527be9e86da37830a9d.setContent(html_fba1cf5fe6a83154db1e381b9630c8d1);
+            
+        
+
+        marker_625be6a44164604829ebb4f2eed6ccdf.bindPopup(popup_bf39dc0a6bd32527be9e86da37830a9d)
+        ;
+
+        
+    
+    
+            marker_625be6a44164604829ebb4f2eed6ccdf.bindTooltip(
+                `<div>
+                     Schneewittchen und der Zauberspiegel
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_625be6a44164604829ebb4f2eed6ccdf.setIcon(icon_3b44121f765514fe66b800b34c2d8f74);
+            
+    
+            var marker_7691e008c24b5a1852dcf07de6ac2cd2 = L.marker(
+                [52.5088651, 13.2707514],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_3fca610fa188f5f624a756ec83a39f0b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_01347bf4c04920c259bf9667307bd254 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_d57f448e0ac3633e90f02edc08efc729 = $(`<div id="html_d57f448e0ac3633e90f02edc08efc729" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Tödliche Weihnacht</h4><p><b>Kategorie:</b> Bühne/Kabarett</p><p><b>Venue:</b> Wühlmäuse</p><p><b>Adresse:</b> Pommernallee 2-4, 14052 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/buehne+kabarett/1465.10077988/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_01347bf4c04920c259bf9667307bd254.setContent(html_d57f448e0ac3633e90f02edc08efc729);
+            
+        
+
+        marker_7691e008c24b5a1852dcf07de6ac2cd2.bindPopup(popup_01347bf4c04920c259bf9667307bd254)
+        ;
+
+        
+    
+    
+            marker_7691e008c24b5a1852dcf07de6ac2cd2.bindTooltip(
+                `<div>
+                     Tödliche Weihnacht
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7691e008c24b5a1852dcf07de6ac2cd2.setIcon(icon_3fca610fa188f5f624a756ec83a39f0b);
+            
+    
+            var marker_39c91914a14f51e94caa0924ad3b918e = L.marker(
+                [52.5014, 13.3270023],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_7c1e7ab0bde695668c2ab1c906bc58d5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_df2e099ddf6a8918223ccb522125af93 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_6fb810618879ff9ea5c1676bd986d939 = $(`<div id="html_6fb810618879ff9ea5c1676bd986d939" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>E-1027+123</h4><p><b>Kategorie:</b> Ausstellung/Galerien</p><p><b>Venue:</b> Galerie Kornfeld</p><p><b>Adresse:</b> Fasanenstr. 26, 10719 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/ausstellung+galerien/1465.2848365500/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_df2e099ddf6a8918223ccb522125af93.setContent(html_6fb810618879ff9ea5c1676bd986d939);
+            
+        
+
+        marker_39c91914a14f51e94caa0924ad3b918e.bindPopup(popup_df2e099ddf6a8918223ccb522125af93)
+        ;
+
+        
+    
+    
+            marker_39c91914a14f51e94caa0924ad3b918e.bindTooltip(
+                `<div>
+                     E-1027+123
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_39c91914a14f51e94caa0924ad3b918e.setIcon(icon_7c1e7ab0bde695668c2ab1c906bc58d5);
+            
+    
+            var marker_4924666f576b10c9f53020a5ae7a9ca3 = L.marker(
+                [52.5218517, 13.4076304],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_24b92f960bbf45e57761a821fdcfdddc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7565ff02a00def037b5a414feaf7391c = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_743a29bc3b75e271487c141f2b138766 = $(`<div id="html_743a29bc3b75e271487c141f2b138766" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>EastUnBloc</h4><p><b>Kategorie:</b> Ausstellung/Andere Orte</p><p><b>Venue:</b> nGbK</p><p><b>Adresse:</b> Karl-Liebknecht-Str. 11/13, 10178 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/ausstellung+andere_orte/1465.2860296247/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_7565ff02a00def037b5a414feaf7391c.setContent(html_743a29bc3b75e271487c141f2b138766);
+            
+        
+
+        marker_4924666f576b10c9f53020a5ae7a9ca3.bindPopup(popup_7565ff02a00def037b5a414feaf7391c)
+        ;
+
+        
+    
+    
+            marker_4924666f576b10c9f53020a5ae7a9ca3.bindTooltip(
+                `<div>
+                     EastUnBloc
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4924666f576b10c9f53020a5ae7a9ca3.setIcon(icon_24b92f960bbf45e57761a821fdcfdddc);
+            
+    
+            var marker_122ab1e22bb2b09cc37331a110f4a444 = L.marker(
+                [52.5120313, 13.3185208],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_038c204417778792a19ae8a523698d61 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_adedf1ff4866efed41e4bde4d4a94849 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_9083c2eb46033bda7142977b579f33b5 = $(`<div id="html_9083c2eb46033bda7142977b579f33b5" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Eine Frau, die weiß, was sie will!  letzte Vorstellung in dieser Spielzeit</h4><p><b>Kategorie:</b> Bühne/Oper</p><p><b>Venue:</b> Komische Oper im Schillertheater</p><p><b>Adresse:</b> Bismarckstr. 110, 10623 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/buehne+oper/1465.10079778/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_adedf1ff4866efed41e4bde4d4a94849.setContent(html_9083c2eb46033bda7142977b579f33b5);
+            
+        
+
+        marker_122ab1e22bb2b09cc37331a110f4a444.bindPopup(popup_adedf1ff4866efed41e4bde4d4a94849)
+        ;
+
+        
+    
+    
+            marker_122ab1e22bb2b09cc37331a110f4a444.bindTooltip(
+                `<div>
+                     Eine Frau, die weiß, was sie will!  letzte Vorstellung in dieser Spielzeit
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_122ab1e22bb2b09cc37331a110f4a444.setIcon(icon_038c204417778792a19ae8a523698d61);
+            
+    
+            var marker_d179e6d679cbd574eaa3cb27f9443f48 = L.marker(
+                [52.5004841, 13.3169278],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_72b54c667589ad168477ff595f23e032 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_eafe5ed24199f838ed4d57b50c60a62c = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_a81fb55be5bae8810a32f6a884495ffa = $(`<div id="html_a81fb55be5bae8810a32f6a884495ffa" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Groundless</h4><p><b>Kategorie:</b> Ausstellung/Galerien</p><p><b>Venue:</b> Zilberman Gallery</p><p><b>Adresse:</b> Schlüterstr. 45, 10707 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/ausstellung+galerien/1465.2856544532/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_eafe5ed24199f838ed4d57b50c60a62c.setContent(html_a81fb55be5bae8810a32f6a884495ffa);
+            
+        
+
+        marker_d179e6d679cbd574eaa3cb27f9443f48.bindPopup(popup_eafe5ed24199f838ed4d57b50c60a62c)
+        ;
+
+        
+    
+    
+            marker_d179e6d679cbd574eaa3cb27f9443f48.bindTooltip(
+                `<div>
+                     Groundless
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d179e6d679cbd574eaa3cb27f9443f48.setIcon(icon_72b54c667589ad168477ff595f23e032);
+            
+    
+            var marker_2b5e3bb3905ea9b68cb325475a63b263 = L.marker(
+                [52.5008537, 13.3273006],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_e68c01e64ee8ac2cab6936961ecb0fd2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fc5d47acfe0f44c423f442fc1a7b5c33 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_e083474a2f4d3afbda9f6cfa0b509ea9 = $(`<div id="html_e083474a2f4d3afbda9f6cfa0b509ea9" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Made in Paris</h4><p><b>Kategorie:</b> Ausstellung/Galerien</p><p><b>Venue:</b> 68projects</p><p><b>Adresse:</b> Fasanenstr. 68, 10719 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/ausstellung+galerien/1465.2848365523/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_fc5d47acfe0f44c423f442fc1a7b5c33.setContent(html_e083474a2f4d3afbda9f6cfa0b509ea9);
+            
+        
+
+        marker_2b5e3bb3905ea9b68cb325475a63b263.bindPopup(popup_fc5d47acfe0f44c423f442fc1a7b5c33)
+        ;
+
+        
+    
+    
+            marker_2b5e3bb3905ea9b68cb325475a63b263.bindTooltip(
+                `<div>
+                     Made in Paris
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2b5e3bb3905ea9b68cb325475a63b263.setIcon(icon_e68c01e64ee8ac2cab6936961ecb0fd2);
+            
+    
+            var marker_ee9d664903ad287b4b7a8a83ca31e2bc = L.marker(
+                [52.5292781, 13.3882266],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_3b328f85887f49c039f36e857d30d429 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_26deb1551932b52ad5abc0e1597e9dfb = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_bfa06544bae61546728a4c4d9b4623c4 = $(`<div id="html_bfa06544bae61546728a4c4d9b4623c4" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Moyra Davey</h4><p><b>Kategorie:</b> Ausstellung/Andere Orte</p><p><b>Venue:</b> n.b.k.</p><p><b>Adresse:</b> Chausseestr. 128-129, 10115 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/ausstellung+andere_orte/1465.30005286/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_26deb1551932b52ad5abc0e1597e9dfb.setContent(html_bfa06544bae61546728a4c4d9b4623c4);
+            
+        
+
+        marker_ee9d664903ad287b4b7a8a83ca31e2bc.bindPopup(popup_26deb1551932b52ad5abc0e1597e9dfb)
+        ;
+
+        
+    
+    
+            marker_ee9d664903ad287b4b7a8a83ca31e2bc.bindTooltip(
+                `<div>
+                     Moyra Davey
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ee9d664903ad287b4b7a8a83ca31e2bc.setIcon(icon_3b328f85887f49c039f36e857d30d429);
+            
+    
+            var marker_61c0319d21a59b3b733002f556266143 = L.marker(
+                [52.4894924, 13.3120475],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_69bb6c8b4fb593d0cc5da6eef574d4d4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9ae5e754f6d3b682386a339fe48677cc = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_16bdd7ca192663cfedf91ae2f2b9e9c1 = $(`<div id="html_16bdd7ca192663cfedf91ae2f2b9e9c1" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>UdK Berlin Art Award 2025</h4><p><b>Kategorie:</b> Ausstellung/Andere Orte</p><p><b>Venue:</b> Kommunale Galerie Berlin</p><p><b>Adresse:</b> Hohenzollerndamm 176, 10713 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/ausstellung+andere_orte/1465.2853630889/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_9ae5e754f6d3b682386a339fe48677cc.setContent(html_16bdd7ca192663cfedf91ae2f2b9e9c1);
+            
+        
+
+        marker_61c0319d21a59b3b733002f556266143.bindPopup(popup_9ae5e754f6d3b682386a339fe48677cc)
+        ;
+
+        
+    
+    
+            marker_61c0319d21a59b3b733002f556266143.bindTooltip(
+                `<div>
+                     UdK Berlin Art Award 2025
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_61c0319d21a59b3b733002f556266143.setIcon(icon_69bb6c8b4fb593d0cc5da6eef574d4d4);
+            
+    
+            var marker_2031bf98df47ea893e3ef01c1a373504 = L.marker(
+                [52.5064417, 13.4572149],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_8d7e0e057541e9ade64fdff53ea928a2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c4eab668113ab897b2f671d5fa53e78d = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_379f0cf9d5138699edc133faaf92195f = $(`<div id="html_379f0cf9d5138699edc133faaf92195f" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>VINCENT: ZWISCHEN WAHN UND WUNDER</h4><p><b>Kategorie:</b> Ausstellung/Andere Orte</p><p><b>Venue:</b> khroma l new media art center</p><p><b>Adresse:</b> Revaler str. 99, 10245 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/ausstellung+andere_orte/1465.2860459814/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_c4eab668113ab897b2f671d5fa53e78d.setContent(html_379f0cf9d5138699edc133faaf92195f);
+            
+        
+
+        marker_2031bf98df47ea893e3ef01c1a373504.bindPopup(popup_c4eab668113ab897b2f671d5fa53e78d)
+        ;
+
+        
+    
+    
+            marker_2031bf98df47ea893e3ef01c1a373504.bindTooltip(
+                `<div>
+                     VINCENT: ZWISCHEN WAHN UND WUNDER
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2031bf98df47ea893e3ef01c1a373504.setIcon(icon_8d7e0e057541e9ade64fdff53ea928a2);
+            
+    
+            var marker_5e9edab7c88dd2b0d2778976df21e839 = L.marker(
+                [52.5315158, 13.410782],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_8abcfcad6fcabb832ab80f9e364ffa89 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b377db8894f51b741491b30635dd6d84 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_321b755eb0f60011835e9e0b285b252f = $(`<div id="html_321b755eb0f60011835e9e0b285b252f" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>What If: A Change of Perspective</h4><p><b>Kategorie:</b> Ausstellung/Andere Orte</p><p><b>Venue:</b> Aedes Architecture Forum</p><p><b>Adresse:</b> Christinenstr. 18/19, 10115 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/ausstellung+andere_orte/1465.2854418309/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_b377db8894f51b741491b30635dd6d84.setContent(html_321b755eb0f60011835e9e0b285b252f);
+            
+        
+
+        marker_5e9edab7c88dd2b0d2778976df21e839.bindPopup(popup_b377db8894f51b741491b30635dd6d84)
+        ;
+
+        
+    
+    
+            marker_5e9edab7c88dd2b0d2778976df21e839.bindTooltip(
+                `<div>
+                     What If: A Change of Perspective
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5e9edab7c88dd2b0d2778976df21e839.setIcon(icon_8abcfcad6fcabb832ab80f9e364ffa89);
+            
+    
+            var marker_72a847bbb2d86d86aa7e715b02973b30 = L.marker(
+                [52.5256724, 13.3891203],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_83891d6bb8cac74f544ecb1e788b1580 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_546548baf759cb0cab0dcc6622038ef7 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_dfb4fa244d2711b357e92b112b8c241a = $(`<div id="html_dfb4fa244d2711b357e92b112b8c241a" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>für uns</h4><p><b>Kategorie:</b> Ausstellung/Andere Orte</p><p><b>Venue:</b> Fotografiska Berlin</p><p><b>Adresse:</b> Oranienburger Str. 54, 10117 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/ausstellung+andere_orte/1465.2827184170/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_546548baf759cb0cab0dcc6622038ef7.setContent(html_dfb4fa244d2711b357e92b112b8c241a);
+            
+        
+
+        marker_72a847bbb2d86d86aa7e715b02973b30.bindPopup(popup_546548baf759cb0cab0dcc6622038ef7)
+        ;
+
+        
+    
+    
+            marker_72a847bbb2d86d86aa7e715b02973b30.bindTooltip(
+                `<div>
+                     für uns
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_72a847bbb2d86d86aa7e715b02973b30.setIcon(icon_83891d6bb8cac74f544ecb1e788b1580);
+            
+    
+            var marker_862c6713789ae2e2ab67378b90b4eb3f = L.marker(
+                [52.5049676, 13.335294],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_375fc0e8d2273ecfc824a8f999c3ec1a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_cb2e8434f17035355bc0ac1150f95e13 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_2cfb5a2d0604609db1bf2dfa75774b17 = $(`<div id="html_2cfb5a2d0604609db1bf2dfa75774b17" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>42. Weihnachtsmarkt an der Gedächtniskirche</h4><p><b>Kategorie:</b> Handel/Markt</p><p><b>Venue:</b> Breitscheidplatz</p><p><b>Adresse:</b> Breitscheidplatz, 10789 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/handel+markt/1465.2856327845/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_cb2e8434f17035355bc0ac1150f95e13.setContent(html_2cfb5a2d0604609db1bf2dfa75774b17);
+            
+        
+
+        marker_862c6713789ae2e2ab67378b90b4eb3f.bindPopup(popup_cb2e8434f17035355bc0ac1150f95e13)
+        ;
+
+        
+    
+    
+            marker_862c6713789ae2e2ab67378b90b4eb3f.bindTooltip(
+                `<div>
+                     42. Weihnachtsmarkt an der Gedächtniskirche
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_862c6713789ae2e2ab67378b90b4eb3f.setIcon(icon_375fc0e8d2273ecfc824a8f999c3ec1a);
+            
+    
+            var marker_8ef6856e9d266442edcf960debcac4f1 = L.marker(
+                [52.5182718, 13.4078309],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_4f2d3986b14bdd35a65b924de2bab6bb = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_12c067ffd1b43a4a04e88a93aca21fe8 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_01c171d32b2b3bb3f50a9905c0a9ef4d = $(`<div id="html_01c171d32b2b3bb3f50a9905c0a9ef4d" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Berliner Weihnachtszeit am Roten Rathaus</h4><p><b>Kategorie:</b> Handel/Markt</p><p><b>Venue:</b> Rotes Rathaus</p><p><b>Adresse:</b> Rathausstr. 15, 10178 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/handel+markt/1465.2855470002/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_12c067ffd1b43a4a04e88a93aca21fe8.setContent(html_01c171d32b2b3bb3f50a9905c0a9ef4d);
+            
+        
+
+        marker_8ef6856e9d266442edcf960debcac4f1.bindPopup(popup_12c067ffd1b43a4a04e88a93aca21fe8)
+        ;
+
+        
+    
+    
+            marker_8ef6856e9d266442edcf960debcac4f1.bindTooltip(
+                `<div>
+                     Berliner Weihnachtszeit am Roten Rathaus
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8ef6856e9d266442edcf960debcac4f1.setIcon(icon_4f2d3986b14bdd35a65b924de2bab6bb);
+            
+    
+            var marker_7f7bae136b769f1964e83bafeb9cdc18 = L.marker(
+                [52.4645931, 13.4982029],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_d39a518146fd53b3f6aeba8b472ad50d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d96747c9c0e4a09f4bab298d87a1dff4 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_677e462275dfc2f9372bd1c4ca17f2ad = $(`<div id="html_677e462275dfc2f9372bd1c4ca17f2ad" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Berliner Wintertraum</h4><p><b>Kategorie:</b> Handel/Markt</p><p><b>Venue:</b> Berliner Wintertraum</p><p><b>Adresse:</b> Schnellerstr. 145, 12439 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/handel+markt/1465.2852989543/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_d96747c9c0e4a09f4bab298d87a1dff4.setContent(html_677e462275dfc2f9372bd1c4ca17f2ad);
+            
+        
+
+        marker_7f7bae136b769f1964e83bafeb9cdc18.bindPopup(popup_d96747c9c0e4a09f4bab298d87a1dff4)
+        ;
+
+        
+    
+    
+            marker_7f7bae136b769f1964e83bafeb9cdc18.bindTooltip(
+                `<div>
+                     Berliner Wintertraum
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7f7bae136b769f1964e83bafeb9cdc18.setIcon(icon_d39a518146fd53b3f6aeba8b472ad50d);
+            
+    
+            var marker_606bb989a2d535e01861c3892c35f2f5 = L.marker(
+                [52.5036757, 13.3322146],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_165ad1c9e756ac36213a027569b7b768 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_75b80c1cbcd16525516f99485b5dcdf8 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_1241bbd1079a2f2b6ea9b925d9959857 = $(`<div id="html_1241bbd1079a2f2b6ea9b925d9959857" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Hawkins Christmas Market – Stranger Things Weihnachtsmarkt in Berlin</h4><p><b>Kategorie:</b> Handel/Markt</p><p><b>Venue:</b> Pop Kudamm</p><p><b>Adresse:</b> Kurfürstendamm 229, 10719 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/handel+markt/1465.2860675418/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_75b80c1cbcd16525516f99485b5dcdf8.setContent(html_1241bbd1079a2f2b6ea9b925d9959857);
+            
+        
+
+        marker_606bb989a2d535e01861c3892c35f2f5.bindPopup(popup_75b80c1cbcd16525516f99485b5dcdf8)
+        ;
+
+        
+    
+    
+            marker_606bb989a2d535e01861c3892c35f2f5.bindTooltip(
+                `<div>
+                     Hawkins Christmas Market – Stranger Things Weihnachtsmarkt in Berlin
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_606bb989a2d535e01861c3892c35f2f5.setIcon(icon_165ad1c9e756ac36213a027569b7b768);
+            
+    
+            var marker_2117cb1d6d2e49a9b450dbf28dee3035 = L.marker(
+                [52.399019, 13.0474584],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_cbf904372930dd92db2fbdb2aa72f46b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_fecde9f09179dac331029e2c672fd4fa = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_e8cc39967eb5b9e45b680379b58fe4d8 = $(`<div id="html_e8cc39967eb5b9e45b680379b58fe4d8" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Potsdamer Weihnachtszauber</h4><p><b>Kategorie:</b> Handel/Markt</p><p><b>Venue:</b> Luisenplatz Potsdam</p><p><b>Adresse:</b> Luisenplatz, 14471 Potsdam</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/handel+markt/1465.2855140773/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_fecde9f09179dac331029e2c672fd4fa.setContent(html_e8cc39967eb5b9e45b680379b58fe4d8);
+            
+        
+
+        marker_2117cb1d6d2e49a9b450dbf28dee3035.bindPopup(popup_fecde9f09179dac331029e2c672fd4fa)
+        ;
+
+        
+    
+    
+            marker_2117cb1d6d2e49a9b450dbf28dee3035.bindTooltip(
+                `<div>
+                     Potsdamer Weihnachtszauber
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2117cb1d6d2e49a9b450dbf28dee3035.setIcon(icon_cbf904372930dd92db2fbdb2aa72f46b);
+            
+    
+            var marker_dccc3a2b6bcd9b4565eff4a668f0be0b = L.marker(
+                [52.5334839, 13.1996139],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_2d7fbd673d7d5a70c89c28fabeb4f998 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_43cb24fb98af8c60d0bb5e1a9267ff3e = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_1e96a50786d4c35a5c6dcd22ecaf037f = $(`<div id="html_1e96a50786d4c35a5c6dcd22ecaf037f" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Spandauer Winterland</h4><p><b>Kategorie:</b> Handel/Markt</p><p><b>Venue:</b> Altes Postgelände</p><p><b>Adresse:</b> Klosterstr. 38, 13581 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/handel+markt/1465.2855188945/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_43cb24fb98af8c60d0bb5e1a9267ff3e.setContent(html_1e96a50786d4c35a5c6dcd22ecaf037f);
+            
+        
+
+        marker_dccc3a2b6bcd9b4565eff4a668f0be0b.bindPopup(popup_43cb24fb98af8c60d0bb5e1a9267ff3e)
+        ;
+
+        
+    
+    
+            marker_dccc3a2b6bcd9b4565eff4a668f0be0b.bindTooltip(
+                `<div>
+                     Spandauer Winterland
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_dccc3a2b6bcd9b4565eff4a668f0be0b.setIcon(icon_2d7fbd673d7d5a70c89c28fabeb4f998);
+            
+    
+            var marker_90fcd2d786e5dfe0f0aa30b1ed883604 = L.marker(
+                [52.5402446, 13.4095113],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_99cb81a6b5e6c6421d0a3a1241f0538f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_73d9c8c4809572e807ec4cce93d66021 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_e24de8ab71de8a18df39dda9ff5ba56b = $(`<div id="html_e24de8ab71de8a18df39dda9ff5ba56b" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Weihnachts-Biergarten</h4><p><b>Kategorie:</b> Handel/Markt</p><p><b>Venue:</b> Prater</p><p><b>Adresse:</b> Kastanienallee 7–9, 10437 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/handel+markt/1465.2858977018/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_73d9c8c4809572e807ec4cce93d66021.setContent(html_e24de8ab71de8a18df39dda9ff5ba56b);
+            
+        
+
+        marker_90fcd2d786e5dfe0f0aa30b1ed883604.bindPopup(popup_73d9c8c4809572e807ec4cce93d66021)
+        ;
+
+        
+    
+    
+            marker_90fcd2d786e5dfe0f0aa30b1ed883604.bindTooltip(
+                `<div>
+                     Weihnachts-Biergarten
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_90fcd2d786e5dfe0f0aa30b1ed883604.setIcon(icon_99cb81a6b5e6c6421d0a3a1241f0538f);
+            
+    
+            var marker_86d1fce3664efdcc22f2f0a71d181865 = L.marker(
+                [52.5175184, 13.3877686],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_119ad42dbd3ea122a487c9742bd7341e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9be46b4c7076039f2217a68bdf5dbbd5 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_ce94a0ba2d4a5b41629ee2f36c7ede69 = $(`<div id="html_ce94a0ba2d4a5b41629ee2f36c7ede69" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>WeihnachtsZauber Gendarmenmarkt</h4><p><b>Kategorie:</b> Handel/Markt</p><p><b>Venue:</b> Gendarmenmarkt</p><p><b>Adresse:</b> , 10117 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/handel+markt/1465.2854015437/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_9be46b4c7076039f2217a68bdf5dbbd5.setContent(html_ce94a0ba2d4a5b41629ee2f36c7ede69);
+            
+        
+
+        marker_86d1fce3664efdcc22f2f0a71d181865.bindPopup(popup_9be46b4c7076039f2217a68bdf5dbbd5)
+        ;
+
+        
+    
+    
+            marker_86d1fce3664efdcc22f2f0a71d181865.bindTooltip(
+                `<div>
+                     WeihnachtsZauber Gendarmenmarkt
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_86d1fce3664efdcc22f2f0a71d181865.setIcon(icon_119ad42dbd3ea122a487c9742bd7341e);
+            
+    
+            var marker_b62cf48e594b868576f8b9207cfd7588 = L.marker(
+                [52.5215059, 13.4123809],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_f87cdf89ebf7f8805e5466e76daeb204 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_48ab7220f82d1cc4246fb8fa549a2ffe = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_a84260c2864383f73930cc16d28da98c = $(`<div id="html_a84260c2864383f73930cc16d28da98c" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Weihnachtsmarkt am Alexanderplatz</h4><p><b>Kategorie:</b> Handel/Markt</p><p><b>Venue:</b> Alexanderplatz</p><p><b>Adresse:</b> Alexanderplatz 1, 10178 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/handel+markt/1465.2597168270/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_48ab7220f82d1cc4246fb8fa549a2ffe.setContent(html_a84260c2864383f73930cc16d28da98c);
+            
+        
+
+        marker_b62cf48e594b868576f8b9207cfd7588.bindPopup(popup_48ab7220f82d1cc4246fb8fa549a2ffe)
+        ;
+
+        
+    
+    
+            marker_b62cf48e594b868576f8b9207cfd7588.bindTooltip(
+                `<div>
+                     Weihnachtsmarkt am Alexanderplatz
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b62cf48e594b868576f8b9207cfd7588.setIcon(icon_f87cdf89ebf7f8805e5466e76daeb204);
+            
+    
+            var marker_6dd75bc18f907e636cee77ac0aa3f56f = L.marker(
+                [52.5017976, 13.3430005],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_2b63791fa8b267c58da84869175ab93e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d7f077b18367a5d11c97d9d5d46319fe = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_91ba88c1dd645e53437d624a2986ceda = $(`<div id="html_91ba88c1dd645e53437d624a2986ceda" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Weihnachtsmarkt am KaDeWe</h4><p><b>Kategorie:</b> Handel/Markt</p><p><b>Venue:</b> Wittenbergplatz</p><p><b>Adresse:</b> Wittenbergplatz, 10789 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/handel+markt/1465.2854198339/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_d7f077b18367a5d11c97d9d5d46319fe.setContent(html_91ba88c1dd645e53437d624a2986ceda);
+            
+        
+
+        marker_6dd75bc18f907e636cee77ac0aa3f56f.bindPopup(popup_d7f077b18367a5d11c97d9d5d46319fe)
+        ;
+
+        
+    
+    
+            marker_6dd75bc18f907e636cee77ac0aa3f56f.bindTooltip(
+                `<div>
+                     Weihnachtsmarkt am KaDeWe
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_6dd75bc18f907e636cee77ac0aa3f56f.setIcon(icon_2b63791fa8b267c58da84869175ab93e);
+            
+    
+            var marker_80b5cbd3bb07de9c402da70bfbde72d7 = L.marker(
+                [52.518331, 13.2802071],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_a5a09d99da23cf52b71fd990f461f8ea = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_debcfe98023439eccf933939f8b57bba = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_50d1cd5f32aeb7b978741e7d42638100 = $(`<div id="html_50d1cd5f32aeb7b978741e7d42638100" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Weihnachtsmarkt am Schloss Charlottenburg</h4><p><b>Kategorie:</b> Handel/Markt</p><p><b>Venue:</b> Schloss Charlottenburg</p><p><b>Adresse:</b> Spandauer Damm 20–22, 14059 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/handel+markt/1465.10030669/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_debcfe98023439eccf933939f8b57bba.setContent(html_50d1cd5f32aeb7b978741e7d42638100);
+            
+        
+
+        marker_80b5cbd3bb07de9c402da70bfbde72d7.bindPopup(popup_debcfe98023439eccf933939f8b57bba)
+        ;
+
+        
+    
+    
+            marker_80b5cbd3bb07de9c402da70bfbde72d7.bindTooltip(
+                `<div>
+                     Weihnachtsmarkt am Schloss Charlottenburg
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_80b5cbd3bb07de9c402da70bfbde72d7.setIcon(icon_a5a09d99da23cf52b71fd990f461f8ea);
+            
+    
+            var marker_2f91fd6200c355dd451c8030b6f91f01 = L.marker(
+                [52.4088769, 13.6068546],
+                {
+}
+            ).addTo(marker_cluster_e5b18119477fb3913bcd250c975469d5);
+        
+    
+            var icon_ce1d23760af8c6747ef4f15d24a5b460 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "star",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0fb6196ffcac2860a02857b62a8f8b8e = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_dc2e88e0388ba0d48eb54f7f0dae492e = $(`<div id="html_dc2e88e0388ba0d48eb54f7f0dae492e" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Winterwelt Grünau</h4><p><b>Kategorie:</b> Handel/Markt</p><p><b>Venue:</b> Strandbad Grünau</p><p><b>Adresse:</b> Sportpromenade 9, 12527 Berlin</p><p><b>Datum:</b> Di. 23.12</p><p><b>Quelle:</b> tip Berlin</p><a href='https://www.tip-berlin.de/event/handel+markt/1465.2854219857/' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_0fb6196ffcac2860a02857b62a8f8b8e.setContent(html_dc2e88e0388ba0d48eb54f7f0dae492e);
+            
+        
+
+        marker_2f91fd6200c355dd451c8030b6f91f01.bindPopup(popup_0fb6196ffcac2860a02857b62a8f8b8e)
+        ;
+
+        
+    
+    
+            marker_2f91fd6200c355dd451c8030b6f91f01.bindTooltip(
+                `<div>
+                     Winterwelt Grünau
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2f91fd6200c355dd451c8030b6f91f01.setIcon(icon_ce1d23760af8c6747ef4f15d24a5b460);
+            
+    
+            marker_cluster_e5b18119477fb3913bcd250c975469d5.addTo(map_1857efb2ad2ba4bb06577674787c962d);
+        
+    
+            var marker_cluster_bcf9772c19a6958281f7255b6126bf2b = L.markerClusterGroup(
+                {
+  "maxClusterRadius": 40,
+  "chunkedLoading": true,
+  "spiderfyOnMaxZoom": true,
+  "showCoverageOnHover": false,
+  "animate": false,
+}
+            );
+            marker_cluster_bcf9772c19a6958281f7255b6126bf2b.options.iconCreateFunction =
+                function(cluster) {
+        var childCount = cluster.getChildCount();
+        var size = 30;
+        if (childCount > 10) size = 40;
+        if (childCount > 50) size = 50;
+        
+        return L.divIcon({
+            html: '<div style="background-color: rgba(110, 110, 110, 0.8); color: white; border-radius: 50%; width: ' + size + 'px; height: ' + size + 'px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; border: 2px solid rgba(160, 160, 160, 0.5);">' + childCount + '</div>',
+            className: 'marker-cluster-grey',
+            iconSize: L.point(size, size)
+        });
+    };
+        
+    
+            var marker_2108a333a5a9649b09b7ae86c33e26a5 = L.marker(
+                [52.4645931, 13.4982029],
+                {
+}
+            ).addTo(marker_cluster_bcf9772c19a6958281f7255b6126bf2b);
+        
+    
+            var icon_4495d8e54abeca59c9a25295cfabe65f = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "gift",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b47b06b069a1da96188ed20057e5a87e = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_193f073dd613b523d61dabc9522ada08 = $(`<div id="html_193f073dd613b523d61dabc9522ada08" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Berliner Wintertraum  (täglich außer Heiligabend)</h4><p><b>Adresse:</b> Schnellerstraße 145 12439 Berlin</p><p><b>Zeitangabe:</b> Freitag 07.11.2025 bis Sonntag 28.12.2025</p><p><b>Quelle:</b> Gratis in Berlin</p><a href='https://www.gratis-in-berlin.de/heute/item/2075537-berliner-wintertraum-taeglich-ausser-heiligabend' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_b47b06b069a1da96188ed20057e5a87e.setContent(html_193f073dd613b523d61dabc9522ada08);
+            
+        
+
+        marker_2108a333a5a9649b09b7ae86c33e26a5.bindPopup(popup_b47b06b069a1da96188ed20057e5a87e)
+        ;
+
+        
+    
+    
+            marker_2108a333a5a9649b09b7ae86c33e26a5.bindTooltip(
+                `<div>
+                     Berliner Wintertraum  (täglich außer Heiligabend)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2108a333a5a9649b09b7ae86c33e26a5.setIcon(icon_4495d8e54abeca59c9a25295cfabe65f);
+            
+    
+            var marker_d38c74847bc156819f0974da2c3bf7fe = L.marker(
+                [52.4569741, 13.5680789],
+                {
+}
+            ).addTo(marker_cluster_bcf9772c19a6958281f7255b6126bf2b);
+        
+    
+            var icon_a34115d5eea36dbf5149986d06761db8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "gift",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_13d84dea0ecb7ae9babd131e6f1fe271 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_d0eca1e4fa17119ad2dca8d2dfbbc853 = $(`<div id="html_d0eca1e4fa17119ad2dca8d2dfbbc853" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Stadionsingen bzw. Weihnachtssingen - mehr Ideen als 'nur' das bei Union Berlin in der Alten Försterei</h4><p><b>Adresse:</b> An der Wuhlheide  263 12555 Berlin Germany</p><p><b>Zeitangabe:</b> Dienstag 23.12.2025									   											 - Anfangszeit: 19:00 Uhr</p><p><b>Quelle:</b> Gratis in Berlin</p><a href='https://www.gratis-in-berlin.de/heute/item/2018391-stadionsingen-bzw-weihnachtssingen-mehr-ideen-als-nur-das-bei-union-berlin-in-der-alten-foersterei' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_13d84dea0ecb7ae9babd131e6f1fe271.setContent(html_d0eca1e4fa17119ad2dca8d2dfbbc853);
+            
+        
+
+        marker_d38c74847bc156819f0974da2c3bf7fe.bindPopup(popup_13d84dea0ecb7ae9babd131e6f1fe271)
+        ;
+
+        
+    
+    
+            marker_d38c74847bc156819f0974da2c3bf7fe.bindTooltip(
+                `<div>
+                     Stadionsingen bzw. Weihnachtssingen - mehr Ideen als 'nur' das bei Union Berlin in der Alten Försterei
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d38c74847bc156819f0974da2c3bf7fe.setIcon(icon_a34115d5eea36dbf5149986d06761db8);
+            
+    
+            var marker_33f6c90fc9d16358864c1596e54edf77 = L.marker(
+                [52.4995972, 13.3537297],
+                {
+}
+            ).addTo(marker_cluster_bcf9772c19a6958281f7255b6126bf2b);
+        
+    
+            var icon_e16bbe8382220813ab09c4ebbe2c8191 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "gift",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b35c1ad279642dd1a338eaafc441afe7 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_57f27bdebc43b7d003ea83a3e3cdc71b = $(`<div id="html_57f27bdebc43b7d003ea83a3e3cdc71b" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>LGBT Winterdays & Christmas Avenue in Schöneberg (täglich außer 23.11.)</h4><p><b>Adresse:</b> Nollendorfplatz 10787 Berlin</p><p><b>Zeitangabe:</b> Dienstag 04.11.2025 bis Dienstag 23.12.2025									   - Anfangszeit: :00 Uhr</p><p><b>Quelle:</b> Gratis in Berlin</p><a href='https://www.gratis-in-berlin.de/heute/item/2075848-lgbt-winterdays-christmas-avenue-in-schoeneberg-taeglich-ausser-23-11' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_b35c1ad279642dd1a338eaafc441afe7.setContent(html_57f27bdebc43b7d003ea83a3e3cdc71b);
+            
+        
+
+        marker_33f6c90fc9d16358864c1596e54edf77.bindPopup(popup_b35c1ad279642dd1a338eaafc441afe7)
+        ;
+
+        
+    
+    
+            marker_33f6c90fc9d16358864c1596e54edf77.bindTooltip(
+                `<div>
+                     LGBT Winterdays & Christmas Avenue in Schöneberg (täglich außer 23.11.)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_33f6c90fc9d16358864c1596e54edf77.setIcon(icon_e16bbe8382220813ab09c4ebbe2c8191);
+            
+    
+            var marker_ab98af974b52aca45e91126e6b9ff5de = L.marker(
+                [52.4981416, 13.3792632],
+                {
+}
+            ).addTo(marker_cluster_bcf9772c19a6958281f7255b6126bf2b);
+        
+    
+            var icon_5ea4fa32e2e7d7646cb9082a50987de0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "gift",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f4aa2945b3ff3e147e5266a126be88ec = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_3337889d0a566b7386c06e9e383bb396 = $(`<div id="html_3337889d0a566b7386c06e9e383bb396" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>KI zum Anfassen im Technikmuseum (Di - So)</h4><p><b>Adresse:</b> Möckernstraße 26 10963 Berlin</p><p><b>Zeitangabe:</b> Samstag 01.02.2025 bis Dienstag 23.12.2025									   - Anfangszeit: 10:00 Uhr</p><p><b>Quelle:</b> Gratis in Berlin</p><a href='https://www.gratis-in-berlin.de/heute/item/2071060-ki-zum-anfassen-im-technikmuseum-di-so' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_f4aa2945b3ff3e147e5266a126be88ec.setContent(html_3337889d0a566b7386c06e9e383bb396);
+            
+        
+
+        marker_ab98af974b52aca45e91126e6b9ff5de.bindPopup(popup_f4aa2945b3ff3e147e5266a126be88ec)
+        ;
+
+        
+    
+    
+            marker_ab98af974b52aca45e91126e6b9ff5de.bindTooltip(
+                `<div>
+                     KI zum Anfassen im Technikmuseum (Di - So)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ab98af974b52aca45e91126e6b9ff5de.setIcon(icon_5ea4fa32e2e7d7646cb9082a50987de0);
+            
+    
+            var marker_9d3c4b8375c494781d7ef97d8374be31 = L.marker(
+                [52.5334839, 13.1996139],
+                {
+}
+            ).addTo(marker_cluster_bcf9772c19a6958281f7255b6126bf2b);
+        
+    
+            var icon_ecdca7f74a57ebf3c2aa924de2585d70 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "gift",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ef2a779c05202f5765c3531dc27fe54e = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_41265fb6161f439d928a4f21fd98399e = $(`<div id="html_41265fb6161f439d928a4f21fd98399e" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Spandauer Winterland (außer 16. & 23.11.)</h4><p><b>Adresse:</b> Klosterstraße 38 13581 Berlin</p><p><b>Zeitangabe:</b> Freitag 14.11.2025 bis Dienstag 23.12.2025									   - Anfangszeit: 14:00 Uhr</p><p><b>Quelle:</b> Gratis in Berlin</p><a href='https://www.gratis-in-berlin.de/heute/item/2075923-spandauer-winterland-ausser-16-23-11' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_ef2a779c05202f5765c3531dc27fe54e.setContent(html_41265fb6161f439d928a4f21fd98399e);
+            
+        
+
+        marker_9d3c4b8375c494781d7ef97d8374be31.bindPopup(popup_ef2a779c05202f5765c3531dc27fe54e)
+        ;
+
+        
+    
+    
+            marker_9d3c4b8375c494781d7ef97d8374be31.bindTooltip(
+                `<div>
+                     Spandauer Winterland (außer 16. & 23.11.)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_9d3c4b8375c494781d7ef97d8374be31.setIcon(icon_ecdca7f74a57ebf3c2aa924de2585d70);
+            
+    
+            var marker_94ed1dbbdff9ce666688e639e5ceca44 = L.marker(
+                [52.5475885, 13.3683614],
+                {
+}
+            ).addTo(marker_cluster_bcf9772c19a6958281f7255b6126bf2b);
+        
+    
+            var icon_ff2aa0425ba170786f8242b955558bf9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "gift",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b33187d8a4d0ff7f04705df0f80d53f7 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_c77473570b811cab0b628d4c87eec544 = $(`<div id="html_c77473570b811cab0b628d4c87eec544" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Love Life English stand up comedy! 20:20 KIKISOL Wedding</h4><p><b>Adresse:</b> Reinickendorfer Straße 96 13347 Berlin</p><p><b>Zeitangabe:</b> Dienstag 23.12.2025									   											 - Anfangszeit: 20:15 Uhr</p><p><b>Quelle:</b> Gratis in Berlin</p><a href='https://www.gratis-in-berlin.de/heute/item/2066669-love-life-new-year-s-party-extravaganza' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_b33187d8a4d0ff7f04705df0f80d53f7.setContent(html_c77473570b811cab0b628d4c87eec544);
+            
+        
+
+        marker_94ed1dbbdff9ce666688e639e5ceca44.bindPopup(popup_b33187d8a4d0ff7f04705df0f80d53f7)
+        ;
+
+        
+    
+    
+            marker_94ed1dbbdff9ce666688e639e5ceca44.bindTooltip(
+                `<div>
+                     Love Life English stand up comedy! 20:20 KIKISOL Wedding
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_94ed1dbbdff9ce666688e639e5ceca44.setIcon(icon_ff2aa0425ba170786f8242b955558bf9);
+            
+    
+            var marker_823f331f2c28f31dd4e729d785b38f0b = L.marker(
+                [52.5036757, 13.3322146],
+                {
+}
+            ).addTo(marker_cluster_bcf9772c19a6958281f7255b6126bf2b);
+        
+    
+            var icon_5a02002378894fa83939f685fa91943d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "gift",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_691c190d438e6000a1adad0ae6548a64 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_849a8253089378a641fd4846db47a3e5 = $(`<div id="html_849a8253089378a641fd4846db47a3e5" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Stranger Things Weihnachtsmarkt (täglich außer 24.-26.12.)</h4><p><b>Adresse:</b> 229 Kürfurstendamm  10719  Berlin</p><p><b>Zeitangabe:</b> Donnerstag 04.12.2025 bis Dienstag 30.12.2025									   - Anfangszeit: :00 Uhr</p><p><b>Quelle:</b> Gratis in Berlin</p><a href='https://www.gratis-in-berlin.de/heute/item/2076257-stranger-things-weihnachtsmarkt-taeglich-ausser-24-26-12' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_691c190d438e6000a1adad0ae6548a64.setContent(html_849a8253089378a641fd4846db47a3e5);
+            
+        
+
+        marker_823f331f2c28f31dd4e729d785b38f0b.bindPopup(popup_691c190d438e6000a1adad0ae6548a64)
+        ;
+
+        
+    
+    
+            marker_823f331f2c28f31dd4e729d785b38f0b.bindTooltip(
+                `<div>
+                     Stranger Things Weihnachtsmarkt (täglich außer 24.-26.12.)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_823f331f2c28f31dd4e729d785b38f0b.setIcon(icon_5a02002378894fa83939f685fa91943d);
+            
+    
+            var marker_d2064c5828166dc0d8f6de182271df22 = L.marker(
+                [52.5388381, 13.2062573],
+                {
+}
+            ).addTo(marker_cluster_bcf9772c19a6958281f7255b6126bf2b);
+        
+    
+            var icon_c97901a35a609175b6cf68dc3659579b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "gift",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f4a353eeb4a82f6ebde4632ab29dd978 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_e7d1099f3dd2fead550f02501e982712 = $(`<div id="html_e7d1099f3dd2fead550f02501e982712" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Spandauer Weihnachtsmarkt</h4><p><b>Adresse:</b> Altstadt Spandau 13597 Berlin Germany</p><p><b>Zeitangabe:</b> Montag 24.11.2025 bis Dienstag 23.12.2025									   - Anfangszeit: :00 Uhr</p><p><b>Quelle:</b> Gratis in Berlin</p><a href='https://www.gratis-in-berlin.de/heute/item/2001348-spandauer-weihnachtsmarkt' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_f4a353eeb4a82f6ebde4632ab29dd978.setContent(html_e7d1099f3dd2fead550f02501e982712);
+            
+        
+
+        marker_d2064c5828166dc0d8f6de182271df22.bindPopup(popup_f4a353eeb4a82f6ebde4632ab29dd978)
+        ;
+
+        
+    
+    
+            marker_d2064c5828166dc0d8f6de182271df22.bindTooltip(
+                `<div>
+                     Spandauer Weihnachtsmarkt
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d2064c5828166dc0d8f6de182271df22.setIcon(icon_c97901a35a609175b6cf68dc3659579b);
+            
+    
+            var marker_5bc2f8cb1de3c213974b527e22bf12bf = L.marker(
+                [52.5008909, 13.3269253],
+                {
+}
+            ).addTo(marker_cluster_bcf9772c19a6958281f7255b6126bf2b);
+        
+    
+            var icon_a979f6d0bd06e25ad358bf37ef26ac43 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "gift",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_04de8de3a564c0c86c4ade3e337d8690 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_ba4665e74fd6e196e0eb911d42d562cb = $(`<div id="html_ba4665e74fd6e196e0eb911d42d562cb" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>"Das Junge Rheinland": Künstlergruppe der 20er Jahre.</h4><p><b>Adresse:</b> Fasanenstr. 29 12205 Berlin</p><p><b>Zeitangabe:</b> Mittwoch 10.12.2025 bis Samstag 27.12.2025</p><p><b>Quelle:</b> Gratis in Berlin</p><a href='https://www.gratis-in-berlin.de/heute/item/2075725-das-junge-rheinland-kuenstlergruppe-der-20er-jahre' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_04de8de3a564c0c86c4ade3e337d8690.setContent(html_ba4665e74fd6e196e0eb911d42d562cb);
+            
+        
+
+        marker_5bc2f8cb1de3c213974b527e22bf12bf.bindPopup(popup_04de8de3a564c0c86c4ade3e337d8690)
+        ;
+
+        
+    
+    
+            marker_5bc2f8cb1de3c213974b527e22bf12bf.bindTooltip(
+                `<div>
+                     "Das Junge Rheinland": Künstlergruppe der 20er Jahre.
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5bc2f8cb1de3c213974b527e22bf12bf.setIcon(icon_a979f6d0bd06e25ad358bf37ef26ac43);
+            
+    
+            var marker_cb809dd6e1546b675c7e10d35f749997 = L.marker(
+                [52.5205554, 13.2963595],
+                {
+}
+            ).addTo(marker_cluster_bcf9772c19a6958281f7255b6126bf2b);
+        
+    
+            var icon_8cfc3365dade0b9ba8f60e295e4ec9d3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "gift",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0971728bbaba17a001221ac415ce9df2 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_53235f2868aca658801fd7dc4c7e9785 = $(`<div id="html_53235f2868aca658801fd7dc4c7e9785" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Weihnachtsmarkt Schloss Charlottenburg (außer 24.12.)</h4><p><b>Adresse:</b> Spandauer Damm  10</p><p><b>Zeitangabe:</b> Montag 24.11.2025 bis Sonntag 28.12.2025									   - Anfangszeit: :00 Uhr</p><p><b>Quelle:</b> Gratis in Berlin</p><a href='https://www.gratis-in-berlin.de/heute/item/2013073-weihnachtsmarkt-schloss-charlottenburg-ausser-24-12' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_0971728bbaba17a001221ac415ce9df2.setContent(html_53235f2868aca658801fd7dc4c7e9785);
+            
+        
+
+        marker_cb809dd6e1546b675c7e10d35f749997.bindPopup(popup_0971728bbaba17a001221ac415ce9df2)
+        ;
+
+        
+    
+    
+            marker_cb809dd6e1546b675c7e10d35f749997.bindTooltip(
+                `<div>
+                     Weihnachtsmarkt Schloss Charlottenburg (außer 24.12.)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cb809dd6e1546b675c7e10d35f749997.setIcon(icon_8cfc3365dade0b9ba8f60e295e4ec9d3);
+            
+    
+            var marker_b9210aaa953889c6e803408ede33dacf = L.marker(
+                [52.5168212, 13.4061613],
+                {
+}
+            ).addTo(marker_cluster_bcf9772c19a6958281f7255b6126bf2b);
+        
+    
+            var icon_a2703beeb5e4e7442d4f62038d5169b5 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "gift",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_8155f9944017aad206067c3a3d533e22 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_45bc5b816dfdfdfb6c7f7f794baad600 = $(`<div id="html_45bc5b816dfdfdfb6c7f7f794baad600" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>"Die Feuerzangenbowle" mit Heinz Rühmann im Nikolaiviertel beim "Winter-Film-Fest" schauen (tgl. außer Heiligabend)</h4><p><b>Adresse:</b> Nikolaiviertel Poststraße 7 10178 Berlin</p><p><b>Zeitangabe:</b> Freitag 14.11.2025 bis Sonntag 28.12.2025									   - Anfangszeit: 12:00 Uhr</p><p><b>Quelle:</b> Gratis in Berlin</p><a href='https://www.gratis-in-berlin.de/heute/item/2034412-die-feuerzangenbowle-mit-heinz-ruehmann-im-nikolaiviertel-beim-winter-film-fest-schauen-tgl-ausser-heiligabend' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_8155f9944017aad206067c3a3d533e22.setContent(html_45bc5b816dfdfdfb6c7f7f794baad600);
+            
+        
+
+        marker_b9210aaa953889c6e803408ede33dacf.bindPopup(popup_8155f9944017aad206067c3a3d533e22)
+        ;
+
+        
+    
+    
+            marker_b9210aaa953889c6e803408ede33dacf.bindTooltip(
+                `<div>
+                     "Die Feuerzangenbowle" mit Heinz Rühmann im Nikolaiviertel beim "Winter-Film-Fest" schauen (tgl. außer Heiligabend)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b9210aaa953889c6e803408ede33dacf.setIcon(icon_a2703beeb5e4e7442d4f62038d5169b5);
+            
+    
+            var marker_b516047a9213ba1dc283d439b8ab68e3 = L.marker(
+                [52.5264293, 13.33386],
+                {
+}
+            ).addTo(marker_cluster_bcf9772c19a6958281f7255b6126bf2b);
+        
+    
+            var icon_46d1e67441488d28942cf2d0d4ec17b0 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "gift",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e8060f10e16c79ca6fdb9e6ba8ad2d67 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_75d708d5109307bb0631387bc63cb6f2 = $(`<div id="html_75d708d5109307bb0631387bc63cb6f2" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>MAP 2025 – Arrival? Bremen – Hanoi – Berlin (Dienstag – Samstag: 11 – 19 Uhr)</h4><p><b>Adresse:</b> Turmstraße 75 10551 Berlin</p><p><b>Zeitangabe:</b> Samstag 15.11.2025 bis Dienstag 23.12.2025									   - Anfangszeit: 11:00 Uhr</p><p><b>Quelle:</b> Gratis in Berlin</p><a href='https://www.gratis-in-berlin.de/heute/item/2075903-map-2025-arrival-bremen-hanoi-berlin' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_e8060f10e16c79ca6fdb9e6ba8ad2d67.setContent(html_75d708d5109307bb0631387bc63cb6f2);
+            
+        
+
+        marker_b516047a9213ba1dc283d439b8ab68e3.bindPopup(popup_e8060f10e16c79ca6fdb9e6ba8ad2d67)
+        ;
+
+        
+    
+    
+            marker_b516047a9213ba1dc283d439b8ab68e3.bindTooltip(
+                `<div>
+                     MAP 2025 – Arrival? Bremen – Hanoi – Berlin (Dienstag – Samstag: 11 – 19 Uhr)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_b516047a9213ba1dc283d439b8ab68e3.setIcon(icon_46d1e67441488d28942cf2d0d4ec17b0);
+            
+    
+            var marker_ebc2531812b938b264801dbc22290fc2 = L.marker(
+                [52.5338376, 13.514577],
+                {
+}
+            ).addTo(marker_cluster_bcf9772c19a6958281f7255b6126bf2b);
+        
+    
+            var icon_52e69ca4a58fc0647dcba288aef3118e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "gift",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_30908419f1574967e589eb9b2abb40ad = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_ebe11c4f0441ab4dc8329ce97c0a3900 = $(`<div id="html_ebe11c4f0441ab4dc8329ce97c0a3900" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Weihnachts-Rummel Winterzauber an der Landsberger Allee (täglich außer 23.11. & 24.12.)</h4><p><b>Adresse:</b> Landsberger Allee 364 10365 Berlin</p><p><b>Zeitangabe:</b> Samstag 01.11.2025 bis Sonntag 28.12.2025									   - Anfangszeit: :00 Uhr</p><p><b>Quelle:</b> Gratis in Berlin</p><a href='https://www.gratis-in-berlin.de/heute/item/2047112-weihnachts-rummel-winterzauber-an-der-landsberger-allee-taeglich-ausser-23-11-24-12' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_30908419f1574967e589eb9b2abb40ad.setContent(html_ebe11c4f0441ab4dc8329ce97c0a3900);
+            
+        
+
+        marker_ebc2531812b938b264801dbc22290fc2.bindPopup(popup_30908419f1574967e589eb9b2abb40ad)
+        ;
+
+        
+    
+    
+            marker_ebc2531812b938b264801dbc22290fc2.bindTooltip(
+                `<div>
+                     Weihnachts-Rummel Winterzauber an der Landsberger Allee (täglich außer 23.11. & 24.12.)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_ebc2531812b938b264801dbc22290fc2.setIcon(icon_52e69ca4a58fc0647dcba288aef3118e);
+            
+    
+            var marker_5a7f87880bbff89234de113449c7a219 = L.marker(
+                [52.4003618, 13.063534],
+                {
+}
+            ).addTo(marker_cluster_bcf9772c19a6958281f7255b6126bf2b);
+        
+    
+            var icon_06b2bd0be6cd4dc892ccfed8a07019e6 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "gift",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_95fbe21d9f14ac960c1c0ac0fccdf114 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_2379a1131515aad0590e59debc5d83e7 = $(`<div id="html_2379a1131515aad0590e59debc5d83e7" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Historischer Weihnachtsmarkt Potsdam - Blauer Lichterglanz (täglich außer Heiligabend)</h4><p><b>Adresse:</b> Brandenburgische Str. 14467 Potsdam Germany</p><p><b>Zeitangabe:</b> Montag 24.11.2025 bis Sonntag 28.12.2025									   - Anfangszeit: 11:00 Uhr</p><p><b>Quelle:</b> Gratis in Berlin</p><a href='https://www.gratis-in-berlin.de/heute/item/2008243-historischer-weihnachtsmarkt-potsdam-blauer-lichterglanz-taeglich-ausser-heiligabend' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_95fbe21d9f14ac960c1c0ac0fccdf114.setContent(html_2379a1131515aad0590e59debc5d83e7);
+            
+        
+
+        marker_5a7f87880bbff89234de113449c7a219.bindPopup(popup_95fbe21d9f14ac960c1c0ac0fccdf114)
+        ;
+
+        
+    
+    
+            marker_5a7f87880bbff89234de113449c7a219.bindTooltip(
+                `<div>
+                     Historischer Weihnachtsmarkt Potsdam - Blauer Lichterglanz (täglich außer Heiligabend)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5a7f87880bbff89234de113449c7a219.setIcon(icon_06b2bd0be6cd4dc892ccfed8a07019e6);
+            
+    
+            var marker_c2c49e7e5528c7fc836dd18a80fb539b = L.marker(
+                [52.4965672, 13.3924936],
+                {
+}
+            ).addTo(marker_cluster_bcf9772c19a6958281f7255b6126bf2b);
+        
+    
+            var icon_71b8a8793b5e886c2add77d8993f3aff = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "gift",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_1b7eadd208050d839a9cfa13962a17e1 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_2b0abdf7cbbc638c62e5bb78c5abb293 = $(`<div id="html_2b0abdf7cbbc638c62e5bb78c5abb293" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Zusammenleben (einzelne Termine)</h4><p><b>Adresse:</b> Blücherplatz 1 10961 Berlin</p><p><b>Zeitangabe:</b> Samstag 27.09.2025 bis Dienstag 30.12.2025									   - Anfangszeit: :00 Uhr</p><p><b>Quelle:</b> Gratis in Berlin</p><a href='https://www.gratis-in-berlin.de/heute/item/2074208-zusammenleben-einzelne-termine' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_1b7eadd208050d839a9cfa13962a17e1.setContent(html_2b0abdf7cbbc638c62e5bb78c5abb293);
+            
+        
+
+        marker_c2c49e7e5528c7fc836dd18a80fb539b.bindPopup(popup_1b7eadd208050d839a9cfa13962a17e1)
+        ;
+
+        
+    
+    
+            marker_c2c49e7e5528c7fc836dd18a80fb539b.bindTooltip(
+                `<div>
+                     Zusammenleben (einzelne Termine)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_c2c49e7e5528c7fc836dd18a80fb539b.setIcon(icon_71b8a8793b5e886c2add77d8993f3aff);
+            
+    
+            var marker_7dfda0e21a92fd2dc6207ba33615debc = L.marker(
+                [52.5043491, 13.4577378],
+                {
+}
+            ).addTo(marker_cluster_bcf9772c19a6958281f7255b6126bf2b);
+        
+    
+            var icon_eed19a9bb016df6b5a2a87bd014af0f8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "gift",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_90f951430e9e5153182507c754acb8dd = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_3940ccaceff9d560ef743c4a6d3f2d8f = $(`<div id="html_3940ccaceff9d560ef743c4a6d3f2d8f" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Weihnachtsmarkt Winterquartier Napoleon Komplex (täglich außer 24. & 25.12.)</h4><p><b>Adresse:</b> Modersohnstraße 49a 10245 Berlin</p><p><b>Zeitangabe:</b> Samstag 29.11.2025 bis Mittwoch 31.12.2025									   - Anfangszeit: :00 Uhr</p><p><b>Quelle:</b> Gratis in Berlin</p><a href='https://www.gratis-in-berlin.de/heute/item/2076133-weihnachtsmarkt-winterquartier-napoleon-komplex-taeglich-ausser-24-25-12' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_90f951430e9e5153182507c754acb8dd.setContent(html_3940ccaceff9d560ef743c4a6d3f2d8f);
+            
+        
+
+        marker_7dfda0e21a92fd2dc6207ba33615debc.bindPopup(popup_90f951430e9e5153182507c754acb8dd)
+        ;
+
+        
+    
+    
+            marker_7dfda0e21a92fd2dc6207ba33615debc.bindTooltip(
+                `<div>
+                     Weihnachtsmarkt Winterquartier Napoleon Komplex (täglich außer 24. & 25.12.)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7dfda0e21a92fd2dc6207ba33615debc.setIcon(icon_eed19a9bb016df6b5a2a87bd014af0f8);
+            
+    
+            var marker_420bcf6706529efbdd93eac92fbe8c51 = L.marker(
+                [52.5173885, 13.3951309],
+                {
+}
+            ).addTo(marker_cluster_bcf9772c19a6958281f7255b6126bf2b);
+        
+    
+            var icon_a7f9062663517129a95ea3e2339322c7 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "gift",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a4ade3913c29fdac8deb74ad8311c132 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_bd670c33847e24a1cc81a4cd4a8c7fc8 = $(`<div id="html_bd670c33847e24a1cc81a4cd4a8c7fc8" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Weihnachtsmarkt am Kadewe Wittenbergplatz (täglich)</h4><p><b>Adresse:</b> Berlin</p><p><b>Zeitangabe:</b> Montag 24.11.2025 bis Donnerstag 01.01.2026									   - Anfangszeit: 11:00 Uhr</p><p><b>Quelle:</b> Gratis in Berlin</p><a href='https://www.gratis-in-berlin.de/heute/item/2075545-weihnachtsmarkt-am-kadewe-wittenbergplatz-taeglich' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_a4ade3913c29fdac8deb74ad8311c132.setContent(html_bd670c33847e24a1cc81a4cd4a8c7fc8);
+            
+        
+
+        marker_420bcf6706529efbdd93eac92fbe8c51.bindPopup(popup_a4ade3913c29fdac8deb74ad8311c132)
+        ;
+
+        
+    
+    
+            marker_420bcf6706529efbdd93eac92fbe8c51.bindTooltip(
+                `<div>
+                     Weihnachtsmarkt am Kadewe Wittenbergplatz (täglich)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_420bcf6706529efbdd93eac92fbe8c51.setIcon(icon_a7f9062663517129a95ea3e2339322c7);
+            
+    
+            var marker_4ed622cb1710d7fff3f1d18775130c65 = L.marker(
+                [52.5049676, 13.335294],
+                {
+}
+            ).addTo(marker_cluster_bcf9772c19a6958281f7255b6126bf2b);
+        
+    
+            var icon_235b6f1663bbe49c00994bbe1bfa0c01 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "gift",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a7dc034da6afb5bf97fdfeb4f0adeba1 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_38cb814d447310ff068756e8fc666a70 = $(`<div id="html_38cb814d447310ff068756e8fc666a70" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Weihnachtsmarkt auf dem Breitscheidplatz an Gedächtniskirche (täglich)</h4><p><b>Adresse:</b> Breitscheidplatz 10789  Berlin Germany</p><p><b>Zeitangabe:</b> Montag 24.11.2025 bis Sonntag 04.01.2026									   - Anfangszeit: :00 Uhr</p><p><b>Quelle:</b> Gratis in Berlin</p><a href='https://www.gratis-in-berlin.de/heute/item/2012628-weihnachtsmarkt-auf-dem-breitscheidplatz-an-gedaechtniskirche-taeglich' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_a7dc034da6afb5bf97fdfeb4f0adeba1.setContent(html_38cb814d447310ff068756e8fc666a70);
+            
+        
+
+        marker_4ed622cb1710d7fff3f1d18775130c65.bindPopup(popup_a7dc034da6afb5bf97fdfeb4f0adeba1)
+        ;
+
+        
+    
+    
+            marker_4ed622cb1710d7fff3f1d18775130c65.bindTooltip(
+                `<div>
+                     Weihnachtsmarkt auf dem Breitscheidplatz an Gedächtniskirche (täglich)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4ed622cb1710d7fff3f1d18775130c65.setIcon(icon_235b6f1663bbe49c00994bbe1bfa0c01);
+            
+    
+            var marker_5de962b1b3ec3bac1782295e536c9701 = L.marker(
+                [52.5172152, 13.4007352],
+                {
+}
+            ).addTo(marker_cluster_bcf9772c19a6958281f7255b6126bf2b);
+        
+    
+            var icon_789cd2f0508c774419feab745c799f0e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "gift",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3fe2ae9e30d9cc7afb5bc98e9d70ccbf = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_4b82c0a1e3eb944378bd5b1326e65d84 = $(`<div id="html_4b82c0a1e3eb944378bd5b1326e65d84" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Manatunga. Künstlerische Interventionen von George Nuku (Mi - Mo)</h4><p><b>Adresse:</b> Humboldt Forum, Schloßplatz 10178 Berlin</p><p><b>Zeitangabe:</b> Sonntag 18.05.2025 bis Mittwoch 31.12.2025									   - Anfangszeit: 10:30 Uhr</p><p><b>Quelle:</b> Gratis in Berlin</p><a href='https://www.gratis-in-berlin.de/heute/item/2072414-manatunga-kuenstlerische-interventionen-von-george-nuku-mi-mo' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_3fe2ae9e30d9cc7afb5bc98e9d70ccbf.setContent(html_4b82c0a1e3eb944378bd5b1326e65d84);
+            
+        
+
+        marker_5de962b1b3ec3bac1782295e536c9701.bindPopup(popup_3fe2ae9e30d9cc7afb5bc98e9d70ccbf)
+        ;
+
+        
+    
+    
+            marker_5de962b1b3ec3bac1782295e536c9701.bindTooltip(
+                `<div>
+                     Manatunga. Künstlerische Interventionen von George Nuku (Mi - Mo)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_5de962b1b3ec3bac1782295e536c9701.setIcon(icon_789cd2f0508c774419feab745c799f0e);
+            
+    
+            var marker_414c335f8b6c443d2b922c782c61e9b3 = L.marker(
+                [52.5167106, 13.4024811],
+                {
+}
+            ).addTo(marker_cluster_bcf9772c19a6958281f7255b6126bf2b);
+        
+    
+            var icon_70334bfafeb3a478466ea4cd016a72dc = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "gift",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_98f85a668afb476d74a6c3d911d6a5ef = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_e9cb8ac20c3bbf9e1725f3eadf2db5f0 = $(`<div id="html_e9cb8ac20c3bbf9e1725f3eadf2db5f0" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Weihnachtsmarkt am Humboldt Forum & Wintermarkt (außer 24.12.) mit Laser-Shows Di & Do</h4><p><b>Adresse:</b> Schlossplatz 10178 Berlin</p><p><b>Zeitangabe:</b> Montag 24.11.2025 bis Donnerstag 01.01.2026									   - Anfangszeit: 11:00 Uhr</p><p><b>Quelle:</b> Gratis in Berlin</p><a href='https://www.gratis-in-berlin.de/heute/item/2070628-weihnachtsmarkt-am-humboldt-forum-wintermarkt-ausser-24-12-mit-laser-shows-di-do' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_98f85a668afb476d74a6c3d911d6a5ef.setContent(html_e9cb8ac20c3bbf9e1725f3eadf2db5f0);
+            
+        
+
+        marker_414c335f8b6c443d2b922c782c61e9b3.bindPopup(popup_98f85a668afb476d74a6c3d911d6a5ef)
+        ;
+
+        
+    
+    
+            marker_414c335f8b6c443d2b922c782c61e9b3.bindTooltip(
+                `<div>
+                     Weihnachtsmarkt am Humboldt Forum & Wintermarkt (außer 24.12.) mit Laser-Shows Di & Do
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_414c335f8b6c443d2b922c782c61e9b3.setIcon(icon_70334bfafeb3a478466ea4cd016a72dc);
+            
+    
+            var marker_d948e6230e8cd3cb1da7cb3d7e090c17 = L.marker(
+                [-22.8933426, -43.2570551],
+                {
+}
+            ).addTo(marker_cluster_bcf9772c19a6958281f7255b6126bf2b);
+        
+    
+            var icon_d54018a7acbbdc02425433eae6bf6464 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "gift",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4f634d49a415011290b13121ecd510c1 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_5eb4b66271c8bfeac84566bff3e16d32 = $(`<div id="html_5eb4b66271c8bfeac84566bff3e16d32" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Winterwelt 2025 / 2026 am Potsdamer Platz (täglich)</h4><p><b>Adresse:</b> Marlene</p><p><b>Zeitangabe:</b> Freitag 31.10.2025 bis Mittwoch 31.12.2025									   - Anfangszeit: 11:00 Uhr</p><p><b>Quelle:</b> Gratis in Berlin</p><a href='https://www.gratis-in-berlin.de/heute/item/2025264-winterwelt-2024-2025-am-potsdamer-platz-taeglich' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_4f634d49a415011290b13121ecd510c1.setContent(html_5eb4b66271c8bfeac84566bff3e16d32);
+            
+        
+
+        marker_d948e6230e8cd3cb1da7cb3d7e090c17.bindPopup(popup_4f634d49a415011290b13121ecd510c1)
+        ;
+
+        
+    
+    
+            marker_d948e6230e8cd3cb1da7cb3d7e090c17.bindTooltip(
+                `<div>
+                     Winterwelt 2025 / 2026 am Potsdamer Platz (täglich)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d948e6230e8cd3cb1da7cb3d7e090c17.setIcon(icon_d54018a7acbbdc02425433eae6bf6464);
+            
+    
+            var marker_0252836568d45789bfd46619ffa65edf = L.marker(
+                [52.5410344, 13.2127443],
+                {
+}
+            ).addTo(marker_cluster_bcf9772c19a6958281f7255b6126bf2b);
+        
+    
+            var icon_14e0b00d8ae5aca253646c8629c4034a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "gift",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_3ecf06721fd2df1421983e37264c38ec = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_23b77e0794a3db57bd97ba27e5cabfae = $(`<div id="html_23b77e0794a3db57bd97ba27e5cabfae" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Vera Mercer - Life in Focus ZAK Spandau Fr-Mi 10-17, Do 13-20 Uhr</h4><p><b>Adresse:</b> Am Juliusturm  64 13599 Berlin</p><p><b>Zeitangabe:</b> Freitag 19.09.2025 bis Sonntag 11.01.2026									   - Anfangszeit: 19:00 Uhr</p><p><b>Quelle:</b> Gratis in Berlin</p><a href='https://www.gratis-in-berlin.de/heute/item/2074744-vera-mercer-life-in-focus-zak-spandau-fr-mi-10-17-do-13-20-uhr' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_3ecf06721fd2df1421983e37264c38ec.setContent(html_23b77e0794a3db57bd97ba27e5cabfae);
+            
+        
+
+        marker_0252836568d45789bfd46619ffa65edf.bindPopup(popup_3ecf06721fd2df1421983e37264c38ec)
+        ;
+
+        
+    
+    
+            marker_0252836568d45789bfd46619ffa65edf.bindTooltip(
+                `<div>
+                     Vera Mercer - Life in Focus ZAK Spandau Fr-Mi 10-17, Do 13-20 Uhr
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0252836568d45789bfd46619ffa65edf.setIcon(icon_14e0b00d8ae5aca253646c8629c4034a);
+            
+    
+            var marker_34e793214fd1117de99e478409ead255 = L.marker(
+                [52.5233656, 13.3488922],
+                {
+}
+            ).addTo(marker_cluster_bcf9772c19a6958281f7255b6126bf2b);
+        
+    
+            var icon_1abf6d4b4fe4c9f68a37c1b96d7c8d50 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "gift",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_dd8fd53028cb2ff0b35f90ae6a1d097e = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_ba84d5df7e1f6026df286d7640061a97 = $(`<div id="html_ba84d5df7e1f6026df286d7640061a97" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Fotoausstellung „Haut der Stadt“ Amtsgericht Tiergarten(Mo-Fr)</h4><p><b>Adresse:</b> Kirchstr 6 10557 Berlin</p><p><b>Zeitangabe:</b> Montag 08.12.2025 bis Sonntag 08.02.2026									   - Anfangszeit: 10:18 Uhr</p><p><b>Quelle:</b> Gratis in Berlin</p><a href='https://www.gratis-in-berlin.de/heute/item/2076286-fotoausstellung-haut-der-stadt-amtsgericht-tiergarten' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_dd8fd53028cb2ff0b35f90ae6a1d097e.setContent(html_ba84d5df7e1f6026df286d7640061a97);
+            
+        
+
+        marker_34e793214fd1117de99e478409ead255.bindPopup(popup_dd8fd53028cb2ff0b35f90ae6a1d097e)
+        ;
+
+        
+    
+    
+            marker_34e793214fd1117de99e478409ead255.bindTooltip(
+                `<div>
+                     Fotoausstellung „Haut der Stadt“ Amtsgericht Tiergarten(Mo-Fr)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_34e793214fd1117de99e478409ead255.setIcon(icon_1abf6d4b4fe4c9f68a37c1b96d7c8d50);
+            
+    
+            var marker_85bcfbeed04c884dc9063e0ce65f0480 = L.marker(
+                [52.500366, 13.388343],
+                {
+}
+            ).addTo(marker_cluster_bcf9772c19a6958281f7255b6126bf2b);
+        
+    
+            var icon_c42c98bf15c3fd469636b2ab14a1c05e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "gift",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c85e3c3dae889a281b5684c6b28bbd15 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_41380fa83bd4f0a0a5ac2a79ba4aa3e9 = $(`<div id="html_41380fa83bd4f0a0a5ac2a79ba4aa3e9" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Sony World Photography Awards (Di - So)</h4><p><b>Adresse:</b> Wilhelmstraße  140 10963 Berlin Germany</p><p><b>Zeitangabe:</b> Freitag 17.10.2025 bis Sonntag 18.01.2026									   - Anfangszeit: 12:00 Uhr</p><p><b>Quelle:</b> Gratis in Berlin</p><a href='https://www.gratis-in-berlin.de/heute/item/2046662-sony-world-photography-awards-di-so' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_c85e3c3dae889a281b5684c6b28bbd15.setContent(html_41380fa83bd4f0a0a5ac2a79ba4aa3e9);
+            
+        
+
+        marker_85bcfbeed04c884dc9063e0ce65f0480.bindPopup(popup_c85e3c3dae889a281b5684c6b28bbd15)
+        ;
+
+        
+    
+    
+            marker_85bcfbeed04c884dc9063e0ce65f0480.bindTooltip(
+                `<div>
+                     Sony World Photography Awards (Di - So)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_85bcfbeed04c884dc9063e0ce65f0480.setIcon(icon_c42c98bf15c3fd469636b2ab14a1c05e);
+            
+    
+            var marker_e444ab31b12b728752b8e4169c80a3f1 = L.marker(
+                [52.5165034, 13.4527335],
+                {
+}
+            ).addTo(marker_cluster_bcf9772c19a6958281f7255b6126bf2b);
+        
+    
+            var icon_516aba444f661f5aa8741876a8d55485 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "gift",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_715890f332dfccc344e72b729bfff58f = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_d6578c19ce906d2ae0c6b13fbf6db602 = $(`<div id="html_d6578c19ce906d2ae0c6b13fbf6db602" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Hoffnung أﻣل - Einzelausstellung der Künstlerin Jamila Barakat</h4><p><b>Adresse:</b> Frankfurter Tor 1 10243 Berlin</p><p><b>Zeitangabe:</b> Donnerstag 04.12.2025 bis Sonntag 01.02.2026									   - Anfangszeit: 14:00 Uhr</p><p><b>Quelle:</b> Gratis in Berlin</p><a href='https://www.gratis-in-berlin.de/heute/item/2075988-hoffnung-einzelausstellung-der-kuenstlerin-jamila-barakat' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_715890f332dfccc344e72b729bfff58f.setContent(html_d6578c19ce906d2ae0c6b13fbf6db602);
+            
+        
+
+        marker_e444ab31b12b728752b8e4169c80a3f1.bindPopup(popup_715890f332dfccc344e72b729bfff58f)
+        ;
+
+        
+    
+    
+            marker_e444ab31b12b728752b8e4169c80a3f1.bindTooltip(
+                `<div>
+                     Hoffnung أﻣل - Einzelausstellung der Künstlerin Jamila Barakat
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e444ab31b12b728752b8e4169c80a3f1.setIcon(icon_516aba444f661f5aa8741876a8d55485);
+            
+    
+            var marker_2415dae0fa02822f571dcee0bfaa5806 = L.marker(
+                [52.5463833, 13.3591672],
+                {
+}
+            ).addTo(marker_cluster_bcf9772c19a6958281f7255b6126bf2b);
+        
+    
+            var icon_4c097a625141bdf5c28dae91cbff2f0c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "gift",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_33996e3f1d9219fc0f9ec0fc51969d64 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_7aa5261974e3f924f4dbd9e98c32e253 = $(`<div id="html_7aa5261974e3f924f4dbd9e98c32e253" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Leo Lights: Weihnachtsbeleuchtung am Leopoldplatz</h4><p><b>Adresse:</b> Leopoldplatz 13353 Berlin</p><p><b>Zeitangabe:</b> Sonntag 30.11.2025 bis Freitag 09.01.2026									   - Anfangszeit: 16:00 Uhr</p><p><b>Quelle:</b> Gratis in Berlin</p><a href='https://www.gratis-in-berlin.de/heute/item/2076328-leo-lights-weihnachtsbeleuchtung-am-leopoldplatz' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_33996e3f1d9219fc0f9ec0fc51969d64.setContent(html_7aa5261974e3f924f4dbd9e98c32e253);
+            
+        
+
+        marker_2415dae0fa02822f571dcee0bfaa5806.bindPopup(popup_33996e3f1d9219fc0f9ec0fc51969d64)
+        ;
+
+        
+    
+    
+            marker_2415dae0fa02822f571dcee0bfaa5806.bindTooltip(
+                `<div>
+                     Leo Lights: Weihnachtsbeleuchtung am Leopoldplatz
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_2415dae0fa02822f571dcee0bfaa5806.setIcon(icon_4c097a625141bdf5c28dae91cbff2f0c);
+            
+    
+            var marker_3bb417048a4fdb3e5b9228619e8cdd0d = L.marker(
+                [52.519077, 13.297931],
+                {
+}
+            ).addTo(marker_cluster_bcf9772c19a6958281f7255b6126bf2b);
+        
+    
+            var icon_4613e17cacc5795434f17a309a59bbd9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "gift",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c7c3287ef0e2d1af46d17396e121b03e = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_d39b1db5a26a90fa7af00fc3b7500085 = $(`<div id="html_d39b1db5a26a90fa7af00fc3b7500085" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Sonderausstellung Crossfire von Jac Carley (Do - So)</h4><p><b>Adresse:</b> Schloßstraße 69 b 14059 Berlin</p><p><b>Zeitangabe:</b> Freitag 21.11.2025 bis Sonntag 08.02.2026									   - Anfangszeit: 14:00 Uhr</p><p><b>Quelle:</b> Gratis in Berlin</p><a href='https://www.gratis-in-berlin.de/heute/item/2075969-sonderausstellung-crossfire-von-jac-carley-do-so' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_c7c3287ef0e2d1af46d17396e121b03e.setContent(html_d39b1db5a26a90fa7af00fc3b7500085);
+            
+        
+
+        marker_3bb417048a4fdb3e5b9228619e8cdd0d.bindPopup(popup_c7c3287ef0e2d1af46d17396e121b03e)
+        ;
+
+        
+    
+    
+            marker_3bb417048a4fdb3e5b9228619e8cdd0d.bindTooltip(
+                `<div>
+                     Sonderausstellung Crossfire von Jac Carley (Do - So)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3bb417048a4fdb3e5b9228619e8cdd0d.setIcon(icon_4613e17cacc5795434f17a309a59bbd9);
+            
+    
+            var marker_f91515a2b58bc13069a52c6a2a965ae8 = L.marker(
+                [52.5125985, 13.4159358],
+                {
+}
+            ).addTo(marker_cluster_bcf9772c19a6958281f7255b6126bf2b);
+        
+    
+            var icon_949c0a5a3de078cce99d839fbce79405 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "gift",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9c8d919bd3af6136d68ccf5f2cbb3900 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_fa81b2f0ee39d8388616d733514830d0 = $(`<div id="html_fa81b2f0ee39d8388616d733514830d0" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Relations in Place | Ausstellung im Bärenzwinger (täglich)</h4><p><b>Adresse:</b> Rungestraße  30 10179 Berlin</p><p><b>Zeitangabe:</b> Montag 17.11.2025 bis Sonntag 25.01.2026									   - Anfangszeit: :00 Uhr</p><p><b>Quelle:</b> Gratis in Berlin</p><a href='https://www.gratis-in-berlin.de/heute/item/2075658-relations-in-place-ausstellung-im-baerenzwinger-taeglich' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_9c8d919bd3af6136d68ccf5f2cbb3900.setContent(html_fa81b2f0ee39d8388616d733514830d0);
+            
+        
+
+        marker_f91515a2b58bc13069a52c6a2a965ae8.bindPopup(popup_9c8d919bd3af6136d68ccf5f2cbb3900)
+        ;
+
+        
+    
+    
+            marker_f91515a2b58bc13069a52c6a2a965ae8.bindTooltip(
+                `<div>
+                     Relations in Place | Ausstellung im Bärenzwinger (täglich)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_f91515a2b58bc13069a52c6a2a965ae8.setIcon(icon_949c0a5a3de078cce99d839fbce79405);
+            
+    
+            var marker_7581b4599be916d9b01fe80257bd78db = L.marker(
+                [52.4105205, 13.0521789],
+                {
+}
+            ).addTo(marker_cluster_bcf9772c19a6958281f7255b6126bf2b);
+        
+    
+            var icon_03cef7f2a4e0b67a3dc92a3c1822cecd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "gift",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ff6d180cceef815b2ecfc0d65322ba6f = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_c64e7797827a20711276c61568ecf129 = $(`<div id="html_c64e7797827a20711276c61568ecf129" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>„Auf die Plätze“ Motive aus den Stadtteilen – künstlerisch gestaltet von Potsdamer Kreativen</h4><p><b>Adresse:</b> Pappelallee 4 14469 Potsdam</p><p><b>Zeitangabe:</b> Freitag 07.11.2025 bis Freitag 30.01.2026									   - Anfangszeit: 09:00 Uhr</p><p><b>Quelle:</b> Gratis in Berlin</p><a href='https://www.gratis-in-berlin.de/heute/item/2075429-auf-die-plaetze-motive-aus-den-stadtteilen-kuenstlerisch-gestaltet-von-potsdamer-kreativen' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_ff6d180cceef815b2ecfc0d65322ba6f.setContent(html_c64e7797827a20711276c61568ecf129);
+            
+        
+
+        marker_7581b4599be916d9b01fe80257bd78db.bindPopup(popup_ff6d180cceef815b2ecfc0d65322ba6f)
+        ;
+
+        
+    
+    
+            marker_7581b4599be916d9b01fe80257bd78db.bindTooltip(
+                `<div>
+                     „Auf die Plätze“ Motive aus den Stadtteilen – künstlerisch gestaltet von Potsdamer Kreativen
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7581b4599be916d9b01fe80257bd78db.setIcon(icon_03cef7f2a4e0b67a3dc92a3c1822cecd);
+            
+    
+            marker_cluster_bcf9772c19a6958281f7255b6126bf2b.addTo(map_1857efb2ad2ba4bb06577674787c962d);
+        
+    
+            var marker_cluster_75e3c8df153c78e12f63c55004118b88 = L.markerClusterGroup(
+                {
+  "maxClusterRadius": 40,
+  "chunkedLoading": true,
+  "spiderfyOnMaxZoom": true,
+  "showCoverageOnHover": false,
+  "animate": false,
+}
+            );
+            marker_cluster_75e3c8df153c78e12f63c55004118b88.options.iconCreateFunction =
+                function(cluster) {
+        var childCount = cluster.getChildCount();
+        var size = 30;
+        if (childCount > 10) size = 40;
+        if (childCount > 50) size = 50;
+        
+        return L.divIcon({
+            html: '<div style="background-color: rgba(110, 110, 110, 0.8); color: white; border-radius: 50%; width: ' + size + 'px; height: ' + size + 'px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; border: 2px solid rgba(160, 160, 160, 0.5);">' + childCount + '</div>',
+            className: 'marker-cluster-grey',
+            iconSize: L.point(size, size)
+        });
+    };
+        
+    
+            var marker_45a1dab98a4495dc45e08811b010a867 = L.marker(
+                [52.5121441, 13.3083771],
+                {
+}
+            ).addTo(marker_cluster_75e3c8df153c78e12f63c55004118b88);
+        
+    
+            var icon_275d04199f4a8f5b8f832b0122a0a275 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_acd074043723d710966d9340b5ad4cf2 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_7124bdfbc3431b2f8b6ccdf48744fab5 = $(`<div id="html_7124bdfbc3431b2f8b6ccdf48744fab5" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Hänsel und Gretel</h4><p><b>Adresse:</b> Deutsche Oper Berlin</p><p><b>Datum:</b> 23.12.2025</p><p><b>Beschreibung:</b> Hänsel und Gretel an der Deutschen Oper Berlin: Die märchenhafte Oper von Humperdinck für Kinder ab 8 Jahren – mit zauberhafter Musik und fantasievoller Inszenierung von Andreas Homoki.</p><p><b>Quelle:</b> visit Berlin</p><a href='https://www.visitberlin.de/de/event/haensel-und-gretel-1' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_acd074043723d710966d9340b5ad4cf2.setContent(html_7124bdfbc3431b2f8b6ccdf48744fab5);
+            
+        
+
+        marker_45a1dab98a4495dc45e08811b010a867.bindPopup(popup_acd074043723d710966d9340b5ad4cf2)
+        ;
+
+        
+    
+    
+            marker_45a1dab98a4495dc45e08811b010a867.bindTooltip(
+                `<div>
+                     Hänsel und Gretel
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_45a1dab98a4495dc45e08811b010a867.setIcon(icon_275d04199f4a8f5b8f832b0122a0a275);
+            
+    
+            var marker_0e9af10476486e753d8bb490da0bbd69 = L.marker(
+                [52.5021802, 13.364582],
+                {
+}
+            ).addTo(marker_cluster_75e3c8df153c78e12f63c55004118b88);
+        
+    
+            var icon_2799137a26d52f7b0bc04ce469474d24 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_309768454f866714203c6bf01a4d79c0 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_2b46de236a980fadfca4d4baf315441a = $(`<div id="html_2b46de236a980fadfca4d4baf315441a" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>SCHNEEWITTCHEN und der Zauberspiegel</h4><p><b>Adresse:</b> Wintergarten Varieté</p><p><b>Datum:</b> 23.12.2025</p><p><b>Beschreibung:</b> Auch in 2025 bildet die festliche Premiere von ZIMT & ZAUBER im Wintergarten Varieté den Abschluss der 36. Berliner Märchentage.</p><p><b>Quelle:</b> visit Berlin</p><a href='https://www.visitberlin.de/de/event/schneewittchen-und-der-zauberspiegel' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_309768454f866714203c6bf01a4d79c0.setContent(html_2b46de236a980fadfca4d4baf315441a);
+            
+        
+
+        marker_0e9af10476486e753d8bb490da0bbd69.bindPopup(popup_309768454f866714203c6bf01a4d79c0)
+        ;
+
+        
+    
+    
+            marker_0e9af10476486e753d8bb490da0bbd69.bindTooltip(
+                `<div>
+                     SCHNEEWITTCHEN und der Zauberspiegel
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_0e9af10476486e753d8bb490da0bbd69.setIcon(icon_2799137a26d52f7b0bc04ce469474d24);
+            
+    
+            var marker_7cb15e681d09679e363093c861220d15 = L.marker(
+                [52.4554846, 13.3022697],
+                {
+}
+            ).addTo(marker_cluster_75e3c8df153c78e12f63c55004118b88);
+        
+    
+            var icon_aa5acada9a97e1345963e1787d1c559e = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_d7853a6c65397262e6de181abf44a934 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_87d96a2e474f2ce48127a176b082b710 = $(`<div id="html_87d96a2e474f2ce48127a176b082b710" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Christmas Garden Berlin</h4><p><b>Adresse:</b> Botanischer Garten Berlin / Eingang Königin-Luise-Platz</p><p><b>Datum:</b> 05.11.2025</p><p><b>Beschreibung:</b> Lassen Sie sich verzaubern beim diesjährigen Lichtspektakel Christmas Garden im Botanischen Garten Berlin und erleben Sie unvergessliche Momente mit der ganzen Familie.</p><p><b>Quelle:</b> visit Berlin</p><a href='https://www.visitberlin.de/de/event/christmas-garden-berlin' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_d7853a6c65397262e6de181abf44a934.setContent(html_87d96a2e474f2ce48127a176b082b710);
+            
+        
+
+        marker_7cb15e681d09679e363093c861220d15.bindPopup(popup_d7853a6c65397262e6de181abf44a934)
+        ;
+
+        
+    
+    
+            marker_7cb15e681d09679e363093c861220d15.bindTooltip(
+                `<div>
+                     Christmas Garden Berlin
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7cb15e681d09679e363093c861220d15.setIcon(icon_aa5acada9a97e1345963e1787d1c559e);
+            
+    
+            var marker_21d4014ae19113244be3963fdd814789 = L.marker(
+                [52.4977241, 13.5229595],
+                {
+}
+            ).addTo(marker_cluster_75e3c8df153c78e12f63c55004118b88);
+        
+    
+            var icon_417ca7439e3290519a8e674c70539e8a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_a7237c39aa7fb88227ca4c241e74c041 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_dac0637696c42573137389df03b62218 = $(`<div id="html_dac0637696c42573137389df03b62218" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Weihnachten im Tierpark Berlin</h4><p><b>Adresse:</b> Tierpark-Eingang Bärenschaufenster</p><p><b>Datum:</b> 21.11.2025</p><p><b>Beschreibung:</b> Erleben Sie den Zauber aus Licht, Musik und Emotionen mit Weihnachten im Tierpark in Berlin. Der eindrucksvolle Tierpark Berlin verwandelt sich dabei in ein märchenhaftes Wunderland. Genießen Sie ein fantastisches Erlebnis mit der ganzen Familie.</p><p><b>Quelle:</b> visit Berlin</p><a href='https://www.visitberlin.de/de/event/weihnachten-im-tierpark-berlin' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_a7237c39aa7fb88227ca4c241e74c041.setContent(html_dac0637696c42573137389df03b62218);
+            
+        
+
+        marker_21d4014ae19113244be3963fdd814789.bindPopup(popup_a7237c39aa7fb88227ca4c241e74c041)
+        ;
+
+        
+    
+    
+            marker_21d4014ae19113244be3963fdd814789.bindTooltip(
+                `<div>
+                     Weihnachten im Tierpark Berlin
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_21d4014ae19113244be3963fdd814789.setIcon(icon_417ca7439e3290519a8e674c70539e8a);
+            
+    
+            var marker_83f428e629551123e3ba8cd3d9cbedf8 = L.marker(
+                [52.5099888, 13.3696059],
+                {
+}
+            ).addTo(marker_cluster_75e3c8df153c78e12f63c55004118b88);
+        
+    
+            var icon_bd6975987b12e03be5c39bf87db0dcf8 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_2f4c0244485fe6210b121609be344d53 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_be7d0b70f32bf472b81a4720f48a5cd9 = $(`<div id="html_be7d0b70f32bf472b81a4720f48a5cd9" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Weihnachten mit der Bigband Jazzrausch</h4><p><b>Adresse:</b> Philharmonie Berlin</p><p><b>Datum:</b> 23.12.2025</p><p><b>Beschreibung:</b> Die Jazzrausch Bigband bringt auch 2025 ihr beliebtes Weihnachtsprogramm auf die Bühne, in dem sie traditionelle Weihnachtslieder in humorvollen und virtuosen Bigband-Arrangements neu interpretiert.</p><p><b>Quelle:</b> visit Berlin</p><a href='https://www.visitberlin.de/de/event/weihnachten-mit-der-bigband-jazzrausch' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_2f4c0244485fe6210b121609be344d53.setContent(html_be7d0b70f32bf472b81a4720f48a5cd9);
+            
+        
+
+        marker_83f428e629551123e3ba8cd3d9cbedf8.bindPopup(popup_2f4c0244485fe6210b121609be344d53)
+        ;
+
+        
+    
+    
+            marker_83f428e629551123e3ba8cd3d9cbedf8.bindTooltip(
+                `<div>
+                     Weihnachten mit der Bigband Jazzrausch
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_83f428e629551123e3ba8cd3d9cbedf8.setIcon(icon_bd6975987b12e03be5c39bf87db0dcf8);
+            
+    
+            var marker_fefed503c323785cb782e83f2aa66063 = L.marker(
+                [52.5239216, 13.3888786],
+                {
+}
+            ).addTo(marker_cluster_75e3c8df153c78e12f63c55004118b88);
+        
+    
+            var icon_07bedc34a015409db2efc672542dc7d3 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_aa065f3857d701c047fc4c4013c34502 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_2f02e11e62968705d3b22a48179a91a1 = $(`<div id="html_2f02e11e62968705d3b22a48179a91a1" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>BLINDED by DELIGHT</h4><p><b>Adresse:</b> Friedrichstadt-Palast</p><p><b>Datum:</b> 23.12.2025</p><p><b>Beschreibung:</b> Die neue Grand Show im Friedrichstadt-Palast "BLINDED by DELIGHT" nimmt ihr Publikum mit auf eine bewegende Reise in die Welt der Träume und des Glücks. Über 100 wundervolle Künstlerinnen und Künstlern bieten Ihnen blendende Show-Unterhaltung auf der größten…</p><p><b>Quelle:</b> visit Berlin</p><a href='https://www.visitberlin.de/de/event/blinded-delight' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_aa065f3857d701c047fc4c4013c34502.setContent(html_2f02e11e62968705d3b22a48179a91a1);
+            
+        
+
+        marker_fefed503c323785cb782e83f2aa66063.bindPopup(popup_aa065f3857d701c047fc4c4013c34502)
+        ;
+
+        
+    
+    
+            marker_fefed503c323785cb782e83f2aa66063.bindTooltip(
+                `<div>
+                     BLINDED by DELIGHT
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fefed503c323785cb782e83f2aa66063.setIcon(icon_07bedc34a015409db2efc672542dc7d3);
+            
+    
+            var marker_68202406d4ce6774f26e9b3d59e0bfac = L.marker(
+                [52.5156648, 13.3869856],
+                {
+}
+            ).addTo(marker_cluster_75e3c8df153c78e12f63c55004118b88);
+        
+    
+            var icon_b9374a351c9929a4170fe51c3a340899 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c89d1df2347cafc964da7581fc75d307 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_a81f223f667ba54dbc3599e4ee0cd03d = $(`<div id="html_a81f223f667ba54dbc3599e4ee0cd03d" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>In Frisco ist der Teufel los</h4><p><b>Adresse:</b> Komische Oper Berlin: Schillertheater - Großer Saal</p><p><b>Datum:</b> 23.12.2025</p><p><b>Beschreibung:</b> Nach dem großen Erfolg von Gerd Natschinskis DDR-Operette Messeschlager Gisela widmet sich die Komische Oper Berlin einem weiteren Schlager des »Heiteren Musiktheaters«.</p><p><b>Quelle:</b> visit Berlin</p><a href='https://www.visitberlin.de/de/event/frisco-ist-der-teufel-los' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_c89d1df2347cafc964da7581fc75d307.setContent(html_a81f223f667ba54dbc3599e4ee0cd03d);
+            
+        
+
+        marker_68202406d4ce6774f26e9b3d59e0bfac.bindPopup(popup_c89d1df2347cafc964da7581fc75d307)
+        ;
+
+        
+    
+    
+            marker_68202406d4ce6774f26e9b3d59e0bfac.bindTooltip(
+                `<div>
+                     In Frisco ist der Teufel los
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_68202406d4ce6774f26e9b3d59e0bfac.setIcon(icon_b9374a351c9929a4170fe51c3a340899);
+            
+    
+            var marker_214fc7e213b5c0a6f685665b2c08ffb2 = L.marker(
+                [52.5207714, 13.3889021],
+                {
+}
+            ).addTo(marker_cluster_75e3c8df153c78e12f63c55004118b88);
+        
+    
+            var icon_19d061974c96c790a330a3c7a89bf950 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_85db58b632aebe261f76fed349b43130 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_0d69d4f8df37a6ba1abd497795d7319a = $(`<div id="html_0d69d4f8df37a6ba1abd497795d7319a" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Kinky Boots - The Musical</h4><p><b>Adresse:</b> Admiralspalast</p><p><b>Datum:</b> 23.12.2025</p><p><b>Beschreibung:</b> Das preisgekrönte Broadway- und West End-Erfolgsmusical KINKY BOOTS erstrahlt in einer brandneuen Produktion und kommt live nach Deutschland!</p><p><b>Quelle:</b> visit Berlin</p><a href='https://www.visitberlin.de/de/event/kinky-boots-musical' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_85db58b632aebe261f76fed349b43130.setContent(html_0d69d4f8df37a6ba1abd497795d7319a);
+            
+        
+
+        marker_214fc7e213b5c0a6f685665b2c08ffb2.bindPopup(popup_85db58b632aebe261f76fed349b43130)
+        ;
+
+        
+    
+    
+            marker_214fc7e213b5c0a6f685665b2c08ffb2.bindTooltip(
+                `<div>
+                     Kinky Boots - The Musical
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_214fc7e213b5c0a6f685665b2c08ffb2.setIcon(icon_19d061974c96c790a330a3c7a89bf950);
+            
+    
+            var marker_761b685040303eea70523bc01a2b219d = L.marker(
+                [52.516703, 13.3947383],
+                {
+}
+            ).addTo(marker_cluster_75e3c8df153c78e12f63c55004118b88);
+        
+    
+            var icon_d8c6930b44794bd1e5ef4ea7e57bf171 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7046a3d551befa80ba500d2b0b2510fa = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_987fe3f172dcaa7581739f7a6ea2a1bf = $(`<div id="html_987fe3f172dcaa7581739f7a6ea2a1bf" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Schwanensee</h4><p><b>Adresse:</b> Staatsoper Unter den Linden</p><p><b>Datum:</b> 23.12.2025</p><p><b>Beschreibung:</b> Mit den Mitteln des klassischen Tanzes erzählt Schwanensee die Geschichte von Prinz Siegfried und seiner Liebe zu der verzauberten Prinzessin Odette, die in Schwanengestalt gefangen ist. Bald Schwan bald Mensch ist es ihre Bestimmung, Gegenstand der Phantasien…</p><p><b>Quelle:</b> visit Berlin</p><a href='https://www.visitberlin.de/de/event/schwanensee' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_7046a3d551befa80ba500d2b0b2510fa.setContent(html_987fe3f172dcaa7581739f7a6ea2a1bf);
+            
+        
+
+        marker_761b685040303eea70523bc01a2b219d.bindPopup(popup_7046a3d551befa80ba500d2b0b2510fa)
+        ;
+
+        
+    
+    
+            marker_761b685040303eea70523bc01a2b219d.bindTooltip(
+                `<div>
+                     Schwanensee
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_761b685040303eea70523bc01a2b219d.setIcon(icon_d8c6930b44794bd1e5ef4ea7e57bf171);
+            
+    
+            var marker_e196f1fc8d8ffb90735d9d65ccc0ff3f = L.marker(
+                [52.5183931, 13.3671639],
+                {
+}
+            ).addTo(marker_cluster_75e3c8df153c78e12f63c55004118b88);
+        
+    
+            var icon_88eeeef2c6f6d3bac52a71d6b8f66402 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_b7e3ac1c1981fef1be93759adba22fe7 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_f978171dc6980c3fcaeb7bf5ed2f443d = $(`<div id="html_f978171dc6980c3fcaeb7bf5ed2f443d" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Ass-Dur - Süßer die Brüder nie klingen</h4><p><b>Adresse:</b> Tipi am Kanzleramt</p><p><b>Datum:</b> 23.12.2025</p><p><b>Beschreibung:</b> Wenn in Berlin die ersten Lichterketten blinken, die Gänse noch ahnungslos durchs Regierungsviertel watscheln und es überall langsam nach Glühwein und Spekulatius duftet – dann ist es soweit: Ass-Dur feiert Weihnachten. Und zwar so aufregend wie noch nie!</p><p><b>Quelle:</b> visit Berlin</p><a href='https://www.visitberlin.de/de/event/ass-dur-suesser-die-brueder-nie-klingen' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_b7e3ac1c1981fef1be93759adba22fe7.setContent(html_f978171dc6980c3fcaeb7bf5ed2f443d);
+            
+        
+
+        marker_e196f1fc8d8ffb90735d9d65ccc0ff3f.bindPopup(popup_b7e3ac1c1981fef1be93759adba22fe7)
+        ;
+
+        
+    
+    
+            marker_e196f1fc8d8ffb90735d9d65ccc0ff3f.bindTooltip(
+                `<div>
+                     Ass-Dur - Süßer die Brüder nie klingen
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_e196f1fc8d8ffb90735d9d65ccc0ff3f.setIcon(icon_88eeeef2c6f6d3bac52a71d6b8f66402);
+            
+    
+            var marker_4e39345bdd0744e9d8f51cd3bb7665ae = L.marker(
+                [52.5166374, 13.4508762],
+                {
+}
+            ).addTo(marker_cluster_75e3c8df153c78e12f63c55004118b88);
+        
+    
+            var icon_8bbf69d465082bfb90e7bf39808a285a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_56d8e8348742b38fd695a24235860951 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_7bebee04438ffdf51a3980a4d72c748d = $(`<div id="html_7bebee04438ffdf51a3980a4d72c748d" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Eine Weihnachtsgeschichte von Charles Dickens</h4><p><b>Adresse:</b> Theater am Frankfurter Tor</p><p><b>Datum:</b> 23.12.2025</p><p><b>Beschreibung:</b> Geiz, Hartherzigkeit und Arroganz sind die Eigenschaften, die Mister Srooge, dem Firmeninhaber in der Finanzbranche, nachgesagt werden. Sein Angestellter wird ausgebeutet, Familie existiert für Srooge nicht, für seine ärmeren Londoner Mitbürger hat er nur…</p><p><b>Quelle:</b> visit Berlin</p><a href='https://www.visitberlin.de/de/event/eine-weihnachtsgeschichte-von-charles-dickens' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_56d8e8348742b38fd695a24235860951.setContent(html_7bebee04438ffdf51a3980a4d72c748d);
+            
+        
+
+        marker_4e39345bdd0744e9d8f51cd3bb7665ae.bindPopup(popup_56d8e8348742b38fd695a24235860951)
+        ;
+
+        
+    
+    
+            marker_4e39345bdd0744e9d8f51cd3bb7665ae.bindTooltip(
+                `<div>
+                     Eine Weihnachtsgeschichte von Charles Dickens
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4e39345bdd0744e9d8f51cd3bb7665ae.setIcon(icon_8bbf69d465082bfb90e7bf39808a285a);
+            
+    
+            var marker_dadb1b47fa240b044f07e2699d853e60 = L.marker(
+                [52.4548978, 13.3175925],
+                {
+}
+            ).addTo(marker_cluster_75e3c8df153c78e12f63c55004118b88);
+        
+    
+            var icon_faefcf989e920694ed7a92baf71e14da = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "purple",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7427cc5eba9a8fe4a274daf5da16195a = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_ce627da3f4d49d26e48002eece3b59ec = $(`<div id="html_ce627da3f4d49d26e48002eece3b59ec" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Irish Christmas - Woodwind & Steel</h4><p><b>Adresse:</b> Schlosspark Theater</p><p><b>Datum:</b> 23.12.2025</p><p><b>Beschreibung:</b> Irish Christmas - Woodwind & Steel Die fröhlich festliche Weihnachtsshow Music, Fun & Stories von der grünen Insel Feiern Sie Weihnachten auf die irische Art!</p><p><b>Quelle:</b> visit Berlin</p><a href='https://www.visitberlin.de/de/event/irish-christmas-woodwind-steel' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_7427cc5eba9a8fe4a274daf5da16195a.setContent(html_ce627da3f4d49d26e48002eece3b59ec);
+            
+        
+
+        marker_dadb1b47fa240b044f07e2699d853e60.bindPopup(popup_7427cc5eba9a8fe4a274daf5da16195a)
+        ;
+
+        
+    
+    
+            marker_dadb1b47fa240b044f07e2699d853e60.bindTooltip(
+                `<div>
+                     Irish Christmas - Woodwind & Steel
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_dadb1b47fa240b044f07e2699d853e60.setIcon(icon_faefcf989e920694ed7a92baf71e14da);
+            
+    
+            marker_cluster_75e3c8df153c78e12f63c55004118b88.addTo(map_1857efb2ad2ba4bb06577674787c962d);
+        
+    
+            var marker_cluster_c74b749630e27f4f7117db6d29385b11 = L.markerClusterGroup(
+                {
+  "maxClusterRadius": 40,
+  "chunkedLoading": true,
+  "spiderfyOnMaxZoom": true,
+  "showCoverageOnHover": false,
+  "animate": false,
+}
+            );
+            marker_cluster_c74b749630e27f4f7117db6d29385b11.options.iconCreateFunction =
+                function(cluster) {
+        var childCount = cluster.getChildCount();
+        var size = 30;
+        if (childCount > 10) size = 40;
+        if (childCount > 50) size = 50;
+        
+        return L.divIcon({
+            html: '<div style="background-color: rgba(110, 110, 110, 0.8); color: white; border-radius: 50%; width: ' + size + 'px; height: ' + size + 'px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 12px; border: 2px solid rgba(160, 160, 160, 0.5);">' + childCount + '</div>',
+            className: 'marker-cluster-grey',
+            iconSize: L.point(size, size)
+        });
+    };
+        
+    
+            var marker_4686f9be670a0c014565959c771025e6 = L.marker(
+                [52.5076121, 13.4749435],
+                {
+}
+            ).addTo(marker_cluster_c74b749630e27f4f7117db6d29385b11);
+        
+    
+            var icon_94e1972475a49c9a32d614f2998ef437 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4fc94a1e4f6b603bad96c908c143118b = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_348620321642ff631aab1268cfceed68 = $(`<div id="html_348620321642ff631aab1268cfceed68" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>encore.une.fois / TUESDAY TECHNO RAVE</h4><p><b>Venue:</b> OXI</p><p><b>Datum:</b> 23.12.2025</p><p><b>Start:</b> 23:00</p><p><b>Ende:</b> 09:00</p><p><b>Artists:</b> Mohajer, Inverse Element, New Frames, LUISELLE</p><p><b>Interested:</b> 445</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2310491' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_4fc94a1e4f6b603bad96c908c143118b.setContent(html_348620321642ff631aab1268cfceed68);
+            
+        
+
+        marker_4686f9be670a0c014565959c771025e6.bindPopup(popup_4fc94a1e4f6b603bad96c908c143118b)
+        ;
+
+        
+    
+    
+            marker_4686f9be670a0c014565959c771025e6.bindTooltip(
+                `<div>
+                     encore.une.fois / TUESDAY TECHNO RAVE
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4686f9be670a0c014565959c771025e6.setIcon(icon_94e1972475a49c9a32d614f2998ef437);
+            
+    
+            var marker_422d25f74c69a94200774ed830c8d5d0 = L.marker(
+                [52.5075831, 13.4545322],
+                {
+}
+            ).addTo(marker_cluster_c74b749630e27f4f7117db6d29385b11);
+        
+    
+            var icon_5bcaa659e2b3f759ef833b91cb3d4d0b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bc563582f0552472c19cd308cc202133 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_5e4459dd3f3357f375b337842389727e = $(`<div id="html_5e4459dd3f3357f375b337842389727e" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Smash & HART ◢◤ Tuesday Rave [free entry until midnight*]</h4><p><b>Venue:</b> Der Weiße Hase</p><p><b>Datum:</b> 23.12.2025</p><p><b>Start:</b> 23:00</p><p><b>Ende:</b> 08:00</p><p><b>Artists:</b> EGE363</p><p><b>Interested:</b> 115</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2281844' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_bc563582f0552472c19cd308cc202133.setContent(html_5e4459dd3f3357f375b337842389727e);
+            
+        
+
+        marker_422d25f74c69a94200774ed830c8d5d0.bindPopup(popup_bc563582f0552472c19cd308cc202133)
+        ;
+
+        
+    
+    
+            marker_422d25f74c69a94200774ed830c8d5d0.bindTooltip(
+                `<div>
+                     Smash & HART ◢◤ Tuesday Rave [free entry until midnight*]
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_422d25f74c69a94200774ed830c8d5d0.setIcon(icon_5bcaa659e2b3f759ef833b91cb3d4d0b);
+            
+    
+            var marker_d32f395e77b0706dfc81996d637b235d = L.marker(
+                [52.5086027, 13.4610994],
+                {
+}
+            ).addTo(marker_cluster_c74b749630e27f4f7117db6d29385b11);
+        
+    
+            var icon_2dc126add43a0faef69cd7a579a0f02b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c571f0b5b290aacefaa9cb6a887a433d = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_978453aa9870d682b49399958c53fe5c = $(`<div id="html_978453aa9870d682b49399958c53fe5c" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>THE UNKNOWN (𝘍𝘙𝘌𝘌 𝘌𝘕𝘛𝘙𝘠 𝘜𝘕𝘛𝘐𝘓 22:00 ⟶ 𝘋𝘖𝘕𝘈𝘛𝘐𝘖𝘕-𝘉𝘈𝘚𝘌𝘋 𝘈𝘍𝘛𝘌𝘙)</h4><p><b>Venue:</b> Süss War Gestern</p><p><b>Datum:</b> 23.12.2025</p><p><b>Start:</b> 19:00</p><p><b>Ende:</b> 02:00</p><p><b>Artists:</b> Mario Worgall</p><p><b>Interested:</b> 26</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2309535' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_c571f0b5b290aacefaa9cb6a887a433d.setContent(html_978453aa9870d682b49399958c53fe5c);
+            
+        
+
+        marker_d32f395e77b0706dfc81996d637b235d.bindPopup(popup_c571f0b5b290aacefaa9cb6a887a433d)
+        ;
+
+        
+    
+    
+            marker_d32f395e77b0706dfc81996d637b235d.bindTooltip(
+                `<div>
+                     THE UNKNOWN (𝘍𝘙𝘌𝘌 𝘌𝘕𝘛𝘙𝘠 𝘜𝘕𝘛𝘐𝘓 22:00 ⟶ 𝘋𝘖𝘕𝘈𝘛𝘐𝘖𝘕-𝘉𝘈𝘚𝘌𝘋 𝘈𝘍𝘛𝘌𝘙)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d32f395e77b0706dfc81996d637b235d.setIcon(icon_2dc126add43a0faef69cd7a579a0f02b);
+            
+    
+            var marker_df347e45f8b87bd4086b90b49615ca7c = L.marker(
+                [52.5441625, 13.3787124],
+                {
+}
+            ).addTo(marker_cluster_c74b749630e27f4f7117db6d29385b11);
+        
+    
+            var icon_362077bb3c57a23fdbdd53d9d25f250a = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_54ea827775d72588037be13d9bc43604 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_5d531109c1bf14044d29b07e31625c00 = $(`<div id="html_5d531109c1bf14044d29b07e31625c00" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Open Decks & Tischtennis</h4><p><b>Venue:</b> Humboldthain Club</p><p><b>Datum:</b> 23.12.2025</p><p><b>Start:</b> 18:00</p><p><b>Ende:</b> 04:00</p><p><b>Interested:</b> 12</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2287616' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_54ea827775d72588037be13d9bc43604.setContent(html_5d531109c1bf14044d29b07e31625c00);
+            
+        
+
+        marker_df347e45f8b87bd4086b90b49615ca7c.bindPopup(popup_54ea827775d72588037be13d9bc43604)
+        ;
+
+        
+    
+    
+            marker_df347e45f8b87bd4086b90b49615ca7c.bindTooltip(
+                `<div>
+                     Open Decks & Tischtennis
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_df347e45f8b87bd4086b90b49615ca7c.setIcon(icon_362077bb3c57a23fdbdd53d9d25f250a);
+            
+    
+            var marker_881eb3efd0171e43fe7397264d90ab69 = L.marker(
+                [52.5043141, 13.3836872],
+                {
+}
+            ).addTo(marker_cluster_c74b749630e27f4f7117db6d29385b11);
+        
+    
+            var icon_9da9297b638f5d5665e205e7bf4cee75 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_ab8bf6d65fb79a394bf2614c562b1da6 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_41c09ecbb2189f13c7af5ef9168790b7 = $(`<div id="html_41c09ecbb2189f13c7af5ef9168790b7" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Sky-Bar Warmup - HipHop Oldschool Funk</h4><p><b>Venue:</b> Solar</p><p><b>Datum:</b> 23.12.2025</p><p><b>Start:</b> 19:00</p><p><b>Ende:</b> 01:00</p><p><b>Interested:</b> 5</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2309023' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_ab8bf6d65fb79a394bf2614c562b1da6.setContent(html_41c09ecbb2189f13c7af5ef9168790b7);
+            
+        
+
+        marker_881eb3efd0171e43fe7397264d90ab69.bindPopup(popup_ab8bf6d65fb79a394bf2614c562b1da6)
+        ;
+
+        
+    
+    
+            marker_881eb3efd0171e43fe7397264d90ab69.bindTooltip(
+                `<div>
+                     Sky-Bar Warmup - HipHop Oldschool Funk
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_881eb3efd0171e43fe7397264d90ab69.setIcon(icon_9da9297b638f5d5665e205e7bf4cee75);
+            
+    
+            var marker_fa81917084fd01b90edf43b96d0d2da2 = L.marker(
+                [52.5173885, 13.3951309],
+                {
+}
+            ).addTo(marker_cluster_c74b749630e27f4f7117db6d29385b11);
+        
+    
+            var icon_cf022ecf5b672a433d59606a8edc1031 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c19ceba68c802c494035c138207d5795 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_f9b6e066164cf0a896e7c84b5ec0a63a = $(`<div id="html_f9b6e066164cf0a896e7c84b5ec0a63a" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Transmission Fields</h4><p><b>Venue:</b> PR55</p><p><b>Datum:</b> 18.12.2025</p><p><b>Start:</b> 00:00</p><p><b>Ende:</b> 15:30</p><p><b>Interested:</b> 3</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2329901' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_c19ceba68c802c494035c138207d5795.setContent(html_f9b6e066164cf0a896e7c84b5ec0a63a);
+            
+        
+
+        marker_fa81917084fd01b90edf43b96d0d2da2.bindPopup(popup_c19ceba68c802c494035c138207d5795)
+        ;
+
+        
+    
+    
+            marker_fa81917084fd01b90edf43b96d0d2da2.bindTooltip(
+                `<div>
+                     Transmission Fields
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_fa81917084fd01b90edf43b96d0d2da2.setIcon(icon_cf022ecf5b672a433d59606a8edc1031);
+            
+    
+            var marker_7e907f0b21315c6c2f09af07d43f96b4 = L.marker(
+                [52.5297369, 13.3971786],
+                {
+}
+            ).addTo(marker_cluster_c74b749630e27f4f7117db6d29385b11);
+        
+    
+            var icon_151a10efc3acc2f5f5b5ba4ce766aaf1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "music",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c8b0a4bc18474b581c9c9a169800a935 = L.popup({
+  "maxWidth": 350,
+});
+
+        
+            
+                var html_70c5ce18d8da8b6d8cb627b2a3e6a1ab = $(`<div id="html_70c5ce18d8da8b6d8cb627b2a3e6a1ab" style="width: 100.0%; height: 100.0%;"><div style='width: 320px;'><h4>Double release show: Flynotes + The Birch</h4><p><b>Venue:</b> Schokoladen</p><p><b>Datum:</b> 23.12.2025</p><p><b>Start:</b> 20:00</p><p><b>Ende:</b> 23:00</p><p><b>Interested:</b> 2</p><p><b>Quelle:</b> Resident Advisor</p><a href='https://ra.co/events/2331769' target='_blank'>Mehr Infos</a></div></div>`)[0];
+                popup_c8b0a4bc18474b581c9c9a169800a935.setContent(html_70c5ce18d8da8b6d8cb627b2a3e6a1ab);
+            
+        
+
+        marker_7e907f0b21315c6c2f09af07d43f96b4.bindPopup(popup_c8b0a4bc18474b581c9c9a169800a935)
+        ;
+
+        
+    
+    
+            marker_7e907f0b21315c6c2f09af07d43f96b4.bindTooltip(
+                `<div>
+                     Double release show: Flynotes + The Birch
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7e907f0b21315c6c2f09af07d43f96b4.setIcon(icon_151a10efc3acc2f5f5b5ba4ce766aaf1);
+            
+    
+            marker_cluster_c74b749630e27f4f7117db6d29385b11.addTo(map_1857efb2ad2ba4bb06577674787c962d);
+        
+    
+            var layer_control_883a0b1cb8c60217e4b1e81a1ce7104c_layers = {
+                base_layers : {
+                    "openstreetmap" : tile_layer_5d64b887315f2b14658c82570fe40d21,
+                },
+                overlays :  {
+                    "tip Berlin" : marker_cluster_e5b18119477fb3913bcd250c975469d5,
+                    "Gratis in Berlin" : marker_cluster_bcf9772c19a6958281f7255b6126bf2b,
+                    "visit Berlin" : marker_cluster_75e3c8df153c78e12f63c55004118b88,
+                    "Resident Advisor" : marker_cluster_c74b749630e27f4f7117db6d29385b11,
+                },
+            };
+            let layer_control_883a0b1cb8c60217e4b1e81a1ce7104c = L.control.layers(
+                layer_control_883a0b1cb8c60217e4b1e81a1ce7104c_layers.base_layers,
+                layer_control_883a0b1cb8c60217e4b1e81a1ce7104c_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_1857efb2ad2ba4bb06577674787c962d);
+
+        
+</script>
+</html>

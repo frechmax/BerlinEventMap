@@ -98,14 +98,23 @@ class TipBerlinScraper:
         try:
             mehr_button = page.locator("a.tip-recommended-posts__more-link").first
             mehr_button.click(timeout=10000)
-            page.wait_for_load_state("networkidle")
+            page.wait_for_load_state("domcontentloaded")  # Change here too
             page.wait_for_timeout(3000)
             print(f"✓ Navigated to: {page.url}")
         except Exception as e:
             print(f"✗ Click failed: {e}")
             print("Trying direct navigation...")
-            page.goto("https://www.tip-berlin.de/event/", wait_until="networkidle")
+            page.goto("https://www.tip-berlin.de/event/", wait_until="domcontentloaded", timeout=60000)
             page.wait_for_timeout(3000)
+    
+    def _navigate_to_events_directly(self, page: Page) -> None:
+        """Directly navigate to the events listing page."""
+        try:
+            page.goto("https://www.tip-berlin.de/event/", wait_until="domcontentloaded", timeout=60000)
+            page.wait_for_timeout(3000)
+            print(f"✓ Directly navigated to: {page.url}")
+        except Exception as e:
+            print(f"✗ Direct navigation failed: {e}")
     
     def _parse_events_from_html(self, html: str) -> list[Event]:
         """Parse event data from HTML content."""
@@ -181,21 +190,22 @@ class TipBerlinScraper:
             
             url = f"https://www.tip-berlin.de/event-tageshighlights/?t={int(datetime.now().timestamp())}"
             print("Opening daily highlights page...")
+
             page.goto(url, wait_until="networkidle")
             page.wait_for_timeout(3000)
             
             # Handle overlays
-            print("Closing cookie banner...")
-            self._handle_cookie_banner(page)
+            # print("Closing cookie banner...")
+            # self._handle_cookie_banner(page)
             
             print("Checking for ad popups...")
-            self._handle_popup(page)
+            # self._handle_popup(page)
             
             page.wait_for_timeout(2000)
             
             # Navigate to full events list
-            print("Clicking 'More' button...")
-            self._navigate_to_events(page)
+            # print("Clicking 'More' button...")
+            self._navigate_to_events_directly(page)
             
             # Parse the page
             html = page.content()
