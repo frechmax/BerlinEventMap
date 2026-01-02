@@ -111,7 +111,7 @@ class TipBerlinScraper:
         """Directly navigate to the events listing page."""
         try:
             page.goto("https://www.tip-berlin.de/event/", wait_until="domcontentloaded", timeout=60000)
-            page.wait_for_timeout(3000)
+            page.wait_for_timeout(5000)  # Increased wait time
             print(f"✓ Directly navigated to: {page.url}")
         except Exception as e:
             print(f"✗ Direct navigation failed: {e}")
@@ -175,14 +175,25 @@ class TipBerlinScraper:
         
         with sync_playwright() as p:
             print("Starting browser...")
-            browser: Browser = p.chromium.launch(headless=True)
+            browser: Browser = p.chromium.launch(
+                headless=True,
+                args=[
+                    '--disable-blink-features=AutomationControlled',
+                    '--no-sandbox',
+                    '--disable-dev-shm-usage'
+                ]
+            )
             
             context = browser.new_context(
-                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+                user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+                viewport={'width': 1920, 'height': 1080}
             )
             
             page = context.new_page()
-            page.route("**/*", lambda route: route.continue_())
+            
+            # Set longer timeout for GitHub Actions
+            page.set_default_timeout(60000)
+            page.set_default_navigation_timeout(60000)
             
             # Navigate to daily highlights
             today = datetime.now(BERLIN_TIMEZONE).strftime("%Y-%m-%d")
@@ -191,8 +202,15 @@ class TipBerlinScraper:
             url = f"https://www.tip-berlin.de/event-tageshighlights/?t={int(datetime.now().timestamp())}"
             print("Opening daily highlights page...")
 
-            page.goto(url, wait_until="networkidle")
-            page.wait_for_timeout(3000)
+            try:
+                # Change from networkidle to domcontentloaded for faster/more reliable loading
+                page.goto(url, wait_until="domcontentloaded", timeout=60000)
+                page.wait_for_timeout(5000)  # Give extra time for JS to render
+            except Exception as e:
+                print(f"⚠ Navigation warning: {e}")
+                print("Trying alternative approach...")
+                page.goto("https://www.tip-berlin.de/event/", wait_until="domcontentloaded", timeout=60000)
+                page.wait_for_timeout(5000)
             
             # Handle overlays
             # print("Closing cookie banner...")
