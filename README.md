@@ -1,6 +1,6 @@
 # [all events in berlin today.](https://frechmax.github.io/BerlinEventMap/)
 
-One Map, 4 Websites.
+One Map, Multiple Websites.
 
 - TipBerlin
 - VisitBerlin
