@@ -303,6 +303,45 @@ def build_legend_html(event_count: int, source_stats: dict[str, int]) -> str:
     return "".join(legend_parts)
 
 
+def add_seo_meta_tags(map_obj: folium.Map) -> None:
+    """
+    Add SEO meta tags to the Folium map HTML head section.
+    
+    Args:
+        map_obj: Folium map object to add meta tags to.
+    """
+    seo_tags = """
+    <!-- SEO Meta Tags -->
+    <title>Berlin Events Map - Aktuelle Veranstaltungen in Berlin</title>
+    <meta name="description" content="Interaktive Karte mit aktuellen Events in Berlin. Konzerte, Partys, Kultur und mehr aus tip Berlin, Visit Berlin, Gratis in Berlin und Resident Advisor.">
+    <meta name="keywords" content="Berlin Events, Veranstaltungen Berlin, Berlin Konzerte, Berlin Partys, Berlin Kultur, Berlin heute, Events heute Berlin">
+    <meta name="author" content="Berlin Events Map">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags (Facebook, LinkedIn) -->
+    <meta property="og:title" content="Berlin Events Map - Aktuelle Veranstaltungen in Berlin">
+    <meta property="og:description" content="Interaktive Karte mit aktuellen Events in Berlin aus verschiedenen Quellen.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://frechmax.github.io/BerlinEventMap/">
+    <meta property="og:image" content="https://frechmax.github.io/BerlinEventMap/preview.jpg">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Berlin Events Map - Aktuelle Veranstaltungen in Berlin">
+    <meta name="twitter:description" content="Interaktive Karte mit aktuellen Events in Berlin aus verschiedenen Quellen.">
+    <meta name="twitter:image" content="https://frechmax.github.io/BerlinEventMap/preview.jpg">
+    
+    <!-- Additional SEO -->
+    <link rel="canonical" href="https://frechmax.github.io/BerlinEventMap/">
+    <meta name="language" content="de">
+    <meta name="geo.region" content="DE-BE">
+    <meta name="geo.placename" content="Berlin">
+    <meta name="geo.position" content="52.5200;13.4050">
+    <meta name="ICBM" content="52.5200, 13.4050">
+    """
+    map_obj.get_root().header.add_child(folium.Element(seo_tags))
+
+
 def combine_maps_with_legend(run_folder: str = ".") -> Optional[folium.Map]:
     """
     Combine event data from multiple CSV sources into a single map.
@@ -330,7 +369,7 @@ def combine_maps_with_legend(run_folder: str = ".") -> Optional[folium.Map]:
     print(f"{'=' * 60}")
 
     # Create map
-    print("\n[2/3] Creating map with legend...\n")
+    print("\n[2/3] Creating map with legend and SEO...\n")
 
     berlin_map = folium.Map(
         location=[52.5200, 13.4050],
@@ -338,6 +377,9 @@ def combine_maps_with_legend(run_folder: str = ".") -> Optional[folium.Map]:
         prefer_canvas=True,
         tiles="OpenStreetMap",
     )
+    
+    # Add SEO meta tags
+    add_seo_meta_tags(berlin_map)
 
     # Custom grey cluster icon
     grey_cluster_icon = """
