@@ -371,12 +371,28 @@ def combine_maps_with_legend(run_folder: str = ".") -> Optional[folium.Map]:
     # Create map
     print("\n[2/3] Creating map with legend and SEO...\n")
 
+    # berlin_map = folium.Map(
+    #     location=[52.5200, 13.4050],
+    #     zoom_start=12,
+    #     prefer_canvas=True,
+    #     tiles="OpenStreetMap",
+    # )
+    JAWG_ACCESS_TOKEN = "19AKdK68rVLKb8ldVylwFHEUQCOfivRHYB7blOwpYc8wM4CfJDp16S1nIrLd9R55"
+
     berlin_map = folium.Map(
         location=[52.5200, 13.4050],
         zoom_start=12,
         prefer_canvas=True,
-        tiles="OpenStreetMap",
+        tiles=None  # Disable default tiles
     )
+
+    folium.TileLayer(
+        tiles=f"https://tile.jawg.io/jawg-streets/{{z}}/{{x}}/{{y}}.png?access-token={JAWG_ACCESS_TOKEN}",
+        attr='&copy; <a href="https://www.jawg.io">Jawg</a> contributors &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        name="Jawg.Streets",
+        max_zoom=22,
+    ).add_to(berlin_map)
+
     
     # Add SEO meta tags
     add_seo_meta_tags(berlin_map)
